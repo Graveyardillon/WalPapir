@@ -1,196 +1,126 @@
-<!DOCTYPE html>
-<html>
-  <!-- This page has a possibility of containing inefficient code -->
+{% extends './homeTemplate.html' %}
+{% load static %}
+{% block title %}Login Form{% endblock %}
 
-  <head>
-    <title>page4Login</title>
+{% block basicLinks %}
 
-    <script src="./jQuery/3-3-1.js"></script>
-    <link rel="stylesheet" href="./CSS/menustyle.css" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous" />
-    <link rel="stylesheet" href="./CSS/ButtonEffects.css" />
-    <script type="text/javascript" src="./FixNavigation.js"></script>
-    <script src="./jQuery/pace.js"></script>
-    <link rel="stylesheet" href="./CSS/loadingbar.css" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous" />
+  <link rel="stylesheet" href="{% static 'walpapir/CSS/ButtonEffects.css' %}" />
+  <script src="{% static 'walpapir/jQuery/pace.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'walpapir/CSS/loadingbar.css' %}" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+  <script src="{% static 'walpapir/jQuery/3-3-1.js' %}"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="{% static 'walpapir/CSS/menustyle.css' %}" />
+  <script type="text/javascript" src="{% static 'walpapir/js/FixNavigation.js' %}"></script>
 
-    <style>
+{% endblock %}
 
-    input {
-      font-size: 100%;
-      font-family: inherit;
-      border: none;
-      background-color: rgba(0,0,0,0);
-      width: 100%;
-      height: 39px;
-    }
+{% block style %}
 
-    a.active{
-      background-color: #3498db;
-      pointer-events: none;
-    }
+input {
+  font-size: 100%;
+  font-family: inherit;
+  border: none;
+  background-color: rgba(0,0,0,0);
+  width: 100%;
+  height: 39px;
+}
 
-    li.slider{
-      width: 25%;
-      height: 100%;
-      position: absolute;
-      left: 0;
-      top: 0;
-      background-color: #3498db;
-      z-index: 8;
-      transition: left 0.4s, background-color 0.4s;
-    }
+a.active{
+  background-color: #3498db;
+  pointer-events: none;
+}
 
-    #formPaperPNG{
-      font-size: 35px;
-      width: 80%;
-      left: 10%;
-      height: 400px;
-      position: absolute;
-      top: 250px;
-      margin-bottom: 50px;
-      background-image: url("./picturesForUI/lines.png"), url("./picturesForUI/paper.png");
-      background-repeat: repeat-y, repeat;
-      border-radius: 12px;
-      display: flex;
-      -webkit-box-shadow: 0px 2px 14px #000;
-      box-shadow: 0px 2px 14px #000;
-      display: flex;
-    }
+li.slider{
+  width: 25%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #3498db;
+  z-index: 8;
+  transition: left 0.4s, background-color 0.4s;
+}
 
-    #LeftSideOfPaper {
-      top: 0;
-      left: 0;
-      width: 20%;
-    }
+#formPaperPNG{
+  font-size: 35px;
+  width: 80%;
+  left: 10%;
+  height: 400px;
+  position: absolute;
+  top: 250px;
+  margin-bottom: 50px;
+  background-image: url("{% static 'walpapir/UI/paper.png' %}");
+  background-repeat: repeat;
+  border-radius: 12px;
+  display: flex;
+  -webkit-box-shadow: 0px 2px 14px #000;
+  box-shadow: 0px 2px 14px #000;
+  display: flex;
+}
 
-    #RightSideOfPaper {
-      font-family: Courier, monospace;
-      top: 0;
-      right: 0;
-      width: 130%;
-    }
+#LeftSideOfPaper {
+  top: 0;
+  left: 0;
+  width: 20%;
+}
 
-    .effect.rightPointEffect {
-      top: 680px;
-    }
+#RightSideOfPaper {
+  font-family: Courier, monospace;
+  top: 0;
+  right: 0;
+  width: 130%;
+}
 
-    </style>
+.effect.rightPointEffect {
+  top: 680px;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+}
 
-  </head>
-  <body>
-    <div id="headerBox">
-      <span id="logo"></span>
-      <div id="logoWord">WalPapir</div>
-      <script>
-        $(function(){
-          $(window).on('load resize', function(){
-            if(window.innerWidth >= 801){
-              document.getElementById('logo').innerHTML = '<img src="./picturesForUI/logo_60x60.png" id="menuIcon" />';
-            } else {
-              document.getElementById('logo').innerHTML = '<img src="./picturesForUI/logo_40x40.png" id="menuIcon" />'
-            }
-          })
-        })
-      </script>
+{% endblock %}
+
+{% block mainContent %}
+<!-- submission paper -->
+
+<div id="formPaperPNG">
+  <div id="LeftSideOfPaper">
+
+  </div>
+  <div id="RightSideOfPaper">
+    <p align="left">Login Form<br>
+    <a href="{% url 'walpapir:signUp' %}">forget account?</a></p>
+    <br>
+    {% block content %}
+    <form action="#" method="post" name="form1">
+      {{ form.non_field_errors }}
+      {% for field in form %}
+          {{ field }}
+          <font size="3px">{{ field.errors }}</font>
+
+      {% endfor %}
+
+      {% csrf_token %}
     </div>
+</div>
 
-    <!-- navigation bar -->
-      <ul class="menu">
+<!-- submission paper -->
 
-      <li><a href="./home1.html">
-          HOME</a></li>
+<!-- submission button -->
+<div class="container">
+  <div class="buttonEffect">
+    <input type="hidden" name="next" value="{{ next }}" />
+    <a align="center" class="effect rightPointEffect" href="javascript:form1.submit()">Log In</a>
 
-      <li><a href="./noChara.html">
-          NO CHARACTER</a></li>
-
-      <li><a href="./withChara.html">
-          WITH CHARACTERS</a></li>
-
-      <li><a href="./userPage.html">
-          USER</a></li>
-
-      <li class="slider"></li>
-
-    </ul>
-    <!-- navigation bar -->
-
-    <!-- hamburgerMenu -->
-
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-
-    <nav class="hamburgerMenu">
-      <input type="checkbox" href="#" class="hamburgerMenuOpen" name="hamburgerMenuOpen" id="hamburgerMenuOpen" />
-      <label class="hamburgerMenuOpenButton" for="hamburgerMenuOpen">
-        <span class="hamburger hamburger1"></span>
-        <span class="hamburger hamburger2"></span>
-        <span class="hamburger hamburger3"></span>
-      </label>
-
-      <a href="./how2use.html" class="hamburgerMenuItem"><i class="fas fa-question"></i></a>
-      <a href="./page4Post.html" class="hamburgerMenuItem"><i class="fas fa-paper-plane"></i></a>
-      <a href="./favPage.html" class="hamburgerMenuItem"><i class="fa fa-heart"></i></a>
-      <a href="mailto:papillonp@icloud.com" class="hamburgerMenuItem"><i class="fa fa-envelope"></i></a>
-
-    </nav>
-
-    <!-- hamburgerMenu -->
-
-    <!-- filters -->
-    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-        <defs>
-          <filter id="shadowed-goo">
-
-              <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
-              <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
-              <feGaussianBlur in="goo" stdDeviation="3" result="shadow" />
-              <feColorMatrix in="shadow" mode="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2" result="shadow" />
-              <feOffset in="shadow" dx="1" dy="1" result="shadow" />
-              <feComposite in2="shadow" in="goo" result="goo" />
-              <feComposite in2="goo" in="SourceGraphic" result="mix" />
-
-          </filter>
-          <filter id="goo">
-
-              <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
-              <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
-              <feComposite in2="goo" in="SourceGraphic" result="mix" />
-
-          </filter>
-        </defs>
-    </svg>
-
-    <!-- filters -->
-
-
-    <!-- submission paper -->
-
-    <div id="formPaperPNG">
-      <div id="LeftSideOfPaper">
-
-      </div>
-      <div id="RightSideOfPaper">
-        <p align="left">Login Form</p>
-        <br>
-        <form action="#" method="post">
-          <input type="text" name="userName" placeholder="NAME"><br><br>
-          <input type="password" name="Passwd" placeholder="PASSWORD">
-      </div>
     </div>
+  </form>
+  {% endblock %}
+</div>
 
-    <!-- submission paper -->
+<!-- submission button -->
 
-    <!-- submission button -->
-    <div class="container">
-      <div class="buttonEffect">
-        <a class="effect rightPointEffect" type="submit" title="SignUp">
-          Sign up</a>
-        </div>
-      </form>
-    </div>
-
-    <!-- submission button -->
-
-  </body>
-</html>
+{% endblock %}

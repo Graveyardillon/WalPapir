@@ -90,7 +90,7 @@
 @media screen and (max-width:800px){
   body .container {
     width: 850px;
-    margin: 70px, auto, 0, auto;
+    margin: 0px, auto, 0, auto;
     z-index: 2;
   }
 

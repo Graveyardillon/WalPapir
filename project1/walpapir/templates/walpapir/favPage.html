@@ -1,111 +1,57 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>
-      favPage
-    </title>
+{% extends './homeTemplate.html' %}
 
+{% block title %}favPage{% endblock %}
 
-    <script src="./jQuery/3-3-1.js"></script>
-    <link rel="stylesheet" href="./CSS/menustyle.css" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous" />
-    <script type="text/javascript" src="./FixNavigation.js"></script>
-    <script src="./jQuery/pace.js"></script>
-    <link rel="stylesheet" href="./CSS/loadingbar.css" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+{% block basicLinks %}
 
-    <style>
+<script src="{% static 'walpapir/jQuery/3-3-1.js' %}"></script>
+<link rel="stylesheet" href="{% static 'walpapir/CSS/menustyle.css' %}" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous" />
+<script type="text/javascript" src="{% static 'walpapir/js/FixNavigation.js' %}"></script>
+<script src=" {% static 'walpapir/jQuery/pace.js' %}"></script>
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 
-    a.active{
-      background-color: #3498db;
-      pointer-events: none;
-    }
+{% endblock %}
 
-    li.slider{
-      width: 25%;
-      height: 100%;
-      position: absolute;
-      left: 0;
-      top: 0;
-      background-color: #3498db;
-      z-index: 8;
-      transition: left 0.4s, background-color 0.4s;
-    }
+{% block style %}
 
-    </style>
+a.active{
+  background-color: #3498db;
+  pointer-events: none;
+}
 
-  </head>
-  <body>
-    <div id="headerBox">
+li.slider{
+  width: 25%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #3498db;
+  z-index: 8;
+  transition: left 0.4s, background-color 0.4s;
+}
 
-      <span id="logo"></span>
-      <div id="logoWord">WalPapir</div>
-      <div id="menuIcon">
-      <script>
-        $(function(){
-          $(window).on('load resize', function(){
-            if(window.innerWidth >= 801){
-              document.getElementById('logo').innerHTML = '<img src="./picturesForUI/logo_60x60.png" id="menuIcon" />';
-            } else {
-              document.getElementById('logo').innerHTML = '<img src="./picturesForUI/logo_40x40.png" id="menuIcon" />'
-            }
-          })
-        })
-      </script>
+{% endblock %}
+
+{% block mainContent %}
+  <div id="wrap">
+    <div id="left-content">
+      <br><br><br><br><br>
+      <br><br><br><br><br>
+      <br><br><br><br><br>
+      <br><br><br><br><br>
+      <br><br><br><br><br>
+      <br><br><br><br><br>
+      <br><br><br><br><br>
+      <br><br><br><br><br>
+      <br><br><br><br><br>
+      <br><br><br><br><br>
+      <br><br><br><br><br>
+      <br><br><br><br><br>
     </div>
+    <div id="right-content">
+      <br><br>
     </div>
-
-    <!-- navigation bar -->
-      <ul class="menu">
-
-      <li><a href="./home1.html">
-          HOME</a></li>
-
-      <li><a href="./noChara.html">
-          NO CHARACTER</a></li>
-
-      <li><a href="./withChara.html">
-          WITH CHARACTERS</a></li>
-
-      <li><a href="./userPage.html">
-          USER</a></li>
-
-      <li class="slider"></li>
-
-    </ul>
-    <!-- navigation bar -->
-
-    <!-- hamburgerMenu -->
-
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-
-    <nav class="hamburgerMenu">
-      <input type="checkbox" href="#" class="hamburgerMenuOpen" name="hamburgerMenuOpen" id="hamburgerMenuOpen" />
-      <label class="hamburgerMenuOpenButton" for="hamburgerMenuOpen">
-        <span class="hamburger hamburger1"></span>
-        <span class="hamburger hamburger2"></span>
-        <span class="hamburger hamburger3"></span>
-      </label>
-
-      <a href="./how2use.html" class="hamburgerMenuItem"><i class="fas fa-question"></i></a>
-      <a href="./page4Post.html" class="hamburgerMenuItem"><i class="fas fa-paper-plane"></i></a>
-      <a href="./favPage.html" class="hamburgerMenuItem"><i class="fa fa-heart"></i></a>
-      <a href="mailto:papillonp@icloud.com" class="hamburgerMenuItem"><i class="fa fa-envelope"></i></a>
-
-    </nav>
-
-    <!-- hamburgerMenu -->
-
-    <div id="wrap">
-      <div id="left-content">
-        <br><br>
-      </div>
-      <div id="right-content">
-        <br><br>
-      </div>
-    </div>
-
-
-</body>
-</html>
+</div>
+{% endblock %}

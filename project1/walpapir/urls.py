@@ -17,16 +17,25 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.conf import settings
+
 from . import views
 from django.urls import path
+
 from django.conf.urls.static import static
 
 app_name = 'walpapir'
 
 urlpatterns = [
     path('home/', views.home, name='home'),
-    path('withchara/', views.withChara, name='withChara'),
-    path('nochara/', views.noChara, name='noChara'),
+    path('desktop/', views.desktop, name='desktop'),
+    path('mobile/', views.mobile, name='mobile'),
     #userpage and several other pages needs some updates
     path('howToUse/', views.how2use, name='how2use'),
+    path('login/', views.Login.as_view(), name='login'),
+    path('logout/', views.Logout.as_view(), name='logout'),
+    path('postpage/', views.page4post, name='page4post'),
+    path('signup/', views.UserCreate.as_view(), name='signUp'),
+    path('signup/done', views.UserCreateDone.as_view(), name='signup_done'),
+    path('signup/complete/<token>/', views.UserCreateComplete.as_view(), name='signup_complete'),
+
 ]

@@ -1,124 +1,28 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>
-      home1
-    </title>
+{% extends './homeTemplate.html' %}
 
-    <script src="{% static 'walpapir/jQuery/3-3-1.js' %}"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="{% static 'walpapir/CSS/menustyle.css' %}" />
-    <script type="text/javascript" src="{% static 'walpapir/js/FixNavigation.js' %}"></script>
-    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous" />
+{% block title %}HOME{% endblock %}
 
-    <style>
+{% block style %}
 
-      a.active{
-        background-color: #3498db;
-        pointer-events: none;
-      }
+a.active{
+  background-color: #3498db;
+  pointer-events: none;
+}
 
-      li.slider{
-        width: 25%;
-        height: 100%;
-        position: absolute;
-        left: 0;
-        top: 0;
-        background-color: #3498db;
-        z-index: 8;
-        transition: left 0.4s, background-color 0.4s;
-      }
+li.slider{
+  width: 25%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #3498db;
+  z-index: 8;
+  transition: left 0.4s, background-color 0.4s;
+}
 
+{% endblock %}
 
-    </style>
-
-  </head>
-  <body>
-
-    <div id="headerBox">
-
-      <div id="logo"></div>
-      <div id="logoWord">WalPapir</div>
-      <div id="menuIcon">
-      <script>
-        $(function(){
-          $(window).on('load resize', function(){
-            if(window.innerWidth >= 801){
-              document.getElementById('logo').innerHTML = '<img src="{% static 'walpapir/UI/logo_60x60.png' %}" id="menuIcon" />';
-            } else {
-              document.getElementById('logo').innerHTML = '<img src="{% static 'walpapir/UI/logo_40x40.png' %}" id="menuIcon" />'
-            }
-          })
-        })
-      </script>
-    </div>
-    </div>
-
-    <!-- navigation bar -->
-      <ul class="menu">
-        <li><a href="home/"
-           class="active">HOME</a></li>
-
-      <li><a href="{% url 'walpapir:noChara' %}">
-          NO CHARACTER</a></li>
-
-      <li><a href="{% url 'walpapir:withChara' %}">
-          WITH CHARACTERS</a></li>
-
-      <li><a href="./userPage.html">
-          USER</a></li>
-
-      <li class="slider"></li>
-
-    </ul>
-    <!-- navigation bar -->
-
-    <!-- hamburgerMenu -->
-    <nav class="hamburgerMenu">
-      <input type="checkbox" href="#" class="hamburgerMenuOpen" name="hamburgerMenuOpen" id="hamburgerMenuOpen" />
-      <label class="hamburgerMenuOpenButton" for="hamburgerMenuOpen">
-        <span class="hamburger hamburger1"></span>
-        <span class="hamburger hamburger2"></span>
-        <span class="hamburger hamburger3"></span>
-      </label>
-
-      <a href="./how2use.html" class="hamburgerMenuItem"><i class="fas fa-question"></i></a>
-      <a href="./page4Post.html" class="hamburgerMenuItem"><i class="fas fa-paper-plane"></i></a>
-      <a href="./favPage.html" class="hamburgerMenuItem"><i class="fa fa-heart"></i></a>
-      <a href="mailto:papillonp@icloud.com" class="hamburgerMenuItem"><i class="fa fa-envelope"></i></a>
-
-    </nav>
-
-    <!-- hamburgerMenu -->
-
-    <!-- filters -->
-    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-        <defs>
-          <filter id="shadowed-goo">
-
-              <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
-              <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
-              <feGaussianBlur in="goo" stdDeviation="3" result="shadow" />
-              <feColorMatrix in="shadow" mode="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2" result="shadow" />
-              <feOffset in="shadow" dx="1" dy="1" result="shadow" />
-              <feComposite in2="shadow" in="goo" result="goo" />
-              <feComposite in2="goo" in="SourceGraphic" result="mix" />
-
-          </filter>
-          <filter id="goo">
-
-              <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
-              <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
-              <feComposite in2="goo" in="SourceGraphic" result="mix" />
-
-          </filter>
-        </defs>
-    </svg>
-
-    <!-- filters -->
+{% block mainContent %}
 
     <div id="wrap">
       <div id="left-content">
@@ -140,7 +44,4 @@
       </div>
     </div>
 
-
-  </body>
-
-</html>
+{% endblock %}
