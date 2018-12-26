@@ -269,6 +269,22 @@
 
   /* hamburger menu */
 
+  .search {
+    display: inline-block;
+    font-family: "FontAwesome";
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    background-image:  url("../UI/paper.png");
+    border: 0;
+    padding: 10px;
+    border-radius: 14px;
+    width: 300px;
+    height: 17px;
+    font-size: 14px;
+    z-index: 40;
+  }
+
   /* containers */
   #wrap {
     display:flex;
@@ -306,14 +322,19 @@
     top: 0px;
     z-index: 3;
   }
+
   #menuIcon {
     margin-top: 5px;
     margin-left: 10px;
   }
 
   #logoWord {
+    position: absolute;
     font-size: 40px;
-    margin-left: 40%;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+	  -moz-transform: translate(-50%, 0);
+	  transform: translate(-50%, 0);
   }
 
   #logoWord:hover {

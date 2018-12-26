@@ -18,6 +18,9 @@
 {% endblock %}
 
 {% block style %}
+body {
+  height: 800px;
+}
 
 input {
   font-size: 100%;
@@ -93,14 +96,14 @@ li.slider{
   </div>
   <div id="RightSideOfPaper">
     <p align="left">Login Form<br>
-    <a href="{% url 'walpapir:signUp' %}">forget account?</a></p>
+    <a href="{% url 'walpapir:signUp' %}"><font size="3" color="#222">forget account?</font></a></p>
     <br>
     {% block content %}
     <form action="#" method="post" name="form1">
       {{ form.non_field_errors }}
       {% for field in form %}
           {{ field }}
-          <font size="3px">{{ field.errors }}</font>
+          <font size="3px">{{ field.errors }}</font><br>
 
       {% endfor %}
 
