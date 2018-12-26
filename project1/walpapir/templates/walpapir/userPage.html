@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>userPage</title>
+
+  <link rel="stylesheet" href="./CSS/menustyle.css"/>
+  <script src="./jQuery/3-3-1.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous" />
+  <script type="text/javascript" src="./TabSwitcher.js"></script>
+  <script type="text/javascript" src="./FixNavigation.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+
+  <style>
+  @media screen and (min-width: 801px) {
+    input {
+      -webkit-box-shadow: 0px 0.5px 3px #000;
+      box-shadow: 0px 0.5px 3px #000;
+    }
+    /*This font CSS takes balance between black and gray  */
+    font {
+      color: #2d2d2d;
+    }
+    p {
+      font-size: 16px;
+    }
+    a.active{
+      background-color: #16a085;
+      pointer-events: none;
+    }
+    li.slider{
+      width: 25%;
+      height: 100%;
+      position: absolute;
+      left: 75%;
+      top: 0;
+      background-color: #16a085;
+      z-index: 8;
+      transition: left 0.4s, background-color 0.4s;
+    }
+    #flexibleBox {
+      display: block;
+      position: absolute;
+      width: 58%;
+      height: auto;
+      background-image: url("./picturesForUI/paper.png");
+      left: 6%;
+      top: 170px;
+      border-radius: 12px;
+    }
+    .notContentBox {
+      position: absolute;
+      top: 6%;
+      height: 260px;
+      width: 100%;
+      display: flex;
+      background-image: url("./picturesForUI/paper.png");
+      border-radius: 12px 12px 0px 0px;
+    }
+    .contentBox {
+      position: absolute;
+      top: 260px;
+      width: 100%;
+      height: auto;
+      background-image: url("./picturesForUI/paper.png");
+    }
+    .contentBoxUnder {
+      position: absolute;
+      top: 310px;
+      width: 100%;
+      height: auto;
+      background-image: url("./picturesForUI/paper.png");
+    }
+    .iconBox {
+      /* Regulated size of an icon */
+      position: absolute;
+      top: 50px;
+      left: 12%;
+      height: 180px;
+      width: 120px;
+    }
+    .sentenceBox {
+      position: absolute;
+      top: 50px;
+      right: 6%;
+      height: 180px;
+      width: 50%;
+      display: block;
+    }
+    #squareWrapper {
+      left: 7%;
+      right: 7%;
+      width: auto;
+      height: auto;
+      display: flex;
+      background-image: url("./picturesForUI/paper.png");
+      border-radius: 0px 0px 12px 12px;
+    }
+    /* A selected element border will be lined */
+    .squareFavTab {
+      display: inline-block;
+      color: #ff3e9e;
+      z-index: 3;
+      width: 50%;
+      height: 50px;
+      background: #ffddee;
+      border: 1px solid #ff3e9e;
+      border-bottom: 1px solid #ff3e9e;
+      border-right: 0;
+      border-left: 0;
+      cursor: pointer;
+    }
+    .squareFavTab:hover {
+      color: #fff;
+      background-color: #ff3e9e;
+      transition: background-color 250ms ease-in;
+    }
+    .squareFavTab:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      z-index: -1;
+      background: #ffddee;
+      transform: scaleY(1.3) perspective(0.6em) rotateX(5deg);
+      transform-origin: bottom left;
+      border-radius: 8px 8px 0 0;
+    }
+    .squarePostTab {
+      display: inline-block;
+      color: #00acff;
+      z-index: 3;
+      width: 50%;
+      height: 50px;
+      background: #c1ebff;
+      border: 1px solid #00acff;
+      border-bottom: 1px solid #00acff;
+      border-left: 0;
+      border-right: 0;
+      cursor: pointer;
+    }
+    .squarePostTab:hover {
+      color: #fff;
+      background-color: #00acff;
+      transition: background-color 250ms ease-in;
+    }
+    .squarePostTab:before {
+      content:"";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      z-index: -1;
+      background: #c1ebff;
+      transform: scaleY(1.3) perspective(0.6em) rotateX(5deg);
+      transform-origin: bottom left;
+      border-radius: 8px 8px 0 0;
+    }
+    .favContent {
+      display: none;
+      height: auto;
+      width: 100%;
+    }
+    .postContent {
+      display: inline;
+      height: auto;
+      width: 100%;
+    }
+    .activePostTab {
+      color: #fff;
+      background-color: #00acff;
+    }
+    .activeFabTab {
+      color: #fff;
+      background-color: #ff3e9e;
+    }
+    #fontAdjuster {
+      font-size: 4;
+    }
+  }
+  @media screen and (max-width: 801px) {
+    input {
+      -webkit-box-shadow: 0px 0.5px 3px #000;
+      box-shadow: 0px 0.5px 3px #000;
+    }
+    /*This font CSS takes balance between black and gray  */
+    font {
+      color: #2d2d2d;
+    }
+    p {
+      font-size: 16px;
+    }
+    a.active{
+      background-color: #16a085;
+      pointer-events: none;
+    }
+    li.slider{
+      width: 25%;
+      height: 100%;
+      position: absolute;
+      left: 75%;
+      top: 0;
+      background-color: #16a085;
+      z-index: 8;
+      transition: left 0.4s, background-color 0.4s;
+    }
+    #flexibleBox {
+      display: block;
+      position: absolute;
+      width: auto;
+      height: auto;
+      background-image: url("./picturesForUI/paper.png");
+      left: 6%;
+      right: 6%;
+      top: 0;
+      border-radius: 12px;
+    }
+    .notContentBox {
+      position: absolute;
+      top: 6%;
+      height: 260px;
+      width: 100%;
+      display: flex;
+      background-image: url("./picturesForUI/paper.png");
+      border-radius: 12px 12px 0px 0px;
+    }
+    .contentBox {
+      position: absolute;
+      top: 260px;
+      width: 100%;
+      height: auto;
+      background-image: url("./picturesForUI/paper.png");
+    }
+    .contentBoxUnder {
+      position: absolute;
+      top: 310px;
+      width: 100%;
+      height: auto;
+      background-image: url("./picturesForUI/paper.png");
+    }
+    .iconBox {
+      /* Regulated size of an icon */
+      position: absolute;
+      top: 50px;
+      left: 12%;
+      height: 180px;
+      width: 120px;
+    }
+    .sentenceBox {
+      position: absolute;
+      top: 50px;
+      right: 6%;
+      height: 180px;
+      width: 50%;
+      display: block;
+    }
+    #squareWrapper {
+      left: 7%;
+      right: 7%;
+      width: auto;
+      height: auto;
+      display: flex;
+      background-image: url("./picturesForUI/paper.png");
+    }
+    /* A selected element border will be lined */
+    .squareFavTab {
+      display: inline-block;
+      color: #ff3e9e;
+      z-index: 3;
+      width: 50%;
+      height: 50px;
+      background: #ffddee;
+      border: 1px solid #ff3e9e;
+      border-bottom: 1px solid #ff3e9e;
+      border-right: 0;
+      border-left: 0;
+      cursor: pointer;
+      align-content: center;
+      text-align: center;
+    }
+    .squareFavTab:hover {
+      color: #fff;
+      background-color: #ff3e9e;
+      transition: background-color 250ms ease-in;
+    }
+    .squareFavTab:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      z-index: -1;
+      background: #ffddee;
+      transform: scaleY(1.3) perspective(0.6em) rotateX(5deg);
+      transform-origin: bottom left;
+      border-radius: 8px 8px 0 0;
+    }
+    .squarePostTab {
+      display: inline-block;
+      color: #00acff;
+      z-index: 3;
+      width: 50%;
+      height: 50px;
+      background: #c1ebff;
+      border: 1px solid #00acff;
+      border-bottom: 1px solid #00acff;
+      border-left: 0;
+      border-right: 0;
+      cursor: pointer;
+    }
+    .squarePostTab:hover {
+      color: #fff;
+      background-color: #00acff;
+      transition: background-color 250ms ease-in;
+    }
+    .squarePostTab:before {
+      content:"";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      z-index: -1;
+      background: #c1ebff;
+      transform: scaleY(1.3) perspective(0.6em) rotateX(5deg);
+      transform-origin: bottom left;
+      border-radius: 8px 8px 0 0;
+    }
+    .favContent {
+      display: none;
+      height: auto;
+      width: 100%;
+    }
+    .postContent {
+      display: inline;
+      height: auto;
+      width: 100%;
+    }
+    .activePostTab {
+      color: #fff;
+      background-color: #00acff;
+    }
+    .activeFabTab {
+      color: #fff;
+      background-color: #ff3e9e;
+    }
+    #fontAdjuster {
+      font-size: 2;
+    }
+  }
+  </style>
+
+  <script type="text/javascript" src="./TabSwitcher.js"></script>
+
+</head>
+
+<body>
+  <div id="headerBox">
+    <span id="logo"></span>
+    <div id="logoWord">WalPapir</div>
+    <script>
+      $(function(){
+        $(window).on('load resize', function(){
+          if(window.innerWidth >= 801){
+            document.getElementById('logo').innerHTML = '<img src="./picturesForUI/logo_60x60.png" id="menuIcon" />';
+          } else {
+            document.getElementById('logo').innerHTML = '<img src="./picturesForUI/logo_40x40.png" id="menuIcon" />'
+          }
+        })
+      })
+    </script>
+  </div>
+
+  <!-- navigation bar -->
+    <ul class="menu">
+
+    <li><a href="./home1.html">
+        HOME</a></li>
+
+    <li><a href="./noChara.html">
+        NO CHARACTER</a></li>
+
+    <li><a href="./withChara.html">
+        WITH CHARACTERS</a></li>
+
+    <li><a href="./userPage.html"
+        class="active">
+        USER</a></li>
+
+    <li class="slider"></li>
+
+  </ul>
+  <!-- navigation bar -->
+
+  <!-- hamburgerMenu -->
+
+  <nav class="hamburgerMenu">
+    <input type="checkbox" href="#" class="hamburgerMenuOpen" name="hamburgerMenuOpen" id="hamburgerMenuOpen" />
+    <label class="hamburgerMenuOpenButton" for="hamburgerMenuOpen">
+      <span class="hamburger hamburger1"></span>
+      <span class="hamburger hamburger2"></span>
+      <span class="hamburger hamburger3"></span>
+    </label>
+
+    <a href="./how2use.html" class="hamburgerMenuItem"><i class="fas fa-question"></i></a>
+    <a href="./page4Post.html" class="hamburgerMenuItem"><i class="fas fa-paper-plane"></i></a>
+    <a href="./favPage.html" class="hamburgerMenuItem"><i class="fa fa-heart"></i></a>
+    <a href="mailto:papillonp@icloud.com" class="hamburgerMenuItem"><i class="fa fa-envelope"></i></a>
+
+  </nav>
+
+  <!-- hamburgerMenu -->
+
+  <!-- filters -->
+  <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+      <defs>
+        <filter id="shadowed-goo">
+
+            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+            <feGaussianBlur in="goo" stdDeviation="3" result="shadow" />
+            <feColorMatrix in="shadow" mode="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2" result="shadow" />
+            <feOffset in="shadow" dx="1" dy="1" result="shadow" />
+            <feComposite in2="shadow" in="goo" result="goo" />
+            <feComposite in2="goo" in="SourceGraphic" result="mix" />
+
+        </filter>
+        <filter id="goo">
+
+            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+            <feComposite in2="goo" in="SourceGraphic" result="mix" />
+
+        </filter>
+      </defs>
+  </svg>
+
+  <!-- filters -->
+
+  <!-- made spaces for having clear the div elements -->
+  <!-- Some of parameters in it must be receive data from server -->
+  <div id="wrap">
+
+    <div id="flexibleBox">
+
+      <div class="notContentBox">
+
+        <div class="iconBox">
+          <input type="image" src="./180x120.jpeg"/>
+        </div>
+
+        <div class="sentenceBox">
+          <font size="6">NONAME</font>
+          <br><br>
+          <div id="fontAdjuster">Following:&nbsp;X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Follower:&nbsp;Y</div>
+
+            <!-- X and Y should receive parameters from server -->
+
+          <br><br>
+          <font size="4">Description</font>
+        </div>
+      </div>
+
+      <div class="contentBox">
+        <!-- This section contains site showing posts from users -->
+        <ul id="squareWrapper">
+
+          <li class="squarePostTab activePostTab">
+            <p align="center"><i class="fas fa-paper-plane"></i></p>
+          </li>
+
+          <li class="squareFavTab">
+            <p align="center"><i class="fa fa-heart"></i></p>
+          </li>
+
+        </ul>
+      </div>
+
+      <div class="contentBoxUnder">
+        <div class="postContent">
+          postcontent
+        </div>
+        <div class="favContent">
+          favcontents
+        </div>
+      </div>
+    </div>
+
+    <div id="right-content">
+      <br><br>
+    </div>
+  </div>
+
+</body>
+</html>

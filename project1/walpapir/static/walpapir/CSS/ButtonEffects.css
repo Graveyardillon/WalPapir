@@ -1,0 +1,176 @@
+@media screen and (min-width:801px){
+
+  body .container {
+    width: 850px;
+    margin: 70px, auto, 0, auto;
+    z-index: 2;
+  }
+
+  body .container .buttonEffect {
+    padding: 30px, 0px;
+  }
+
+  body .container .buttonEffect a{
+    z-index: 4;
+    background-color: #0074e8;
+    cursor: pointer;
+    box-shadow: 0px 2px 14px #000;
+  }
+
+  .casualButton {
+    background-color: #525252;
+    border: 1px solid #493e87;
+    color: #fff;
+    height: 35px;
+    border-radius: 1px;
+    position: absolute;
+    right: 40px;
+  }
+
+  .casualButton:hover, .casualButton:focus {
+    background-color: #3d3d3d;
+    box-shadow: inset 0 1px 0 #bab6d4, inset 0 -1px 0 #655aa1, inset 0 0 0 1px #948dba;
+  }
+
+  .casualButton .fa {
+    color: #d3d3d3;
+  }
+
+  .effect {
+    text-align: center;
+    display: inline-block;
+    position: absolute;
+    text-decoration: none;
+    color: #fff;
+    text-transform: capitalize;
+    font-family: Courier, monospace;
+    font-size: 18px;
+    padding: 20px 0px;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+
+  .effect.rightPointEffect {
+    top: 660px;
+    left: 38%;
+    width: 120px;
+    background-color: #0074e8;
+    transition: all 0.2s linear 0s;
+  }
+
+  .effect.rightPointEffect:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f0a4";
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: -30px;
+    width: 30px;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 0px 6px 6px 0px;
+    transition: all 0.2s linear 0s;
+    text-align: center;
+  }
+
+  .effect.rightPointEffect:hover {
+    text-indent: -30px;
+  }
+
+  .effect.rightPointEffect:hover:before {
+    right: 0;
+    text-indent: 0px;
+  }
+}
+
+@media screen and (max-width:800px){
+  body .container {
+    width: 850px;
+    margin: 70px, auto, 0, auto;
+    z-index: 2;
+  }
+
+  body .container .buttonEffect {
+    padding: 30px, 0px;
+  }
+
+  body .container .buttonEffect a{
+    z-index: 6;
+    background-color: #0074e8;
+    cursor: pointer;
+    box-shadow: 0px 2px 14px #000;
+  }
+
+  .casualButton {
+    background-color: #525252;
+    border: 1px solid #493e87;
+    color: #fff;
+    height: 35px;
+    border-radius: 1px;
+    position: absolute;
+    right: 40px;
+  }
+
+  .casualButton:hover, .casualButton:focus {
+    background-color: #3d3d3d;
+    box-shadow: inset 0 1px 0 #bab6d4, inset 0 -1px 0 #655aa1, inset 0 0 0 1px #948dba;
+  }
+
+  .casualButton .fa {
+    color: #d3d3d3;
+  }
+
+  .effect {
+    text-align: center;
+    display: inline-block;
+    position: absolute;
+    text-decoration: none;
+    color: #fff;
+    text-transform: capitalize;
+    font-family: Courier, monospace;
+    font-size: 18px;
+    padding: 20px 0px;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+
+  .effect.rightPointEffect {
+    top: 660px;
+    left: 38%;
+    width: 120px;
+    background-color: #0074e8;
+    transition: all 0.2s linear 0s;
+  }
+
+  .effect.rightPointEffect:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f0a4";
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: -30px;
+    width: 30px;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 0px 6px 6px 0px;
+    transition: all 0.2s linear 0s;
+    text-align: center;
+  }
+
+  .effect.rightPointEffect:hover {
+    text-indent: -30px;
+  }
+
+  .effect.rightPointEffect:hover:before {
+    right: 0;
+    text-indent: 0px;
+  }
+}
