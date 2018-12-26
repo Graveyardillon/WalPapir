@@ -25,8 +25,15 @@ SECRET_KEY = '--wi=o&6=6j3p=#miqxp=48j4uue1nq62sn&9-ahv=f5h@hwc('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+"""if DEBUG:
+    ALLOWED_HOSTS = []
+else:
+    ALLOWED_HOSTS = [`*`]"""
+
+#This is just for a test
 ALLOWED_HOSTS = []
 
+#ec2-52-199-56-53.ap-northeast-1.compute.amazonaws.com should be added into ALLOWED_HOSTS
 
 # Application definition
 
@@ -123,8 +130,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'deploy')
+
 STATICFILES_DIRS = (
     [
         os.path.join(BASE_DIR, 'static'),
     ]
 )
+
+AUTH_USER_MODEL = 'walpapir.User'   #ログインのユーザーモデル
+LOGIN_URL = 'walpapir:login'        #ログインのためのページ
+LOGIN_REDIRECT_URL = 'walpapir:home' #ログインした際にリダイレクトするページ
+# メールをコンソールに表示する
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

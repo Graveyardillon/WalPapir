@@ -1,219 +1,349 @@
-<!DOCTYPE html>
-<html>
-  <!-- This page has a possibility of containing inefficient code -->
+{% extends './homeTemplate.html' %}
 
-  <head>
-    <title>page4Post</title>
+{% load static %}
 
-    <script src="./jQuery/3-3-1.js"></script>
-    <link rel="stylesheet" href="./CSS/menustyle.css" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous" />
-    <link rel="stylesheet" href="./CSS/ButtonEffects.css" />
-    <script type="text/javascript" src="./FixNavigation.js"></script>
-    <script src="./jQuery/pace.js"></script>
-    <link rel="stylesheet" href="./CSS/loadingbar.css" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+{% block title %}Post Page{% endblock %}
 
-    <style>
-    @media screen and (min-width:801px) {
+{% block basicLinks %}
 
-      input {
-        font-size: 100%;
-        font-family: inherit;
-        border: none;
-        background-color: rgba(0,0,0,0);
-        width: 100%;
-        height: 39px; /* This is a size of one line */
+<script src="{% static 'walpapir/jQuery/3-3-1.js' %}"></script>
+<link rel="stylesheet" href="{% static 'walpapir/CSS/menustyle.css' %}" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous" />
+<link rel="stylesheet" href="{% static 'walpapir/CSS/ButtonEffects.css' %}" />
+<script type="text/javascript" src="{% static 'walpapir/js/FixNavigation.js' %}"></script>
+<script src=" {% static 'walpapir/jQuery/pace.js' %}"></script>
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+<script type="text/javascript">
+
+//アップロードされた画像の表示
+$(function(){
+  $("#input_image").change(
+    function(){
+      if(!this.files.length ) {
+          return;
       }
-
-      a.active{
-        background-color: #3498db;
-        pointer-events: none;
+      var file = $(this).prop('files')[0];//[0]はリストだから。　filesはjQueryの定数？なのでpropを使う
+      
+      var fr = new FileReader();
+      if(file.type.match(/image/)){
+      fr.onload = function() {
+          $('#image').attr('src', fr.result).css('display','inline');//srcはhtmlの属性なのでattrを使う
+          $("#error_message").text("");
+      }}else{
+        $('#image').attr('src', "" ).css('display','none');//srcはhtmlの属性なのでattrを使う
+        $('#error_message').text("error message")
       }
+      fr.readAsDataURL(file);
+  })
+})
 
-      li.slider{
-        width: 25%;
-        height: 100%;
-        position: absolute;
-        left: 0;
-        top: 0;
-        background-color: #3498db;
-        z-index: 8;
-        transition: left 0.4s, background-color 0.4s;
+//ラジオボタンによって画像幅の変更
+$(function(){
+  $('input[name="radio"]:radio').change(function(){
+    
+    if($(window).width()>800){
+      if($(this).val()==="0"){
+        $("#image").css({
+          "width":"80%",
+          "height":"100%"
+        });
+      }else{
+        $("#image").css({
+          "width":"50%",
+          "height":"100%"
+        });
       }
+    }else{}
+  
+  })
+})
 
-      #formPaperPNG{
-        font-family: Courier, monospace;
-        font-size: 35px;
-        width: 700px;
-        left: 23%;
-        height: auto;
-        position: absolute;
-        top: 250px;
-        margin-bottom: 50px;
-        background-image: url("./picturesForUI/lines.png"), url("./picturesForUI/paper.png");
-        background-repeat: repeat-y, repeat;
-        border-radius: 12px;
-        -webkit-box-shadow: 0px 2px 14px #000;
-        box-shadow: 0px 2px 14px #000;
-        z-index: 4;
-      }
+//POSTボタンを押された時のerror処理
+$(function(){
+  $("#button").click(function(){
+    if((!document.getElementById("input_image").files.length || $("#error_message").text()!="") && !$("#title").val()){
+      $("#error").css("visibility","visible");
+      $("#font_image").css("color","red");
+      $("#font_title").css("color","red");
+      window.scroll(0,100);
+    }else if(!document.getElementById("input_image").files.length || $("#error_message").text()!=""){
+      $("#error").css("visibility","visible");
+      $("#font_image").css("color","red");
+      $("#font_title").css("color","black");
+      window.scroll(0,100);
+    }else if(!$("#title").val()){
+      $("#error").css("visibility","visible");
+      $("#font_image").css("color","black");
+      $("#font_title").css("color","red");
+      window.scroll(0,100);
+    }else{
+      $("#submit").click();
     }
+    
+  });
+})
 
-    @media screen and (max-width:800px){
-      input {
-        font-size: 100%;
-        font-family: inherit;
-        border: none;
-        background-color: rgba(0,0,0,0);
-        width: 100%;
-        height: 39px; /* This is a size of one line */
-      }
-
-      a.active{
-        background-color: #3498db;
-        pointer-events: none;
-      }
-
-      #paperContainer {
-
-      }
-
-      #formPaperPNG{
-        font-family: Courier, monospace;
-        font-size: 35px;
-        width: 80%;
-        margin-left: 10%;
-        height: auto;
-        position: absolute;
-        margin-top: 150px;
-        margin-bottom: 50px;
-        background-image: url("./picturesForUI/lines.png"), url("./picturesForUI/paper.png");
-        background-repeat: repeat-y, repeat;
-        border-radius: 12px;
-        z-index: 4;
-    }
-
-    .casualButton {
-      position: absolute;
-      right: 35%;
-    }
-  }
-    </style>
-  </head>
-  <body>
-    <div id="headerBox">
-      <span id="logo"></span>
-      <div id="logoWord">WalPapir</div>
-      <script>
-        $(function(){
-          $(window).on('load resize', function(){
-            if(window.innerWidth >= 801){
-              document.getElementById('logo').innerHTML = '<img src="./picturesForUI/logo_60x60.png" id="menuIcon" />';
+//input textのEnterキー入力について
+$(function(){
+        $("#title"). keydown(function(e) {
+            if ((e.which && e.which === 13) || (e.keyCode && e.keyCode === 13)) {
+                $("#button").click();
+                return false;
             } else {
-              document.getElementById('logo').innerHTML = '<img src="./picturesForUI/logo_40x40.png" id="menuIcon" />'
+                return true;
             }
-          })
-        })
-      </script>
-    </div>
+        });
+    });
 
-    <!-- navigation bar -->
-      <ul class="menu">
 
-      <li><a href="./home1.html">
-          HOME</a></li>
+</script>
+{% endblock %}
 
-      <li><a href="./noChara.html">
-          NO CHARACTER</a></li>
+{% block style %}
 
-      <li><a href="./withChara.html">
-          WITH CHARACTERS</a></li>
+@media screen and (min-width:801px) {
 
-      <li><a href="./userPage.html">
-          USER</a></li>
+  
 
-      <li class="slider"></li>
+  a.active{
+    background-color: #3498db;
+    pointer-events: none;
+  }
 
-    </ul>
-    <!-- navigation bar -->
+  li.slider{
+    width: 25%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #3498db;
+    z-index: 8;
+    transition: left 0.4s, background-color 0.4s;
+  }
 
-    <!-- hamburgerMenu -->
+  #formPaperPNG{
+    font-family: Courier, monospace;
+    font-size: 35px;
+    width: 700px;
+    left: 11%;
+    height: 850px;
+    position: absolute;
+    top: 250px;
+    margin-bottom: 50px;
+    background: url("{% static "walpapir/UI/paper.png" %}") repeat;
+    border-radius: 12px;
+    -webkit-box-shadow: 0px 2px 14px #000;
+    box-shadow: 0px 2px 14px #000;
+    z-index: 4;
+    padding-left:30px;
+    padding-right:30px
+  }
 
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  .effect.rightPointEffect {
+    top: 1200px;
+    left: 38%;
+    width: 120px;
+    background-color: #0074e8;
+    transition: all 0.2s linear 0s;
+  }
 
-    <nav class="hamburgerMenu">
-      <input type="checkbox" href="#" class="hamburgerMenuOpen" name="hamburgerMenuOpen" id="hamburgerMenuOpen" />
-      <label class="hamburgerMenuOpenButton" for="hamburgerMenuOpen">
-        <span class="hamburger hamburger1"></span>
-        <span class="hamburger hamburger2"></span>
-        <span class="hamburger hamburger3"></span>
-      </label>
+  #information{
+    width:100%;
+    height:280px;
+  }
 
-      <a href="./how2use.html" class="hamburgerMenuItem"><i class="fas fa-question"></i></a>
-      <a href="./page4Post.html" class="hamburgerMenuItem"><i class="fas fa-paper-plane"></i></a>
-      <a href="./favPage.html" class="hamburgerMenuItem"><i class="fa fa-heart"></i></a>
-      <a href="mailto:papillonp@icloud.com" class="hamburgerMenuItem"><i class="fa fa-envelope"></i></a>
+  #image_zone{
+    width: 50%;
+    height: 100%;
+    float: left;
+  }
+  
+   #image{
+    width:80%;
+    height:100%;
+    
+   }
+  
+  #input_infor{
+    width: 45%;
+    height: 100%;
+    float:right;
+    
+    
+  }
 
-    </nav>
+  #title{
+    float:right;
+    font-family: inherit;
+    background: #ccc;
+    font-size:80%;
+    border:1px solid #000;
+    width: 100%;
+    height: 39px; /* This is a size of one line */
+  }
 
-    <!-- hamburgerMenu -->
+  .font{
+    font-weight: 600;
+    font-size: 100%
+  }
+}
 
-    <!-- filters -->
-    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-        <defs>
-          <filter id="shadowed-goo">
 
-              <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
-              <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
-              <feGaussianBlur in="goo" stdDeviation="3" result="shadow" />
-              <feColorMatrix in="shadow" mode="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2" result="shadow" />
-              <feOffset in="shadow" dx="1" dy="1" result="shadow" />
-              <feComposite in2="shadow" in="goo" result="goo" />
-              <feComposite in2="goo" in="SourceGraphic" result="mix" />
 
-          </filter>
-          <filter id="goo">
 
-              <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
-              <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
-              <feComposite in2="goo" in="SourceGraphic" result="mix" />
 
-          </filter>
-        </defs>
-    </svg>
 
-    <!-- filters -->
-    <div id="wrap">
+@media screen and (max-width:800px){
+  
+  a.active{
+    background-color: #3498db;
+    pointer-events: none;
+  }
 
-    <!-- submission paper -->
+  li.slider{
+    width: 25%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #3498db;
+    z-index: 8;
+    transition: left 0.4s, background-color 0.4s;
+  }
 
-    <div id="formPaperPNG">
-         <div align="center"><br><b>Post Form</b></div>
-         <hr style="border:1px dashed #ccc"><p align="left" style="margin-left:90px"><font color="#222">Select Files</font>
-         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-         <button class="casualButton"><i class="fas fa-ellipsis-h"></i>&nbsp;Choose File</button></p>
-         <hr style="border:1px dashed #ccc"><br><br><br>
-    </div>
+  #paperContainer {
 
-    <!-- submission paper -->
+  }
 
-    <!-- submission button -->
-    <div class="container">
-      <div class="buttonEffect">
-        <a class="effect rightPointEffect" type="submit" title="Post">
-          Post</a>
+  #formPaperPNG{
+    font-family: Courier, monospace;
+    font-size: 35px;
+    width: 80%;
+    margin-left: 10%;
+    height: auto;
+    position: absolute;
+    margin-top: 150px;
+    margin-bottom: 50px;
+    background: url("{% static 'walpapir/UI/paper.png' %}") repeat;
+    background-repeat: repeat-y, repeat;
+    border-radius: 12px;
+    z-index: 4;
+  }
+
+  .casualButton {
+    position: absolute;
+    right: 35%;
+  }
+
+  body .container{
+    width:auto;
+    position:relative;
+    top:250px
+
+  }
+
+  #information{
+    width:100%;
+    height:550px;
+  }
+
+  #image_zone{
+    
+    height: 280px;
+    
+  }
+  
+   #image{
+    width:90%;
+    height:100%;
+    
+   }
+  
+  #input_infor{
+    height: 280px;
+    
+  }
+
+  #title{
+    float:right;
+    font-family: inherit;
+    background: #ccc;
+    font-size:80%;
+    border:1px solid #000;
+    width: 90%;
+    height: 39px; /* This is a size of one line */
+    margin-right:5%;
+  }
+
+  .font{
+    margin-left:5%;
+    font-weight: 600;
+    font-size: 100%
+  }
+}
+
+
+
+body {
+  height: 1310px;
+}
+
+
+
+{% endblock %}
+
+{% block mainContent %}
+
+<!-- submission paper -->
+<form action="{%url 'walpapir:page4post'%}" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+  <div id="formPaperPNG">
+    <div align="center"><br><b>Submission Paper</b></div>
+    <hr style="border:1px dashed #ccc">
+    <div id="information">
+      <div id="image_zone" align="center" ><img src="{%static 'walpapir/180x120.jpeg'%}"  name="image" id="image"  oncontextmenu="alert('aaaaa');return false;"><a id="error_message" style="color:red"></a>
+      </div>
+      
+
+      <div id="input_infor">
+        <span style="visibility:hidden;color:red;" id="error">error</span>
+        <div style="width:100%;height: 20%"><span class="font" id="font_image">Image:</span><input type="file" id="input_image" style="display:none" name="input">
+          <button class="casualButton" onclick="$('#input_image').click();" style="position: relative;left:10px" type="button"><i class="fas fa-ellipsis-h"></i>&nbsp;Choose File</button>
         </div>
-      </form>
-    </div>
+        <div style="width:100%;height: 40%;">
+          <span class="font" id="font_title">Title:</span><br>
+          <input type="text" id="title" maxlength="30"  placeholder="max 30" name="title">
+        </div>
+        <div style="width:100%;height: 10%;">
+          <div align="center" style="width:50%;float: left;"><label><input type="radio" name="radio" value=0 checked id="radio"><b for="radio" style="font-size: 70%;">DESKTOP</b></label></div>
+          <div align="center" style="width:50%;float:right"><label><input type="radio" name="radio" value=1><b style="font-size: 70%;">MOBILE</b></label></div>
+          
+        </div>
 
-    <!-- submission button -->
-
-    <div id="right-content">
-      <br><br>
+      </div>
     </div>
+    <hr style="border:1px dashed #ccc;"><!-- this is a line drawer tag -->
   </div>
 
-  </body>
-</html>
+<!-- submission paper -->
+
+<!-- submission button -->
+
+  <div class="container">
+    <div class="buttonEffect">
+      <button id="submit" type="submit" style="display:none"></button>
+      <button class="effect rightPointEffect" type="button" title="Post" id="button">
+        Post</button>
+      </div>
+    
+  </div>
+</form>
+<!-- submission button -->
+
+<div id="right-content">
+  <br><br>
+</div>
+</div>
+
+{% endblock %}

@@ -5,9 +5,7 @@ $(function() {
   $('head').append(
     '<style>#wrap{display:none;}'
   );
-  $(window).on("load", function() {
-    $('#wrap').delay(50).fadeIn("slow");
-  });
+
 
   $(window).scroll(function () {
     if($(window).scrollTop() > offset.top) {
@@ -16,6 +14,10 @@ $(function() {
       nav.removeClass("fixedPosition");
     }
   });
+});
+
+$(window).on("load", function() {
+  $('#wrap').delay(50).fadeIn("slow");
 });
 
 //This source code contains an action of fading in
