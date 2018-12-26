@@ -16,6 +16,10 @@
   color: #fff;
 }
 
+a {
+  text-decoration: none;
+}
+
 @media screen and (min-width: 801px) {
   @import url('https://fonts.googleapis.com/css?family=Pacifico');
   @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,700');
