@@ -39,9 +39,9 @@ def page4post(request):
     """
     if request.method=='GET':
         return render(request,'walpapir/page4Post.html')
-    
+
     user = #login-user-models
-       
+
     image=request.FILES['image']
     title=request.POST['title']
     mode=request.POST['radio']
@@ -51,6 +51,15 @@ def page4post(request):
     return HttpResponseRedirect(reverse(''))#次に表示させるページの名前
     """
     return render(request, 'walpapir/page4post.html')
+
+
+
+def user_d(request):
+    return render(request, 'walpapir/userPage.html')
+
+def redeem_d(request):
+    return render(request, 'walpapir/page4Redeem.html')
+
 
 class Top(generic.TemplateView):
     template_name = 'walpapir/top.html'
@@ -68,7 +77,7 @@ class Logout(LoginRequiredMixin, LogoutView):
 
 class UserCreate(generic.CreateView):
     """ユーザー仮登録"""
-   
+
     template_name = 'walpapir/page4register.html' #ユーザー登録のためのページ
     form_class = UserCreateForm
 

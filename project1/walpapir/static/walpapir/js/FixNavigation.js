@@ -1,5 +1,5 @@
 $(function() {
-  var nav = $('.menu');
+  const nav = $('.menu');
   offset = nav.offset();
 
   $('head').append(

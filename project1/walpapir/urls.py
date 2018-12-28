@@ -26,6 +26,10 @@ from django.conf.urls.static import static
 app_name = 'walpapir'
 
 urlpatterns = [
+
+    path('user_d', views.user_d, name='user_d'),
+    path('redeem_d', views.redeem_d, name="redeem_d"),
+
     path('home/', views.home, name='home'),
     path('desktop/', views.desktop, name='desktop'),
     path('mobile/', views.mobile, name='mobile'),

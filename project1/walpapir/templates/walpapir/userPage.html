@@ -1,4 +1,5 @@
-{% extends './homeTemplate' %}
+{% extends './homeTemplate.html' %}
+{% load static %}
 
 {% block title %}user{% endblock %}
 
@@ -11,6 +12,7 @@
 <script type="text/javascript" src="{% static 'walpapir/js/FixNavigation.js' %}"></script>
 <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+<script type="text/javascript" src="{% static 'walpapir/js/eraseRedeem.js' %}" ></script>
 
 {% endblock %}
 
@@ -47,7 +49,7 @@
     position: absolute;
     width: 58%;
     height: auto;
-    background-image: url("./picturesForUI/paper.png");
+    background-image: url("{% static 'walpapir/UI/paper.png' %}");
     left: 6%;
     top: 170px;
     border-radius: 12px;
@@ -58,7 +60,7 @@
     height: 260px;
     width: 100%;
     display: flex;
-    background-image: url("./picturesForUI/paper.png");
+    background-image: url("{% static 'walpapir/UI/paper.png' %}");
     border-radius: 12px 12px 0px 0px;
   }
   .contentBox {
@@ -66,14 +68,14 @@
     top: 260px;
     width: 100%;
     height: auto;
-    background-image: url("./picturesForUI/paper.png");
+    background-image: url("{% static 'walpapir/UI/paper.png' %}");
   }
   .contentBoxUnder {
     position: absolute;
     top: 310px;
     width: 100%;
     height: auto;
-    background-image: url("./picturesForUI/paper.png");
+    background-image: url("{% static 'walpapir/UI/paper.png' %}");
   }
   .iconBox {
     /* Regulated size of an icon */
@@ -97,7 +99,7 @@
     width: auto;
     height: auto;
     display: flex;
-    background-image: url("./picturesForUI/paper.png");
+    background-image: url("{% static 'walpapir/UI/paper.png' %}");
     border-radius: 0px 0px 12px 12px;
   }
   /* A selected element border will be lined */
@@ -182,7 +184,73 @@
   #fontAdjuster {
     font-size: 4;
   }
+
+  body .buttonEffect {
+    padding: 30px, 0px;
+  }
+
+  body .buttonEffect a{
+    z-index: 4;
+    background-color: #0074e8;
+    cursor: pointer;
+    box-shadow: 0px 2px 14px #000;
+  }
+
+
+  .effect {
+    text-align: center;
+    display: inline-block;
+    position: absolute;
+    text-decoration: none;
+    color: #fff;
+    text-transform: capitalize;
+    font-family: Courier, monospace;
+    font-size: 18px;
+    padding: 20px 0px;
+    border-radius: 6px;
+    border-style: none;
+    overflow: hidden;
+    z-index: 20;
+  }
+
+  .effect.rightPointEffect {
+    position: absolute;
+    top: 170px;
+    right: 14%;
+    width: 170px;
+    background-color: #9d4dee;
+    transition: all 0.2s linear 0s;
+  }
+
+  .effect.rightPointEffect:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f0a4";
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: -30px;
+    width: 30px;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 0px 6px 6px 0px;
+    transition: all 0.2s linear 0s;
+    text-align: center;
+  }
+
+  .effect.rightPointEffect:hover {
+    text-indent: -30px;
+  }
+
+  .effect.rightPointEffect:hover:before {
+    right: 0;
+    text-indent: 0px;
+  }
 }
+
+
 @media screen and (max-width: 801px) {
   input {
     -webkit-box-shadow: 0px 0.5px 3px #000;
@@ -214,7 +282,7 @@
     position: absolute;
     width: auto;
     height: auto;
-    background-image: url("./picturesForUI/paper.png");
+    background-image: url("{% static 'walpapir/UI/paper.png' %}");
     left: 6%;
     right: 6%;
     top: 0;
@@ -226,7 +294,7 @@
     height: 260px;
     width: 100%;
     display: flex;
-    background-image: url("./picturesForUI/paper.png");
+    background-image: url("{% static 'walpapir/UI/paper.png' %}");
     border-radius: 12px 12px 0px 0px;
   }
   .contentBox {
@@ -234,14 +302,14 @@
     top: 260px;
     width: 100%;
     height: auto;
-    background-image: url("./picturesForUI/paper.png");
+    background-image: url("{% static 'walpapir/UI/paper.png' %}");
   }
   .contentBoxUnder {
     position: absolute;
     top: 310px;
     width: 100%;
     height: auto;
-    background-image: url("./picturesForUI/paper.png");
+    background-image: url("{% static 'walpapir/UI/paper.png' %}");
   }
   .iconBox {
     /* Regulated size of an icon */
@@ -265,7 +333,7 @@
     width: auto;
     height: auto;
     display: flex;
-    background-image: url("./picturesForUI/paper.png");
+    background-image: url("{% static 'walpapir/UI/paper.png' %}");
   }
   /* A selected element border will be lined */
   .squareFavTab {
@@ -355,19 +423,27 @@
 
 {% endblock %}
 
+
+
 {% block mainContent %}
+
+
+<a class="effect rightPointEffect" type="button" href="{% url 'walpapir:redeem_d' %}">
+  Redeem Points
+</a>
+
 <div id="wrap">
 
   <div id="flexibleBox">
 
     <div class="notContentBox">
 
-      <div class="iconBox">
-        <input type="image" src="./180x120.jpeg"/>
-      </div>
+      <div class="iconBox">{% block iconBox %}
+        <input type="image" src="{% static 'walpapir/180x120.jpeg' %}"/>
+      {% endblock %}</div>
 
       <div class="sentenceBox">
-        <font size="6">NONAME</font>
+        <font size="6">{% block userName %}NONAME{% endblock %}</font>
         <br><br>
         <div id="fontAdjuster">Following:&nbsp;X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Follower:&nbsp;Y</div>
@@ -375,7 +451,11 @@
           <!-- X and Y should receive parameters from server -->
 
         <br><br>
-        <font size="4">Description</font>
+        <font size="4">
+          {% block description %}
+          Description
+          {% endblock %}
+        </font>
       </div>
     </div>
 
@@ -395,12 +475,12 @@
     </div>
 
     <div class="contentBoxUnder">
-      <div class="postContent">
+      <div class="postContent">{% block postContent %}
         postcontent
-      </div>
-      <div class="favContent">
-        favcontents
-      </div>
+      {% endblock %}</div>
+      <div class="favContent">{% block favContent %}
+        favcontent
+      {% endblock %}</div>
     </div>
   </div>
 

@@ -144,6 +144,7 @@ a {
   .hamburgerMenuOpen {
     display: none;
     top: 85px;
+    z-index: 41;
   }
 
   .hamburger {
@@ -159,7 +160,7 @@ a {
     transition: -webkit-transform 200ms;
     transition: transform 200ms;
     transition: transform 200ms, -webkit-transform 200ms;
-    z-index: 5;
+    z-index: 41;
   }
 
   .hamburger1 {
@@ -198,6 +199,7 @@ a {
     top: 155px;
     height: 150px;
     box-sizing: border-box;
+    z-index: 41;
   }
 
   .hamburgerMenuItem:hover {
