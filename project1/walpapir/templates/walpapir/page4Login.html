@@ -77,6 +77,15 @@ li.slider{
   width: 130%;
 }
 
+#forget {
+  color: #555555;
+  font-size: 20px;
+}
+
+#forget:hover {
+  color: #111;
+}
+
 .effect.rightPointEffect {
   top: 680px;
   left: 50%;
@@ -95,12 +104,13 @@ li.slider{
 
   </div>
   <div id="RightSideOfPaper">
-    <p align="left">Login Form<br>
-    <a href="{% url 'walpapir:signUp' %}"><font size="3" color="#222">forget account?</font></a></p>
+    <p align="left"><b>Sign in</b><br>
+    <a href="{% url 'walpapir:signUp' %}"><span id="forget">forget account?</span></a></p>
+    <hr style="border:1px dashed #ccc;">
     <br>
     {% block content %}
     <form action="#" method="post" name="form1">
-      {{ form.non_field_errors }}
+      <font size="3px">{{ form.non_field_errors }}</font>
       {% for field in form %}
           {{ field }}
           <font size="3px">{{ field.errors }}</font><br>
@@ -117,7 +127,7 @@ li.slider{
 <div class="container">
   <div class="buttonEffect">
     <input type="hidden" name="next" value="{{ next }}" />
-    <a align="center" class="effect rightPointEffect" href="javascript:form1.submit()">Log In</a>
+    <a align="center" class="effect rightPointEffect" href="javascript:form1.submit()">Sign In</a>
 
     </div>
   </form>
