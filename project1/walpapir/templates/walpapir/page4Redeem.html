@@ -20,6 +20,75 @@ li.slider{
   transition: left 0.4s, background-color 0.4s;
 }
 
+#left-content span {
+  position: absolute;
+  left: 20%;
+}
+
+body .buttonEffect {
+  padding: 30px, 0px;
+}
+
+body .buttonEffect a{
+  z-index: 4;
+  background-color: #0074e8;
+  cursor: pointer;
+  box-shadow: 0px 2px 14px #000;
+}
+
+
+.effect {
+  text-align: center;
+  display: inline-block;
+  position: absolute;
+  text-decoration: none;
+  color: #fff;
+  text-transform: capitalize;
+  font-family: Courier, monospace;
+  font-size: 18px;
+  padding: 20px 0px;
+  border-radius: 6px;
+  border-style: none;
+  overflow: hidden;
+  z-index: 20;
+}
+
+.effect.rightPointEffect {
+  position: absolute;
+  top: 600px;
+  left: 38%;
+  width: 170px;
+  background-color: #9d4dee;
+  transition: all 0.2s linear 0s;
+}
+
+.effect.rightPointEffect:before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f0a4";
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: -30px;
+  width: 30px;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 0px 6px 6px 0px;
+  transition: all 0.2s linear 0s;
+  text-align: center;
+}
+
+.effect.rightPointEffect:hover {
+  text-indent: -30px;
+}
+
+.effect.rightPointEffect:hover:before {
+  right: 0;
+  text-indent: 0px;
+}
+
 {% endblock %}
 
 {% block additionalLinks %}
@@ -28,19 +97,32 @@ li.slider{
 {% block mainContent %}
 
     <div id="wrap">
-      <div id="left-content">
-        <br><br><br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br>
+      <div id="left-content" style="text-align: unset;">
+        <br><br>
+
+        <span style="font-size:30px;">Redeem Your Point</span>
+
+        <form action="#" method="post">
+
+        <br><br><br>
+        <hr style="border:1px dashed #ccc;">
+        <br>
+
+        <span><label><input type="radio" name="radio" value=0 checked id="radio"><b for="radio">1000 pt</b></label></span><br>
+        <span><label><input type="radio" name="radio" value=1 checked id="radio"><b for="radio">3000 pt</b></label></span><br>
+        <span><label><input type="radio" name="radio" value=2 checked id="radio"><b for="radio">5000 pt</b></label></span><br>
+
+        <div class="container">
+          <div class="buttonEffect">
+            <button id="submit" type="submit" style="display:none"></button>
+            <button class="effect rightPointEffect" type="button" title="Post" id="button">
+              Redeem Point</button>
+            </div>
+        </div>
+
+        </form>
+
+        <br><br>
       </div>
       <div id="right-content">
         <br><br>
