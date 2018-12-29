@@ -53,7 +53,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(_('last name'), max_length=150, blank=True)
 
     #point has user point.
-    point = models.IntegerField()
+    point = models.IntegerField(default=0)
+    #pointCount exists only for making sure the validity of how the point was gained.
+    pointCount = models.IntegerField(default=0)
 
     is_staff = models.BooleanField(
         _('staff status'),
@@ -94,6 +96,15 @@ class User(AbstractBaseUser, PermissionsMixin):
     def email_user(self, subject, message, from_email=None, **kwargs):
         """Send an email to this user."""
         send_mail(subject, message, from_email, [self.email], **kwargs)
+
+    def addPoint(self):
+        self.point += 1
+        self.pointCount += 1
+
+    def __str__(self):
+        #same process as get_full_name
+        full_name = '%s %s' % (self.first_name, self.last_name)
+        return full_name.strip()
 
     @property
     def username(self):
