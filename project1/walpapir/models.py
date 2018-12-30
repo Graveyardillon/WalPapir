@@ -101,6 +101,9 @@ class User(AbstractBaseUser, PermissionsMixin):
         self.point += 1
         self.pointCount += 1
 
+    def get_point(self):
+        return self.point
+
     def __str__(self):
         #same process as get_full_name
         full_name = '%s %s' % (self.first_name, self.last_name)
@@ -114,6 +117,19 @@ class User(AbstractBaseUser, PermissionsMixin):
         メールアドレスを返す
         """
         return self.email
+
+class FreeMessages():
+
+    rdmErrorMsg1 = models.CharField(_('rdmErrorMsg1'), max_length=40, blank=True)
+
+    def validateShortMsg(self):
+        self.rdmErrorMsg1 = ""
+
+    def errorShortMsg(self):
+        self.rdmErrorMsg1 = "You don't have point enough to redeem!"
+
+    def getRdmErrorMsg1(self):
+        return rdmErrorMsg1
 
 """
 from datetime import datetime

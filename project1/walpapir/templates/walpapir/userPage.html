@@ -211,12 +211,13 @@
     border-style: none;
     overflow: hidden;
     z-index: 20;
+    cursor: pointer;
   }
 
   .effect.rightPointEffect {
     position: absolute;
     top: 170px;
-    right: 14%;
+    left: 69%;
     width: 170px;
     background-color: #9d4dee;
     transition: all 0.2s linear 0s;
@@ -427,10 +428,25 @@
 
 {% block mainContent %}
 
+<script type="text/javascript">
+  $(function(){
+    const rpe = $('.rightPointEffect');
+    rpe.on('click', function(){
+      //check whether the user has enough point to redeem(1st)
+      if(parseInt({{User.get_point}}) >= 1000){
+        {{FreeMessages.validateShortMsg}}
+        location.href = "{% url 'walpapir:redeem_d' %}"
+      }else{
+        {{FreeMessages.errorShortMsg}}
+        location.href = "{% url 'walpapir:user_d' %}"
+      }
+    });
+  })
+</script>
 
-<a class="effect rightPointEffect" type="button" href="{% url 'walpapir:redeem_d' %}">
+<button class="effect rightPointEffect" type="button" href="{% url 'walpapir:redeem_d' %}">
   Redeem Points
-</a>
+</button>
 
 <div id="wrap">
 
@@ -443,7 +459,8 @@
       {% endblock %}</div>
 
       <div class="sentenceBox">
-        <font size="6">{% block userName %}NONAME{% endblock %}</font>
+        <font size="6">{% block userName %}{{ User.get_point }}NONAME{% endblock %}
+          &nbsp;&nbsp;&nbsp;&nbsp;{{FreeMessages.getRdmErrorMsg1}}</font>
         <br><br>
         <div id="fontAdjuster">Following:&nbsp;X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Follower:&nbsp;Y</div>
