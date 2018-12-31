@@ -18,8 +18,8 @@ $(document).ready(function() {
     verticalCentered: true,
     scrollingSpeed: 500,
     easing: 'easeInQuart',
-    sectionsColor: ['#44a8eb', '#ab69c6', '#f68e32', '#26b095'],
-    navigation: true,
+    //sectionsColor: ['#44a8eb', '#ab69c6', '#f68e32', '#26b095'],
+    //navigation: true,
     loopBottom: false,
     loopTop: false,
   });
@@ -51,38 +51,90 @@ body {
   background: none;
 }
 
+@media screen and (min-width: 801px){
+
+  .mleft1 {
+    background: url('{% static "walpapir/UI/mleft1.jpg" %}') no-repeat;
+    background-position: left 140px;
+    background-size: cover;
+  }
+
+  .mleft2 {
+    background: url('{% static "walpapir/UI/mleft2.jpg" %}') no-repeat;
+    background-position: right bottom;
+    background-size: cover;
+  }
+
+  .mleft3 {
+    background: url('{% static "walpapir/UI/mleft3.jpg" %}') no-repeat;
+    background-position: right 140px;
+    background-size: cover;
+  }
+
+  .mleft4 {
+    background: url('{% static "walpapir/UI/mleft4.jpg" %}') no-repeat;
+    background-position: right 140px;
+    background-size: cover;
+  }
+
+  .mright1 {
+    background: url('{% static "walpapir/UI/mright1.jpg" %}') no-repeat;
+    background-position: right 140px;
+    background-size: cover;
+  }
+
+  .mright2 {
+    background: url('{% static "walpapir/UI/mright2.jpg" %}') no-repeat;
+    background-position: left bottom;
+    background-size: cover;
+  }
+
+  .mright3 {
+    background: url('{% static "walpapir/UI/mright3.jpg" %}') no-repeat;
+    background-position: left 140px;
+    background-size: cover;
+  }
+
+  .mright4 {
+    background: url('{% static "walpapir/UI/mright4.jpg" %}') no-repeat;
+    background-position: left 140px;
+    background-size: cover;
+  }
+
+}
+
 {% endblock %}
 
 {% block mainContent %}
 
 <div id='multiscroll'>
   <div class="ms-left">
-    <div class="ms-section">
-      <h1><p align="center">First section</p></h1>
+    <div class="ms-section mleft1">
+
     </div>
-    <div class="ms-section">
-      <h1><p align="center">Second section</p></h1>
+    <div class="ms-section mleft2">
+
     </div>
-    <div class="ms-section">
-      <h1><p align="center">Third section</p></h1>
+    <div class="ms-section mleft3">
+
     </div>
-    <div class="ms-section">
-      <h1><p align="center">Fourth section</p></h1>
+    <div class="ms-section mleft4">
+
     </div>
   </div>
 
   <div class='ms-right'>
-    <div class="ms-section">
-      <h1><p align="center">First section</p></h1>
+    <div class="ms-section mright1">
+
     </div>
-    <div class="ms-section">
-      <h1><p align="center">Second section</p></h1>
+    <div class="ms-section mright2">
+
     </div>
-    <div class="ms-section">
-      <h1><p align="center">Third section</p></h1>
+    <div class="ms-section mright3">
+
     </div>
-    <div class="ms-section">
-      <h1><p align="center">Fourth section</p></h1>
+    <div class="ms-section mright4">
+
     </div>
   </div>
 </div>
