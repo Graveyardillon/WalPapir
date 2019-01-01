@@ -35,6 +35,9 @@ def desktop(request):
 def how2use(request):
     return render(request, 'walpapir/how2use.html')
 
+def prehome(request):
+    return render(request, 'walpapir/prehome.html')
+
 def page4post(request):
     """
     if request.method=='GET':

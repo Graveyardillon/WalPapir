@@ -37,6 +37,7 @@ urlpatterns = [
     path('howToUse/', views.how2use, name='how2use'),
     path('login/', views.Login.as_view(), name='login'),
     path('logout/', views.Logout.as_view(), name='logout'),
+    path('prehome/', views.prehome, name='prehome'),
     path('postpage/', views.page4post, name='page4post'),
     path('signup/', views.UserCreate.as_view(), name='signUp'),
     path('signup/done', views.UserCreateDone.as_view(), name='signup_done'),

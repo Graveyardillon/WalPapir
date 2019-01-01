@@ -1,0 +1,46 @@
+{% load static %}
+<html>
+<head>
+  <title>prehome</title>
+
+  <link rel="stylesheet" href="{% static 'walpapir/CSS/prehomestyle.css' %}" />
+  <script src="{% static 'walpapir/jQuery/3-3-1.js' %}"></script>
+
+</head>
+
+<body>
+  <div id="firstSection">
+    <a href="{% url 'walpapir:home' %}">
+      <div id="prelogo"></div>
+
+      <script>
+        $(function(){});
+          $(window).on('load resize', function(){
+            if(window.innerWidth >= 801){
+              document.getElementById('prelogo').innerHTML = '<img src="{% static "walpapir/UI/squlogo.png" %}" />';
+            } else {
+              //none yet
+            }
+          })
+      </script>
+
+      <div id="prelogoword">WalPapir</div>
+    </a>
+
+  </div>
+  <div id="secondSection">
+
+  </div>
+  <div id="thirdSection">
+
+  </div>
+  <div id="fourthSection">
+
+  </div>
+  <div id="fifthSection">
+
+  </div>
+
+</body>
+
+</html>
