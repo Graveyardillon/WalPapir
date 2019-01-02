@@ -70,15 +70,15 @@ body {
   height: auto;
   position: absolute;
   top: 38%;
-  left: 21%;
+  right: 75%;
   cursor: pointer;
   z-index: 2;
 }
 
-#prelogoword {
+.prelogoword {
   position: absolute;
   top: 35%;
-  left: 50%;
+  left: 51%;
   -webkit-transform: translate(-50%, 0);
   -moz-transform: translate(-50%, 0);
   transform: translate(-50%, 0);
@@ -87,6 +87,10 @@ body {
   color: #fff;
   cursor: pointer;
   z-index: 3;
+}
+
+.upBox {
+  
 }
 
 @keyframes logoAnim {
