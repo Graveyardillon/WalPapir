@@ -1,7 +1,7 @@
 {% extends './homeTemplate.html' %}
 {% load static %}
 
-{% block title %}user{% endblock %}
+{% block title %}user_d{% endblock %}
 
 {% block basicLinks %}
 
@@ -13,6 +13,7 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 <script type="text/javascript" src="{% static 'walpapir/js/eraseRedeem.js' %}" ></script>
+<link rel="stylesheet" href="{% static 'walpapir/CSS/ButtonEffects.css' %}" />
 
 {% endblock %}
 
@@ -197,7 +198,7 @@
   }
 
 
-  .effect {
+  .effectU {
     text-align: center;
     display: inline-block;
     position: absolute;
@@ -214,7 +215,7 @@
     cursor: pointer;
   }
 
-  .effect.rightPointEffect {
+  .effectU.rightPointEffect {
     position: absolute;
     top: 170px;
     left: 69%;
@@ -223,7 +224,7 @@
     transition: all 0.2s linear 0s;
   }
 
-  .effect.rightPointEffect:before {
+  .effectU.rightPointEffect:before {
     font-family: "Font Awesome 5 Free";
     content: "\f0a4";
     font-size: 15px;
@@ -241,11 +242,11 @@
     text-align: center;
   }
 
-  .effect.rightPointEffect:hover {
+  .effectU.rightPointEffect:hover {
     text-indent: -30px;
   }
 
-  .effect.rightPointEffect:hover:before {
+  .effectU.rightPointEffect:hover:before {
     right: 0;
     text-indent: 0px;
   }
@@ -444,7 +445,7 @@
   })
 </script>
 
-<button class="effect rightPointEffect" type="button" href="{% url 'walpapir:redeem_d' %}">
+<button class="effectU rightPointEffect" type="button" href="{% url 'walpapir:redeem_d' %}">
   Redeem Points
 </button>
 
@@ -453,12 +454,16 @@
   <div id="flexibleBox">
 
     <div class="notContentBox">
+      {% block editButton %}
+      <a class="editButton" href="{% url 'walpapir:userEdit_d' %}">Edit</a>
+      {% endblock %}
 
       <div class="iconBox">{% block iconBox %}
         <input type="image" src="{% static 'walpapir/180x120.jpeg' %}"/>
       {% endblock %}</div>
 
       <div class="sentenceBox">
+
         <font size="6">{% block userName %}{{ User.get_point }}NONAME{% endblock %}
           &nbsp;&nbsp;&nbsp;&nbsp;{{FreeMessages.getRdmErrorMsg1}}</font>
         <br><br>

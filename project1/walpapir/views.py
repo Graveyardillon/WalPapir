@@ -57,11 +57,15 @@ def page4post(request):
 
 
 
+#They are debug functions.
 def user_d(request):
     return render(request, 'walpapir/userPage.html')
 
 def redeem_d(request):
     return render(request, 'walpapir/page4Redeem.html')
+
+def userEdit_d(request):
+    return render(request, 'walpapir/userEdit_d.html')
 
 
 class Top(generic.TemplateView):

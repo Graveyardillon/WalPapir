@@ -1,0 +1,64 @@
+{% extends "./userPage.html" %}
+{% load static %}
+
+{% block title %}{{User.get_full_name}}{% endblock %}
+
+{% block mainContent %}
+<div id="wrap">
+
+  <div id="flexibleBox">
+
+    <div class="notContentBox">
+
+      <div class="iconBox">{% block iconBox %}
+        <input type="image" src="{% static 'walpapir/180x120.jpeg' %}"/>
+      {% endblock %}</div>
+
+      <div class="sentenceBox">
+        <font size="6">{% block userName %}{{ User.get_point }}NONAME{% endblock %}
+          &nbsp;&nbsp;&nbsp;&nbsp;{{FreeMessages.getRdmErrorMsg1}}</font>
+        <br><br>
+        <div id="fontAdjuster">Following:&nbsp;X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Follower:&nbsp;Y</div>
+
+          <!-- X and Y should receive parameters from server -->
+
+        <br><br>
+        <font size="4">
+          {% block description %}
+          Description
+          {% endblock %}
+        </font>
+      </div>
+    </div>
+
+    <div class="contentBox">
+      <!-- This section contains site showing posts from users -->
+      <ul id="squareWrapper">
+
+        <li class="squarePostTab activePostTab">
+          <p align="center"><i class="fas fa-paper-plane"></i></p>
+        </li>
+
+        <li class="squareFavTab">
+          <p align="center"><i class="fa fa-heart"></i></p>
+        </li>
+
+      </ul>
+    </div>
+
+    <div class="contentBoxUnder">
+      <div class="postContent">{% block postContent %}
+        postcontent
+      {% endblock %}</div>
+      <div class="favContent">{% block favContent %}
+        favcontent
+      {% endblock %}</div>
+    </div>
+  </div>
+
+  <div id="right-content">
+    <br><br>
+  </div>
+</div>
+{% endblock %}
