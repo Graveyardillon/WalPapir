@@ -16,7 +16,7 @@ from .forms import (
 )
 
 from django.shortcuts import render
-
+from .models import Photo
 #プロジェクトで使用しているUserモデルを取得
 User = get_user_model()
 
@@ -138,3 +138,46 @@ class UserCreateComplete(generic.TemplateView):
                     return super().get(request, **kwargs)
 
         return HttpResponseBadRequest()
+
+
+photo=Photo.objects.all()
+img=4
+search=""
+page_last=0
+
+def search(request):
+    global photo,img,search,page_last
+    lists=request.GET
+    search,page=lists["search"],int(lists["page"])
+    
+    
+    
+
+    if search=="":
+        page_last=int(photo.count()/img)+1
+        return render(request,'walpapir/searchResults.html',{
+            'photo':photo[0+(img*(page-1)):img+(img*(page-1))],
+            'page':page,
+            'search':search,
+            'page_last':page_last,
+            'count':photo.count(),
+        })
+
+    j=search.split()
+    for s in j:
+        photo=photo.filter(title__contains=s)
+
+    page_last=int(photo.count()/img)+1
+    return render(request,'walpapir/searchResults.html',{
+        'photo':photo[0+(img*(page-1)):img+(img*(page-1))],
+        'page':page,
+        'search':search,
+        'page_last':page_last,
+        'count':photo.count(),
+    })
+
+def ajax(request):
+    global photo,img,search,page_last
+    page=int(request.GET["page"])
+    return HttpResponse(render(request,'walpapir/image.html',{'photo':photo[0+(img*(page-1)):img+(img*(page-1))],}))
+

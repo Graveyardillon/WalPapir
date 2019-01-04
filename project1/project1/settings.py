@@ -143,3 +143,6 @@ LOGIN_URL = 'walpapir:login'        #ログインのためのページ
 LOGIN_REDIRECT_URL = 'walpapir:home' #ログインした際にリダイレクトするページ
 # メールをコンソールに表示する
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
