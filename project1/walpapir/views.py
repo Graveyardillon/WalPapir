@@ -7,7 +7,7 @@ from django.contrib.auth.views import (
 )
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.signing import BadSignature, SignatureExpired, loads, dumps
-from django.http import Http404, HttpResponseBadRequest
+from django.http import Http404, HttpResponseBadRequest,HttpResponse
 from django.shortcuts import redirect
 from django.template.loader import get_template
 from django.views import generic
