@@ -52,6 +52,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(_('first name'), max_length=30, blank=True)
     last_name = models.CharField(_('last name'), max_length=150, blank=True)
 
+    handle_name = models.CharField(max_length = 20)
+    description = models.TextField()
+
     #point has user point.
     point = models.IntegerField(default=0)
     #pointCount exists only for making sure the validity of how the point was gained.
@@ -104,10 +107,11 @@ class User(AbstractBaseUser, PermissionsMixin):
     def get_point(self):
         return self.point
 
-    def __str__(self):
-        #same process as get_full_name
-        full_name = '%s %s' % (self.first_name, self.last_name)
-        return full_name.strip()
+    def get_handle_name(self):
+        return self.handle_name
+
+    def get_description(self):
+        return self.description
 
     @property
     def username(self):
