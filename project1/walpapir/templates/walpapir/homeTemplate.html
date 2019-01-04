@@ -66,9 +66,13 @@
       <li><a href="{% url 'walpapir:mobile' %}">
           MOBILE</a></li>
 
+      {% if user.is_authenticated %}
       <li><a href="{% url 'walpapir:login' %}">
           USER</a></li>
-
+      {% else %}
+      <li><a href="{% url 'walpapir:login' %}">
+        LOGIN</a></li>
+      {% endif %}
       <li class="slider"></li>
 
     </ul>
