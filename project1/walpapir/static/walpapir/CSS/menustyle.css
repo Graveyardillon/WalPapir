@@ -144,7 +144,7 @@ a {
   .hamburgerMenuOpen {
     display: none;
     top: 85px;
-    z-index: 41;
+    z-index: 4;
   }
 
   .hamburger {
