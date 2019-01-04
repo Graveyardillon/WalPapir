@@ -464,7 +464,13 @@
 
       <div class="sentenceBox">
 
-        <font size="6">{% block userName %}{{ User.get_point }}NONAME{% endblock %}
+        <font size="6">{% block userName %}{{ User.get_point }}
+          {% if User.get_handle_name == null %}
+            NONAME
+          {% else %}
+            {{User.get_handle_name}}
+          {% endif %}
+          {% endblock %}
           &nbsp;&nbsp;&nbsp;&nbsp;{{FreeMessages.getRdmErrorMsg1}}</font>
         <br><br>
         <div id="fontAdjuster">Following:&nbsp;X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -475,7 +481,11 @@
         <br><br>
         <font size="4">
           {% block description %}
-          Description
+            {% if User.get_description == null %}
+              No description
+            {% else %}
+              {{User.get_description}}
+            {% endif %}
           {% endblock %}
         </font>
       </div>
