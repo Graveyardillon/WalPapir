@@ -249,6 +249,15 @@
   .effectU.rightPointEffect:hover:before {
     right: 0;
     text-indent: 0px;
+
+  }
+  .editText {
+    font-size: 100%;
+    font-family: inherit;
+    border: none;
+    background-color: rgba(0,0,0,0);
+    width: 100%;
+    height: 39px;
   }
 }
 
@@ -422,6 +431,8 @@
     font-size: 2;
   }
 }
+
+{% block additionalStyles %}{% endblock %}
 
 {% endblock %}
 
