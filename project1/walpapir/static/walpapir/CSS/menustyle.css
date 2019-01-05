@@ -20,6 +20,11 @@ a {
   text-decoration: none;
 }
 
+/* copyright of hamburgerMenu is
+  by Lucas Bebber */
+
+
+
 @media screen and (min-width: 801px) {
   @import url('https://fonts.googleapis.com/css?family=Pacifico');
   @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,700');
