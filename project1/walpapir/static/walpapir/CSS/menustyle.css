@@ -278,6 +278,30 @@ a {
 
   /* hamburger menu */
 
+  .signUpButton {
+    display: inline-block;
+    position: absolute;
+    font-family: "Roboto Slab", sans-serif;
+    font-size: 20px;
+    color: #fff;
+    top: 10px;
+    background-color: rgba(0,0,0,0);
+    border: 2px solid #fff;
+    border-radius: 14px;
+    text-align: center;
+    left: 95px;
+    height: 30px;
+    width: 100px;
+    transition: all 0.2s linear;
+    padding: 10px 10px 10px 10px;
+    cursor: pointer;
+  }
+
+  .signUpButton:hover, .signUpButton:focus{
+    color: #ffc107;
+    border: 2px solid #ffc107;
+  }
+
   .search {
     display: inline-block;
     font-family: "FontAwesome";
