@@ -1,8 +1,81 @@
 {% extends './homeTemplate.html' %}
-
+{%load static%}
 {% block title %}SearchResults{% endblock %}
 
+{%block additionalLinks %}
+<script type="text/javascript">
+
+
+$(function(){
+  var wid
+  if($(window).width()>800){
+  wid = $(window).width()*0.6;
+  }else{
+    wid = $(window).width()*0.88;
+  }
+  var fil = Math.floor(wid/200);
+  fil = Math.floor(100/fil);
+  fil = fil+"%";
+  $(".image_fild").css("width",fil);
+
+  $(window).resize(function(){
+  var wid
+  if($(window).width()>800){
+    wid = $(window).width()*0.6;
+  }else{
+    wid = $(window).width()*0.88;
+  }
+  var fil = Math.floor(wid/200);
+  fil = Math.floor(100/fil);
+  fil = fil+"%";
+  $(".image_fild").css("width",fil);
+})
+})
+
+
+
+$(function(){
+  $(".image").mouseover(function(){
+    $(this).find("img").css("border","solid 2px blue");
+    $(this).find("div").css("display","inline");
+  }).mouseout(function(){
+    $(this).find("img").css("border","solid 2px black");
+    $(this).find("div").css("display","none");
+  })
+})
+
+
+var page=1;
+// ajaxによる非同期更新
+$(function(){
+      $("#button").click(function(){
+        page++;
+        $.ajax({
+          url:"{%url 'walpapir:ajax'%}"+"?search={{search}}&page="+page,
+          method:"GET",
+          dataType:"text",
+        }).done(function(data){
+          $("#fild").append($(data));
+          var wid
+          if($(window).width()>800){
+            wid = $(window).width()*0.6;
+          }else{
+            wid = $(window).width()*0.88;
+          }
+          var fil = Math.floor(wid/200);
+          fil = Math.floor(100/fil);
+          fil = fil+"%";
+          $(".image_fild").css("width",fil);
+        }).find()
+      })
+    })
+
+</script>
+{%endblock%}
+
 {% block style %}
+
+
 
 a.active{
   background-color: #3498db;
@@ -20,24 +93,94 @@ li.slider{
   transition: left 0.4s, background-color 0.4s;
 }
 
+body{
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+}
+
+.page{
+  color:blue;
+  font-size:1.5em;
+  margin:auto 5px;
+}
+
+.page:hover{
+  color:turquoise;
+}
+
+#scale{
+   background:url("{%static 'walpapir/UI/scale.png'%}");
+   position: absolute;
+   display:block;
+   width:100%;
+   height:100%;
+   margin:2px;
+}
+
+.search_dark{
+  display: inline-block;
+  font-family: "FontAwesome";
+  position: relative;
+  top: 25%;
+  right:10%;
+  background:  url("{%static 'walpapir/UI/paper_dark.png'%}");
+  padding: 5px 10px;
+  border-radius: 14px;
+  width: 70%;
+  height: 50%;
+  font-size: 19px;
+  z-index: 40;
+  color:#ccc;
+  float:right;
+}
+
+
 {% endblock %}
 
 {% block mainContent %}
 
     <div id="wrap">
       <div id="left-content">
-        <br><br><br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br>
+        <div align="center" style="width:100%"><h2>Search : "&nbsp;{{search}}&nbsp;"&nbsp;&nbsp;{{count}}件&nbsp;</h2></div>
+        <form action="{%url 'walpapir:search'%}" method="GET">
+        <input type="hidden" name="page" value="1">
+        <div  style="height:50px;">
+          <div style="height:100%;width:50%;float: left;position: relative;">
+            <input type="text" class="search_dark" value="{{search}}" name="search">
+          </div>
+          <div style="height:100%;width:50%;float:right;position:relative;">
+            <select name="select" style="top:25%;height:50%;width:50%;position: relative;">
+              <option　value="new">新規</option>
+              <option value="popular">人気</option>
+            </select>
+          </div>
+        </div>
+      </form>
+        <hr style="border:1px dashed #ccc">
+        <div style="width:100%;float: left;" id="fild">
+        {%for p in photo%}
+        <div align="center" style="float:left;" class="image_fild">
+          <div style="position:relative;margin:5px;width:190px;background:white;" class="image">
+            <span id="scale"></span>
+            <img src="{{p.image.url}}" style="width: 190px;height: 190px;border:solid 2px black;"  alt="{{p.title}}" oncontextmenu="return false;">
+            <div style="position:absolute;width:190px;background-color:rgba(0,0,0,0.7);bottom:6px;left:2px;display:none;" class="text">
+              <span style="color:white;" >title: {{p.title}}</span>
+            </div>
+            
+          </div>
+        </div> 
+        {%endfor%}
+
+      </div>
+        <br><br><br>
+        <div align="center">
+          <button id="button" type="button" value="1" >もうちょっと</button>
+          
+        </div>
+        <br>
       </div>
       <div id="right-content">
         <br><br>

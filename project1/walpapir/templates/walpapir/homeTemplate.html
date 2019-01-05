@@ -48,8 +48,9 @@
     </div>
     </div>
 
-    <form>
-      <input type="text" class="search" placeholder="&#xf002; Search..." >
+    <form action="{%url 'walpapir:search'%}" method="GET">
+      <input type="text" class="search" placeholder="&#xf002; Search..." name="search">
+      <input type="hidden" name="page" value="1">
     </form>
 
     {% endblock %}
