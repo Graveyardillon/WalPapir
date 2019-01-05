@@ -101,6 +101,9 @@ class User(AbstractBaseUser, PermissionsMixin):
         """
         return self.email
 
-
-
-
+from datetime import datetime
+class Photo(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='walpapir_image')#ファイルの名前
+    title = models.CharField(max_length=30)
+    time = models.DateTimeField(default=datetime.now)#自分で時間を設定する場合はdefaultはいらない。
