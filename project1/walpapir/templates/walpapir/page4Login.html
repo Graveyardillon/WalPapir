@@ -18,6 +18,9 @@
 {% endblock %}
 
 {% block style %}
+
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
 body {
   height: 800px;
 }
@@ -94,6 +97,10 @@ li.slider{
   transform: translate(-50%, 0);
 }
 
+#RightSideOfPaper p b {
+  font-family: "Lato", sans-serif;
+}
+
 {% endblock %}
 
 {% block mainContent %}
@@ -104,10 +111,9 @@ li.slider{
 
   </div>
   <div id="RightSideOfPaper">
-    <p align="left"><b>Sign in</b><br>
+    <p align="left"><b>Sign&nbsp;&nbsp;in</b><br>
     <a href="{% url 'walpapir:signUp' %}"><span id="forget">forget account?</span></a></p>
-    <hr style="border:1px dashed #ccc;">
-    <br>
+    <hr style="border:1px dashed #ccc;height:1px;">
     {% block content %}
     <form action="#" method="post" name="form1">
       <font size="3px">{{ form.non_field_errors }}</font>
