@@ -75,6 +75,10 @@ li.slider{
   top: 680px;
 }
 
+#RightSideOfPaper p b {
+  font-family:"Lato", sans-serif;
+}
+
 {% endblock %}
 
 {% block mainContent %}
@@ -85,13 +89,15 @@ li.slider{
 
   </div>
   <div id="RightSideOfPaper">
-    <p align="left">Registration Form</p>
+    <p align="left"><b>Registration Form</b></p>
     <form action="#" method="post" name="form1">
       {{ form.non_field_errors }}
-      {% for field in form %}
-      <label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
+      {% for field in form %}<br>
+      <div class="form-group">
+      <label for="{{ field.id_for_label }}"><!-- {{ field.label_tag }} --></label>
       {{ field }}
       <font size="3px">{{ field.errors }}</font>
+      </div>
       {% endfor %}
       {% csrf_token %}
 

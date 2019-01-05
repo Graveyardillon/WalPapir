@@ -1,7 +1,9 @@
 from django.contrib.auth.forms import (
-    AuthenticationForm,UserCreationForm
+    AuthenticationForm, UserCreationForm
 )
+from django.contrib.auth import get_user_model
 
+User = get_user_model()
 
 class LoginForm(AuthenticationForm):
     """ログインフォーム"""
@@ -12,9 +14,6 @@ class LoginForm(AuthenticationForm):
             field.widget.attrs['class'] = 'form-control'
             field.widget.attrs['placeholder'] = field.label  # placeholderにフィールドのラベルを入れる
 
-from django.contrib.auth import get_user_model
-
-User = get_user_model()
 
 class UserCreateForm(UserCreationForm):
     """ユーザー登録用フォーム"""
