@@ -16,6 +16,11 @@ from .forms import (
 )
 
 from django.shortcuts import render
+
+
+
+
+
 from .models import Photo
 #プロジェクトで使用しているUserモデルを取得
 User = get_user_model()

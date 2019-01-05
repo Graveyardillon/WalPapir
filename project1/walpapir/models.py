@@ -102,6 +102,34 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.email
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 from datetime import datetime
 class Photo(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
