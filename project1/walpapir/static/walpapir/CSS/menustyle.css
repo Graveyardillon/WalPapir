@@ -160,7 +160,7 @@ a {
     transition: -webkit-transform 200ms;
     transition: transform 200ms;
     transition: transform 200ms, -webkit-transform 200ms;
-    z-index: 41;
+    z-index: 4;
   }
 
   .hamburger1 {
@@ -199,7 +199,7 @@ a {
     top: 155px;
     height: 150px;
     box-sizing: border-box;
-    z-index: 41;
+    z-index: 4;
   }
 
   .hamburgerMenuItem:hover {
