@@ -23,6 +23,8 @@ a {
 /* copyright of hamburgerMenu is
   by Lucas Bebber */
 
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
 @media screen and (min-width: 801px) {
   @import url('https://fonts.googleapis.com/css?family=Pacifico');
   @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,700');
