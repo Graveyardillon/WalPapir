@@ -101,23 +101,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         """
         return self.email
 
-class FreeMessages():
-
-    rdmErrorMsg1 = models.CharField(_('rdmErrorMsg1'), max_length=40, blank=True)
-
-    def validateShortMsg(self):
-        self.rdmErrorMsg1 = ""
-
-    def errorShortMsg(self):
-        self.rdmErrorMsg1 = "You don't have point enough to redeem!"
-
-    def getRdmErrorMsg1(self):
-        return rdmErrorMsg1
 
 
-from datetime import datetime
-class Photo(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='walpapir_image')#ファイルの名前
-    title = models.CharField(max_length=30)
-    time = models.DateTimeField(default=datetime.now)#自分で時間を設定する場合はdefaultはいらない。
+
