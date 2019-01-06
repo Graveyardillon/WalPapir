@@ -7,14 +7,14 @@ from django.contrib.auth.views import (
 )
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.signing import BadSignature, SignatureExpired, loads, dumps
-from django.http import Http404, HttpResponseBadRequest,HttpResponse
+from django.http import Http404, HttpResponseBadRequest,HttpResponse,HttpResponseRedirect
 from django.shortcuts import redirect
 from django.template.loader import get_template
 from django.views import generic
 from .forms import (
     LoginForm, UserCreateForm
 )
-
+from django.urls import reverse
 from django.shortcuts import render
 
 
@@ -42,22 +42,20 @@ def prehome(request):
     return render(request, 'walpapir/prehome.html')
 
 def page4post(request):
-    """
+    if User.is_authenticated:
+        return HttpResponseRedirect(reverse('walpapir:login'))
+
     if request.method=='GET':
         return render(request,'walpapir/page4Post.html')
-
-    user = #login-user-models
-
+    
     image=request.FILES['image']
     title=request.POST['title']
     mode=request.POST['radio']
 
-    user.photo_set.create(image=image,title=title,mode=mode)
+    User.photo_set.create(image=image,title=title,mode=mode)
 
-    return HttpResponseRedirect(reverse(''))#次に表示させるページの名前
-    """
-    return render(request, 'walpapir/page4post.html')
-
+    return HttpResponseRedirect(reverse('walpapir:home'))#次に表示させるページの名前
+    
 
 
 #They are debug functions.
