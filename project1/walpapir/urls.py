@@ -45,5 +45,6 @@ urlpatterns = [
     path('signup/complete/<token>/', views.UserCreateComplete.as_view(), name='signup_complete'),
     path('search/',views.search,name='search'),
     path('ajax/',views.ajax,name="ajax"),
+    path('iv/', views.iv, name="iv"),
 
 ]

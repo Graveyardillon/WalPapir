@@ -22,7 +22,8 @@ from .models import User,Photo
 #プロジェクトで使用しているUserモデルを取得
 User = get_user_model()
 
-
+def iv(request):
+    return render(request, 'walpapir/imageView.html')
 
 # Create your views here.
 def home(request):
@@ -167,9 +168,9 @@ def search(request):
     global photo,img,search,page_last
     lists=request.GET
     search,page=lists["search"],int(lists["page"])
-    
-    
-    
+
+
+
 
     if search=="":
         page_last=int(photo.count()/img)+1
@@ -198,5 +199,3 @@ def ajax(request):
     global photo,img,search,page_last
     page=int(request.GET["page"])
     return HttpResponse(render(request,'walpapir/image.html',{'photo':photo[0+(img*(page-1)):img+(img*(page-1))],}))
-
-

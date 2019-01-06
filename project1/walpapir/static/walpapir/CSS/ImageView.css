@@ -1,0 +1,40 @@
+
+@media screen and (min-width:801px){
+
+  #previousButton {
+    position: absolute;
+    color: #767676;
+    font-size: 130px;
+    margin-top: 60px;
+    left: 20px;
+  }
+
+  #previousButton:hover {
+    color: #000;
+  }
+
+  #previousButton a {
+    text-decoration: none;
+  }
+
+  #nextButton {
+    position: absolute;
+    color: #767676;
+    font-size: 130px;
+    margin-top: 60px;
+    right: 20px;
+  }
+
+  #nextButton:hover {
+    color: #000;
+  }
+
+  #nextButton a {
+    text-decoration: none;
+  }
+
+}
+
+@media screen and (max-width:800px){
+
+}
