@@ -19,6 +19,18 @@
     {% endblock %}
 
     <style>
+    {% if not user.is_authenticated %}
+
+      .hamburgerMenuItem, .hamburgerMenuOpenButton {
+        background-color: #00B6F3;
+      }
+
+      .hamburgerMenuOpen {
+        background-color: #00B6F3;
+      }
+
+    {% endif %}
+
     {% block style %}
     {% endblock %}
     </style>
