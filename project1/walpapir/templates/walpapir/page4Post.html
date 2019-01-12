@@ -24,7 +24,7 @@ $(function(){
           return;
       }
       var file = $(this).prop('files')[0];//[0]はリストだから。　filesはjQueryの定数？なのでpropを使う
-      
+
       var fr = new FileReader();
       if(file.type.match(/image/)){
       fr.onload = function() {
@@ -41,7 +41,7 @@ $(function(){
 //ラジオボタンによって画像幅の変更
 $(function(){
   $('input[name="radio"]:radio').change(function(){
-    
+
     if($(window).width()>800){
       if($(this).val()=="0"){
         $("#image").css({
@@ -55,7 +55,7 @@ $(function(){
         });
       }
     }else{}
-  
+
   })
 })
 
@@ -80,7 +80,7 @@ $(function(){
     }else{
       $("#submit").click();
     }
-    
+
   });
 })
 
@@ -104,7 +104,7 @@ $(function(){
 
 @media screen and (min-width:801px) {
 
-  
+
 
   a.active{
     background-color: #3498db;
@@ -158,19 +158,19 @@ $(function(){
     height: 100%;
     float: left;
   }
-  
+
    #image{
     width:80%;
     height:100%;
-    
+
    }
-  
+
   #input_infor{
     width: 45%;
     height: 100%;
     float:right;
-    
-    
+
+
   }
 
   #title{
@@ -195,7 +195,7 @@ $(function(){
 
 
 @media screen and (max-width:800px){
-  
+
   a.active{
     background-color: #3498db;
     pointer-events: none;
@@ -249,20 +249,20 @@ $(function(){
   }
 
   #image_zone{
-    
+
     height: 280px;
-    
+
   }
-  
+
    #image{
     width:90%;
     height:100%;
-    
+
    }
-  
+
   #input_infor{
     height: 280px;
-    
+
   }
 
   #title{
@@ -299,12 +299,12 @@ body {
 <form action="{%url 'walpapir:page4post'%}" method="POST" enctype="multipart/form-data">
 {% csrf_token %}
   <div id="formPaperPNG">
-    <div align="center"><br><b>Submission Paper</b></div>
+    <div align="center"><br><b>Post Paper</b></div>
     <hr style="border:1px dashed #ccc">
     <div id="information">
       <div id="image_zone" align="center" ><img src="{%static 'walpapir/180x120.jpeg'%}"  name="image" id="image"  oncontextmenu="alert('aaaaa');return false;"><a id="error_message" style="color:red"></a>
       </div>
-      
+
 
       <div id="input_infor">
         <span style="visibility:hidden;color:red;" id="error">error</span>
@@ -318,7 +318,7 @@ body {
         <div style="width:100%;height: 10%;">
           <div align="center" style="width:50%;float: left;"><label><input type="radio" name="radio" value=0 checked id="radio"><b for="radio" style="font-size: 70%;">DESKTOP</b></label></div>
           <div align="center" style="width:50%;float:right"><label><input type="radio" name="radio" value=1><b style="font-size: 70%;">MOBILE</b></label></div>
-          
+
         </div>
 
       </div>
@@ -336,7 +336,7 @@ body {
       <button class="effect rightPointEffect" type="button" title="Post" id="button">
         Post</button>
       </div>
-    
+
   </div>
 </form>
 <!-- submission button -->

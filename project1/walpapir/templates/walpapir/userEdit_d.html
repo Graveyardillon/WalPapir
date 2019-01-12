@@ -1,0 +1,47 @@
+{% extends "./userPage.html" %}
+{% load static %}
+
+{% block title %}{{User.get_full_name}}{% endblock %}
+
+
+
+{% block mainContent %}
+<div id="wrap">
+
+  <div id="flexibleBox">
+    <form action="#" method="post" name="userEdit">
+
+    <div class="notContentBox">
+
+      <div class="iconBox">{% block iconBox %}
+        <input type="image" src="{% static 'walpapir/180x120.jpeg' %}"/>
+      {% endblock %}</div>
+
+      <div class="sentenceBox">
+        <font size="6">{% block userName %}
+            <input type="text" class="editText" name="handle_name" placeholder="{{get_handle_name}}">
+          {% endblock %}
+          &nbsp;&nbsp;&nbsp;&nbsp;{{FreeMessages.getRdmErrorMsg1}}</font>
+        <br><br>
+        <div id="fontAdjuster">Following:&nbsp;X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Follower:&nbsp;Y</div>
+
+          <!-- X and Y should receive parameters from server -->
+
+        <br><br>
+        <font size="4">
+          {% block description %}
+            <input type="textarea" placeholder="{{User.get_description}}" class="editText" name="userDescription">
+          {% endblock %}
+        </font>
+      </div>
+    </div>
+    </form>
+    </div>
+  </div>
+
+  <div id="right-content">
+    <br><br>
+  </div>
+</div>
+{% endblock %}

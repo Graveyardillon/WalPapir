@@ -26,6 +26,12 @@ from django.conf.urls.static import static
 app_name = 'walpapir'
 
 urlpatterns = [
+    #debug urls
+    path('user_d', views.user_d, name='user_d'),
+    path('redeem_d', views.redeem_d, name="redeem_d"),
+    path('userEdit_d', views.userEdit_d, name="userEdit_d"),
+    path('userCreateComplete_d', views.userCreateComplete_d, name="userCreateComplete_d"),
+
     path('home/', views.home, name='home'),
     path('desktop/', views.desktop, name='desktop'),
     path('mobile/', views.mobile, name='mobile'),
@@ -33,11 +39,13 @@ urlpatterns = [
     path('howToUse/', views.how2use, name='how2use'),
     path('login/', views.Login.as_view(), name='login'),
     path('logout/', views.Logout.as_view(), name='logout'),
+    path('prehome/', views.prehome, name='prehome'),
     path('postpage/', views.page4post, name='page4post'),
     path('signup/', views.UserCreate.as_view(), name='signUp'),
     path('signup/done', views.UserCreateDone.as_view(), name='signup_done'),
     path('signup/complete/<token>/', views.UserCreateComplete.as_view(), name='signup_complete'),
     path('search/',views.search,name='search'),
     path('ajax/',views.ajax,name="ajax"),
+    path('iv/', views.iv, name="iv"),
 
 ]

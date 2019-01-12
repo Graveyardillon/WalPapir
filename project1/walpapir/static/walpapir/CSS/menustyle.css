@@ -20,6 +20,11 @@ a {
   text-decoration: none;
 }
 
+/* copyright of hamburgerMenu is
+  by Lucas Bebber */
+
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
 @media screen and (min-width: 801px) {
   @import url('https://fonts.googleapis.com/css?family=Pacifico');
   @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,700');
@@ -144,6 +149,7 @@ a {
   .hamburgerMenuOpen {
     display: none;
     top: 85px;
+    z-index: 4;
   }
 
   .hamburger {
@@ -159,7 +165,7 @@ a {
     transition: -webkit-transform 200ms;
     transition: transform 200ms;
     transition: transform 200ms, -webkit-transform 200ms;
-    z-index: 5;
+    z-index: 4;
   }
 
   .hamburger1 {
@@ -198,6 +204,7 @@ a {
     top: 155px;
     height: 150px;
     box-sizing: border-box;
+    z-index: 4;
   }
 
   .hamburgerMenuItem:hover {
@@ -273,6 +280,30 @@ a {
 
   /* hamburger menu */
 
+  .signUpButton {
+    display: inline-block;
+    position: absolute;
+    font-family: "Roboto Slab", sans-serif;
+    font-size: 20px;
+    color: #fff;
+    top: 10px;
+    background-color: rgba(0,0,0,0);
+    border: 2px solid #fff;
+    border-radius: 14px;
+    text-align: center;
+    left: 95px;
+    height: 30px;
+    width: 100px;
+    transition: all 0.2s linear;
+    padding: 10px 10px 10px 10px;
+    cursor: pointer;
+  }
+
+  .signUpButton:hover, .signUpButton:focus{
+    color: #ffc107;
+    border: 2px solid #ffc107;
+  }
+
   .search {
     display: inline-block;
     font-family: "FontAwesome";
@@ -283,7 +314,7 @@ a {
     border: 0;
     padding: 10px;
     border-radius: 14px;
-    width: 300px;
+    width: 25%;
     height: 17px;
     font-size: 14px;
     z-index: 40;
@@ -339,6 +370,7 @@ a {
     -webkit-transform: translate(-50%, 0);
 	  -moz-transform: translate(-50%, 0);
 	  transform: translate(-50%, 0);
+    cursor: default;
   }
 
   #logoWord:hover {
@@ -450,18 +482,18 @@ a {
     top: 0;
   }
 
-  /* hamburger manu */
+  /* hamburger menu */
 
   .hamburgerMenuItem, .hamburgerMenuOpenButton {
     background: #ffc107;
     border-radius: 100%;
-    width: 40px;
-    height: 40px;
-    bottom: 20px;
-    position: fixed;
+    width: 60px;
+    height: 60px;
+    margin-top: 10px;
+    position: absolute;
     margin-left: -40px;
     color: #fff;
-    line-height: 40px;
+    line-height: 60px;
     align-content: center;
     text-align: center;
     -webkit-transform: translate3d(0, 0, 0);
@@ -469,25 +501,28 @@ a {
     transition: -webkit-transform ease-out 200ms;
     transition: transform ease-out 200ms;
     transition: transform ease-out 200ms, -webkit-transform ease-out 200ms;
-    z-index: 7;
   }
 
   .hamburgerMenuOpen {
     display: none;
-    bottom: 20px;
+    top: 85px;
+    z-index: 4;
   }
 
   .hamburger {
-    width: 20px;
-    height: 2px;
+    width: 25px;
+    height: 3px;
     background: #fff;
     display: block;
     position: absolute;
-    margin-left: 10px;
-    margin-top: 18px;
+    top: 50%;
+    left: 50%;
+    margin-left: -12.5px;
+    margin-top: -1.5px;
     transition: -webkit-transform 200ms;
     transition: transform 200ms;
     transition: transform 200ms, -webkit-transform 200ms;
+    z-index: 4;
   }
 
   .hamburger1 {
@@ -510,7 +545,7 @@ a {
     transform: translate3d(0, 0, 0) rotate(45deg);
   }
 
-  .hamburgerMenuOpen:checked + .hamburgerMenuOpenButtonn .hamburger2 {
+  .hamburgerMenuOpen:checked + .hamburgerMenuOpenButton .hamburger2 {
     -webkit-transform: translate3D(0, 0, 0) scale(0.1, 1);
     transform: translate(0, 0, 0) scale(0.1, 1);
   }
@@ -521,11 +556,12 @@ a {
   }
 
   .hamburgerMenu {
-    position: absolute;
-    right: 5%;
-    top: 155px;
+    position: fixed;
+    right: 7%;
+    top: 105px;
     height: 150px;
     box-sizing: border-box;
+    z-index: 4;
   }
 
   .hamburgerMenuItem:hover {
@@ -551,7 +587,7 @@ a {
   }
 
   .hamburgerMenuOpenButton {
-    z-index: 8;
+    z-index: 2;
     transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
     transition-duration: 400ms;
     -webkit-transform: scale(1.1, 1.1) translate3D(0, 0, 0);
@@ -577,28 +613,69 @@ a {
 
   .hamburgerMenuOpen:checked ~ .hamburgerMenuItem:nth-child(3) {
     transition-duration: 170ms;
-    -webkit-transform: translate3D(-45px, 0, 0);
-    transform: translate3d(-45px, 0, 0);
+    -webkit-transform: translate3D(-80px, 0, 0);
+    transform: translate3d(-80px, 0, 0);
   }
 
   .hamburgerMenuOpen:checked ~ .hamburgerMenuItem:nth-child(4) {
     transition-duration: 250ms;
-    -webkit-transform: translate3D(-90px, 0, 0);
-    transform: translate3D(-90px, 0, 0);
+    -webkit-transform: translate3D(-160px, 0, 0);
+    transform: translate3D(-160px, 0, 0);
   }
 
   .hamburgerMenuOpen:checked ~ .hamburgerMenuItem:nth-child(5) {
     transition-duration: 330ms;
-    -webkit-transform: translate3D(-135px, 0, 0);
-    transform: translate3D(-135px, 0, 0);
+    -webkit-transform: translate3D(-240px, 0, 0);
+    transform: translate3D(-240px, 0, 0);
   }
 
   .hamburgerMenuOpen:checked ~ .hamburgerMenuItem:nth-child(6) {
     transition-duration: 410ms;
-    -webkit-transform: translate3D(-180px, 0, 0);
-    transform: translate3D(-180px, 0, 0);
+    -webkit-transform: translate3D(-320px, 0, 0);
+    transform: translate3D(-320px, 0, 0);
   }
 
+  /* hamburger menu */
+
+  .signUpButton {
+    display: inline-block;
+    position: absolute;
+    font-family: "Roboto Slab", sans-serif;
+    font-size: 15px;
+    color: #fff;
+    background-color: rgba(0,0,0,0);
+    border: 2px solid #fff;
+    border-radius: 12px;
+    text-align: center;
+    top: 5px;
+    left: 60px;
+    height: 20px;
+    width: 80px;
+    transition: all 0.2s linear;
+    padding: 4px 4px 4px 5px;
+    cursor: pointer;
+  }
+
+  .signUpButton:hover, .signUpButton:focus{
+    color: #ffc107;
+    border: 2px solid #ffc107;
+  }
+
+  .search {
+    display: inline-block;
+    font-family: "FontAwesome";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-image:  url("../UI/paper.png");
+    border: 0;
+    padding: 5px;
+    border-radius: 14px;
+    width: 25%;
+    height: 17px;
+    font-size: 14px;
+    z-index: 40;
+  }
 
   #wrap {
     position: absolute;
@@ -639,8 +716,9 @@ a {
   }
 
   #logoWord {
-    font-size: 20px;
+    font-size: 27px;
     margin-left: 40%;
+    cursor: default;
   }
 }
 

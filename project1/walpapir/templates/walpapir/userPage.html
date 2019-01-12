@@ -1,6 +1,7 @@
-{% extends './homeTemplate' %}
+{% extends './homeTemplate.html' %}
+{% load static %}
 
-{% block title %}user{% endblock %}
+{% block title %}user_d{% endblock %}
 
 {% block basicLinks %}
 
@@ -11,6 +12,8 @@
 <script type="text/javascript" src="{% static 'walpapir/js/FixNavigation.js' %}"></script>
 <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+<script type="text/javascript" src="{% static 'walpapir/js/eraseRedeem.js' %}" ></script>
+<link rel="stylesheet" href="{% static 'walpapir/CSS/ButtonEffects.css' %}" />
 
 {% endblock %}
 
@@ -47,7 +50,7 @@
     position: absolute;
     width: 58%;
     height: auto;
-    background-image: url("./picturesForUI/paper.png");
+    background-image: url("{% static 'walpapir/UI/paper.png' %}");
     left: 6%;
     top: 170px;
     border-radius: 12px;
@@ -58,7 +61,7 @@
     height: 260px;
     width: 100%;
     display: flex;
-    background-image: url("./picturesForUI/paper.png");
+    background-image: url("{% static 'walpapir/UI/paper.png' %}");
     border-radius: 12px 12px 0px 0px;
   }
   .contentBox {
@@ -66,14 +69,14 @@
     top: 260px;
     width: 100%;
     height: auto;
-    background-image: url("./picturesForUI/paper.png");
+    background-image: url("{% static 'walpapir/UI/paper.png' %}");
   }
   .contentBoxUnder {
     position: absolute;
     top: 310px;
     width: 100%;
     height: auto;
-    background-image: url("./picturesForUI/paper.png");
+    background-image: url("{% static 'walpapir/UI/paper.png' %}");
   }
   .iconBox {
     /* Regulated size of an icon */
@@ -97,7 +100,7 @@
     width: auto;
     height: auto;
     display: flex;
-    background-image: url("./picturesForUI/paper.png");
+    background-image: url("{% static 'walpapir/UI/paper.png' %}");
     border-radius: 0px 0px 12px 12px;
   }
   /* A selected element border will be lined */
@@ -182,7 +185,83 @@
   #fontAdjuster {
     font-size: 4;
   }
+
+  body .buttonEffect {
+    padding: 30px, 0px;
+  }
+
+  body .buttonEffect a{
+    z-index: 4;
+    background-color: #0074e8;
+    cursor: pointer;
+    box-shadow: 0px 2px 14px #000;
+  }
+
+
+  .effectU {
+    text-align: center;
+    display: inline-block;
+    position: absolute;
+    text-decoration: none;
+    color: #fff;
+    text-transform: capitalize;
+    font-family: Courier, monospace;
+    font-size: 18px;
+    padding: 20px 0px;
+    border-radius: 6px;
+    border-style: none;
+    overflow: hidden;
+    z-index: 20;
+    cursor: pointer;
+  }
+
+  .effectU.rightPointEffect {
+    position: absolute;
+    top: 170px;
+    left: 69%;
+    width: 170px;
+    background-color: #9d4dee;
+    transition: all 0.2s linear 0s;
+  }
+
+  .effectU.rightPointEffect:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f0a4";
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: -30px;
+    width: 30px;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 0px 6px 6px 0px;
+    transition: all 0.2s linear 0s;
+    text-align: center;
+  }
+
+  .effectU.rightPointEffect:hover {
+    text-indent: -30px;
+  }
+
+  .effectU.rightPointEffect:hover:before {
+    right: 0;
+    text-indent: 0px;
+  }
+
+  .editText {
+    font-size: 100%;
+    font-family: inherit;
+    border: none;
+    background-color: rgba(0,0,0,0);
+    width: 100%;
+    height: 39px;
+  }
 }
+
+
 @media screen and (max-width: 801px) {
   input {
     -webkit-box-shadow: 0px 0.5px 3px #000;
@@ -214,7 +293,7 @@
     position: absolute;
     width: auto;
     height: auto;
-    background-image: url("./picturesForUI/paper.png");
+    background-image: url("{% static 'walpapir/UI/paper.png' %}");
     left: 6%;
     right: 6%;
     top: 0;
@@ -226,7 +305,7 @@
     height: 260px;
     width: 100%;
     display: flex;
-    background-image: url("./picturesForUI/paper.png");
+    background-image: url("{% static 'walpapir/UI/paper.png' %}");
     border-radius: 12px 12px 0px 0px;
   }
   .contentBox {
@@ -234,14 +313,14 @@
     top: 260px;
     width: 100%;
     height: auto;
-    background-image: url("./picturesForUI/paper.png");
+    background-image: url("{% static 'walpapir/UI/paper.png' %}");
   }
   .contentBoxUnder {
     position: absolute;
     top: 310px;
     width: 100%;
     height: auto;
-    background-image: url("./picturesForUI/paper.png");
+    background-image: url("{% static 'walpapir/UI/paper.png' %}");
   }
   .iconBox {
     /* Regulated size of an icon */
@@ -265,7 +344,7 @@
     width: auto;
     height: auto;
     display: flex;
-    background-image: url("./picturesForUI/paper.png");
+    background-image: url("{% static 'walpapir/UI/paper.png' %}");
   }
   /* A selected element border will be lined */
   .squareFavTab {
@@ -351,23 +430,67 @@
   #fontAdjuster {
     font-size: 2;
   }
+  .editText {
+    font-size: 100%;
+    font-family: inherit;
+    border: none;
+    background-color: rgba(0,0,0,0);
+    width: 100%;
+    height: 39px;
+  }
 }
+
+{% block additionalStyles %}{% endblock %}
 
 {% endblock %}
 
+
+
 {% block mainContent %}
+
+<script type="text/javascript">
+  $(function(){
+    const rpe = $('.rightPointEffect');
+    rpe.on('click', function(){
+      //check whether the user has enough point to redeem(1st)
+      if(parseInt({{User.get_point}}) >= 1000){
+        {{FreeMessages.validateShortMsg}}
+        location.href = "{% url 'walpapir:redeem_d' %}"
+      }else{
+        {{FreeMessages.errorShortMsg}}
+        location.href = "{% url 'walpapir:user_d' %}"
+      }
+    });
+  })
+</script>
+
+<button class="effectU rightPointEffect" type="button" href="{% url 'walpapir:redeem_d' %}">
+  Redeem Points
+</button>
+
 <div id="wrap">
 
   <div id="flexibleBox">
 
     <div class="notContentBox">
+      {% block editButton %}
+      <a class="editButton" href="{% url 'walpapir:userEdit_d' %}">Edit</a>
+      {% endblock %}
 
-      <div class="iconBox">
-        <input type="image" src="./180x120.jpeg"/>
-      </div>
+      <div class="iconBox">{% block iconBox %}
+        <input type="image" src="{% static 'walpapir/180x120.jpeg' %}"/>
+      {% endblock %}</div>
 
       <div class="sentenceBox">
-        <font size="6">NONAME</font>
+
+        <font size="6">{% block userName %}{{ User.get_point }}
+          {% if User.get_handle_name == null %}
+            NONAME
+          {% else %}
+            {{User.get_handle_name}}
+          {% endif %}
+          {% endblock %}
+          &nbsp;&nbsp;&nbsp;&nbsp;{{FreeMessages.getRdmErrorMsg1}}</font>
         <br><br>
         <div id="fontAdjuster">Following:&nbsp;X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Follower:&nbsp;Y</div>
@@ -375,7 +498,15 @@
           <!-- X and Y should receive parameters from server -->
 
         <br><br>
-        <font size="4">Description</font>
+        <font size="4">
+          {% block description %}
+            {% if User.get_description == null %}
+              No description
+            {% else %}
+              {{User.get_description}}
+            {% endif %}
+          {% endblock %}
+        </font>
       </div>
     </div>
 
@@ -395,12 +526,12 @@
     </div>
 
     <div class="contentBoxUnder">
-      <div class="postContent">
+      <div class="postContent">{% block postContent %}
         postcontent
-      </div>
-      <div class="favContent">
-        favcontents
-      </div>
+      {% endblock %}</div>
+      <div class="favContent">{% block favContent %}
+        favcontent
+      {% endblock %}</div>
     </div>
   </div>
 

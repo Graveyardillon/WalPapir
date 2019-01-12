@@ -1,7 +1,41 @@
-{% extends "./homeTemplate.html" %}
-{% block content %}
-<p>
-    会員登録確認メールを送信しました。まだ、会員登録は完了していません。<br>
-    確認メールを送信しましたので、確認メールに記載されているリンクから本登録を行ってください。
-</p>
+{% extends './homeTemplate.html' %}
+
+{% block title %}HOME{% endblock %}
+
+{% block style %}
+
+a.active{
+  background-color: #3498db;
+  pointer-events: none;
+}
+
+li.slider{
+  width: 25%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #3498db;
+  z-index: 8;
+  transition: left 0.4s, background-color 0.4s;
+}
+
+{% endblock %}
+
+{% block mainContent %}
+
+    <div id="wrap">
+      <div id="left-content">
+        <br><br><br>
+        <p>
+            会員登録確認メールを送信しました。まだ、会員登録は完了していません。<br>
+            確認メールを送信しましたので、確認メールに記載されているリンクから本登録を行ってください。
+        </p>
+        <br><br><br>
+      </div>
+      <div id="right-content">
+        <br><br>
+      </div>
+    </div>
+
 {% endblock %}

@@ -89,6 +89,28 @@
     right: 0;
     text-indent: 0px;
   }
+
+    .editButton {
+      -webkit-border-radius: 28;
+      -moz-border-radius: 28;
+      border-radius: 28px;
+      font-family: "Roboto";
+      color: #ffffff;
+      font-size: 17px;
+      background: #5c5c5c;
+      padding: 10px 20px 10px 20px;
+      text-decoration: none;
+
+      position: absolute;
+      top: 6%;
+      right: 4%;
+      z-index: 10;
+  }
+
+  .editButton:hover {
+    background: #999999;
+    text-decoration: none;
+  }
 }
 
 @media screen and (max-width:800px){
@@ -140,6 +162,7 @@
     padding: 20px 0px;
     border-radius: 6px;
     overflow: hidden;
+    z-index: 20;
   }
 
 
@@ -176,5 +199,27 @@
   .effect.rightPointEffect:hover:before {
     right: 0;
     text-indent: 0px;
+  }
+
+  .editButton {
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    font-family: "Roboto";
+    color: #ffffff;
+    font-size: 17px;
+    background: #5c5c5c;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+
+    position: absolute;
+    top: 5%;
+    right: 4%;
+    z-index: 10;
+  }
+
+  .editButton:hover {
+    background: #999999;
+    text-decoration: none;
   }
 }

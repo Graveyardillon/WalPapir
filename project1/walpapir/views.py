@@ -17,11 +17,13 @@ from .forms import (
 from django.urls import reverse
 from django.shortcuts import render
 
-from .models import Photo
+
+from .models import User,Photo
 #プロジェクトで使用しているUserモデルを取得
 User = get_user_model()
 
-
+def iv(request):
+    return render(request, 'walpapir/imageView.html')
 
 # Create your views here.
 def home(request):
@@ -36,22 +38,41 @@ def desktop(request):
 def how2use(request):
     return render(request, 'walpapir/how2use.html')
 
+def prehome(request):
+    return render(request, 'walpapir/prehome.html')
+
 def page4post(request):
     if User.is_authenticated:
         return HttpResponseRedirect(reverse('walpapir:login'))
 
     if request.method=='GET':
         return render(request,'walpapir/page4Post.html')
-    
     image=request.FILES['image']
     title=request.POST['title']
     mode=request.POST['radio']
 
     User.photo_set.create(image=image,title=title,mode=mode)
 
+
     return HttpResponseRedirect(reverse('walpapir:home'))#次に表示させるページの名前
-    
-    
+
+
+
+#They are debug functions.
+
+def user_d(request):
+    return render(request, 'walpapir/userPage.html')
+
+def redeem_d(request):
+    return render(request, 'walpapir/page4Redeem.html')
+
+def userEdit_d(request):
+    return render(request, 'walpapir/userEdit_d.html')
+
+def userCreateComplete_d(request):
+    return render(request, 'walpapir/user_create_complete_d.html')
+
+
 
 class Top(generic.TemplateView):
     template_name = 'walpapir/top.html'
@@ -69,7 +90,7 @@ class Logout(LoginRequiredMixin, LogoutView):
 
 class UserCreate(generic.CreateView):
     """ユーザー仮登録"""
-   
+
     template_name = 'walpapir/page4register.html' #ユーザー登録のためのページ
     form_class = UserCreateForm
 
@@ -150,9 +171,9 @@ def search(request):
     global photo,img,search,page_last
     lists=request.GET
     search,page=lists["search"],int(lists["page"])
-    
-    
-    
+
+
+
 
     if search=="":
         page_last=int(photo.count()/img)+1
@@ -181,4 +202,3 @@ def ajax(request):
     global photo,img,search,page_last
     page=int(request.GET["page"])
     return HttpResponse(render(request,'walpapir/image.html',{'photo':photo[0+(img*(page-1)):img+(img*(page-1))],}))
-
