@@ -308,12 +308,12 @@ body {
 
       <div id="input_infor">
         <span style="visibility:hidden;color:red;" id="error">error</span>
-        <div style="width:100%;height: 20%"><span class="font" id="font_image">Image:</span><input type="file" id="input_image" style="display:none" name="input">
+        <div style="width:100%;height: 20%"><span class="font" id="font_image">Image:</span><input type="file" id="input_image" style="display:none" name="input" required>
           <button class="casualButton" onclick="$('#input_image').click();" style="position: relative;left:10px" type="button"><i class="fas fa-ellipsis-h"></i>&nbsp;Choose File</button>
         </div>
         <div style="width:100%;height: 40%;">
           <span class="font" id="font_title">Title:</span><br>
-          <input type="text" id="title" maxlength="30"  placeholder="max 30" name="title">
+          <input type="text" id="title" maxlength="30"  placeholder="max 30" name="title" required>
         </div>
         <div style="width:100%;height: 10%;">
           <div align="center" style="width:50%;float: left;"><label><input type="radio" name="radio" value=0 checked id="radio"><b for="radio" style="font-size: 70%;">DESKTOP</b></label></div>

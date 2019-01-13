@@ -170,9 +170,12 @@ page_last=0
 def search(request):
     global photo,img,search,page_last
     lists=request.GET
-    search,page=lists["search"],int(lists["page"])
+    search,page,select=lists["search"],int(lists["page"]),lists["select"]
 
-
+    if(select=="0"):
+        photo.order_by("time")
+    elif(select=="1"):
+        photo.order_by("time").reverse()
 
 
     if search=="":
@@ -187,7 +190,7 @@ def search(request):
 
     j=search.split()
     for s in j:
-        photo=photo.filter(title__contains=s)
+        photo=photo.filter(title__icontains=s)
 
     page_last=int(photo.count()/img)+1
     return render(request,'walpapir/searchResults.html',{

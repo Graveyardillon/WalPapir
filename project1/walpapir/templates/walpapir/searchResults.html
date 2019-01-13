@@ -68,7 +68,18 @@ $(function(){
           $(".image_fild").css("width",fil);
         }).find()
       })
+      if(page=={{page_last}}){
+        $("#button").css("display","none");
+      }
     })
+
+//selectの変更時の処理
+$(function(){
+        $("#select").change(function(){
+          $("#submit").click();
+        })
+    });
+
 
 </script>
 {%endblock%}
@@ -149,16 +160,20 @@ body{
         <input type="hidden" name="page" value="1">
         <div  style="height:50px;">
           <div style="height:100%;width:50%;float: left;position: relative;">
-            <input type="text" class="search_dark" value="{{search}}" name="search">
+            <input type="text" class="search_dark" value="{{search}}" name="search" id="text">
           </div>
+        
           <div style="height:100%;width:50%;float:right;position:relative;">
-            <select name="select" style="top:25%;height:50%;width:50%;position: relative;">
-              <option　value="new">新しい順</option>
-              <option value="old">古い順</option>
-            </select>
+              <select name="select" style="top:25%;width:50%;position: relative;" id="select" >
+                <option value="0">新しい順</option>
+                <option value="1">古い順</option>
+              </select>
+            
           </div>
+          <input type="submit" id="submit" style="display:none">
+        </form>
         </div>
-      </form>
+      
         <hr style="border:1px dashed #ccc">
         <div style="width:100%;float: left;" id="fild">
         {%for p in photo%}
