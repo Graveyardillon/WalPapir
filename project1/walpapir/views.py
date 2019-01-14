@@ -47,7 +47,7 @@ def page4post(request):
 
     if request.method=='GET':
         return render(request,'walpapir/page4Post.html')
-    
+
     image=request.FILES['image']
     title=request.POST['title']
     mode=request.POST['radio']
@@ -55,10 +55,11 @@ def page4post(request):
     User.photo_set.create(image=image,title=title,mode=mode)
 
     return HttpResponseRedirect(reverse('walpapir:home'))#次に表示させるページの名前
-    
+
 
 
 #They are debug functions.
+
 def user_d(request):
     return render(request, 'walpapir/userPage.html')
 
@@ -68,6 +69,10 @@ def redeem_d(request):
 def userEdit_d(request):
     return render(request, 'walpapir/userEdit_d.html')
 
+def userCreateComplete_d(request):
+    return render(request, 'walpapir/user_create_complete_d.html')
+
+#=========================
 
 class Top(generic.TemplateView):
     template_name = 'walpapir/top.html'
