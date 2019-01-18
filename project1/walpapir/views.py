@@ -161,7 +161,6 @@ class UserCreateComplete(generic.TemplateView):
 
         return HttpResponseBadRequest()
 
-
 photo=Photo.objects.all()
 img=4
 search=""
