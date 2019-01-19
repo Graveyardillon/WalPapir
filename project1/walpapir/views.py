@@ -51,8 +51,10 @@ def page4post(request):
     image=request.FILES['image']
     title=request.POST['title']
     mode=request.POST['radio']
+    user_id=request.POST['user']
 
-    User.photo_set.create(image=image,title=title,mode=mode)
+    user=User.objects.get(id=user_id)
+    user.photo_set.create(image=image,title=title,mode=mode)
 
     return HttpResponseRedirect(reverse('walpapir:home'))#次に表示させるページの名前
 
