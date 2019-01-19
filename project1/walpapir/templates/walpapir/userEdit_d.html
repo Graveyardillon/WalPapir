@@ -1,7 +1,13 @@
 {% extends "./userPage.html" %}
 {% load static %}
 
-{% block title %}{{User.get_full_name}}{% endblock %}
+{% block title %}
+  {% if User.get_full_name != null %}
+    {{User.get_full_name}}
+  {% else %}
+    NONAME
+  {% endif %}
+{% endblock %}
 
 
 
@@ -10,29 +16,43 @@
 
   <div id="flexibleBox">
     <form action="#" method="post" name="userEdit">
+      {% csrf_token %}
 
-    <div class="notContentBox">
+      <div class="notContentBox">
 
-      <div class="iconBox">{% block iconBox %}
-        <input type="image" src="{% static 'walpapir/180x120.jpeg' %}"/>
-      {% endblock %}</div>
+        <div class="iconBox">{% block iconBox %}
+          <input type="image" src="{% static 'walpapir/180x120.jpeg' %}"/>
+        {% endblock %}</div>
 
-      <div class="sentenceBox">
-        <font size="6">{% block userName %}
-            <input type="text" class="editText" name="handle_name" placeholder="{{get_handle_name}}">
-          {% endblock %}
-          &nbsp;&nbsp;&nbsp;&nbsp;{{FreeMessages.getRdmErrorMsg1}}</font>
-        <br><br>
-        <div id="fontAdjuster">Following:&nbsp;X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Follower:&nbsp;Y</div>
+        <div class="sentenceBox">
+          <font size="6">{% block userName %}
+              <input type="text" class="editText" name="handle_name" placeholder="{% if User.get_handle_name != null %}{{User.get_handle_name}}{% else %}NONAME{% endif %}">
+            {% endblock %}
+            &nbsp;&nbsp;&nbsp;&nbsp;{{FreeMessages.getRdmErrorMsg1}}</font>
+          <br><br>
+          <div id="fontAdjuster">Following:&nbsp;X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Follower:&nbsp;Y</div>
 
-          <!-- X and Y should receive parameters from server -->
+            <!-- X and Y should receive parameters from server -->
 
-        <br><br>
-        <font size="4">
-          {% block description %}
-            <input type="textarea" placeholder="{{User.get_description}}" class="editText" name="userDescription">
-          {% endblock %}
+          <br><br>
+          <font size="4">
+            {% block description %}
+              <input type="textarea" placeholder="{% if User.get_description != null %}{{User.get_description}}{% else %}bio{% endif %}" class="editText" name="userDescription">
+            {% endblock %}
+
+            <div class="container">
+              <div class="buttonEffect">
+                <button id="submit" type="submit" style="display:none"></button>
+                <button class="effect rightPointEffect" style="
+                position: relative;
+                top: 40px;
+                left: 20%;
+                z-index: 120;"
+                type="button" title="Apply">
+                  Apply</button>
+                </div>
+            </div>
         </font>
       </div>
     </div>
