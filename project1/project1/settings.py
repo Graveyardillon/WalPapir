@@ -142,6 +142,7 @@ AUTH_USER_MODEL = 'walpapir.User'   #ログインのユーザーモデル
 LOGIN_URL = 'walpapir:login'        #ログインのためのページ
 LOGIN_REDIRECT_URL = 'walpapir:home' #ログインした際にリダイレクトするページ
 # メールをコンソールに表示する
+LOGOUT_REDIRECT_URL = 'walpapir:home'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
