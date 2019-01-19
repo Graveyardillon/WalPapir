@@ -42,7 +42,7 @@ def prehome(request):
     return render(request, 'walpapir/prehome.html')
 
 def page4post(request):
-    if User.is_authenticated:
+    if not User.is_authenticated:
         return HttpResponseRedirect(reverse('walpapir:login'))
 
     if request.method=='GET':
