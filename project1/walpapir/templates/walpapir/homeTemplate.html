@@ -43,7 +43,7 @@
 
     <div id="headerBox">
 
-      <div id="logo"></div> 
+      <div id="logo"></div>
       <div id="logoWord">WalPapir</div>
       {% if not user.is_authenticated %}
       <a class="signUpButton" href="{% url 'walpapir:signUp' %}">Sign&nbsp;&nbsp;up</a>
@@ -62,7 +62,7 @@
     </div>
     </div>
 
-    <form action="{%url 'walpapir:search'%}" method="GET">
+    <form action="{% url 'walpapir:search'%}" method="GET">
       <input type="text" class="search" placeholder="&#xf002; Search..." name="search">
       <input type="hidden" name="page" value="1">
       <button type="submit" class="searchButton"><i class="fas fa-search"></i></button>
