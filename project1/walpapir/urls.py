@@ -41,6 +41,7 @@ urlpatterns = [
     path('logout/', views.Logout.as_view(), name='logout'),
     path('prehome/', views.prehome, name='prehome'),
     path('postpage/', views.page4post, name='page4post'),
+    path('postdone/', views.postDone, name='postdone'),
     path('signup/', views.UserCreate.as_view(), name='signUp'),
     path('signup/done', views.UserCreateDone.as_view(), name='signup_done'),
     path('signup/complete/<token>/', views.UserCreateComplete.as_view(), name='signup_complete'),

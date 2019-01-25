@@ -56,9 +56,10 @@ def page4post(request):
     user=User.objects.get(id=user_id)
     user.photo_set.create(image=image,title=title,mode=mode)
 
-    return HttpResponseRedirect(reverse('walpapir:home'))#次に表示させるページの名前
+    return HttpResponseRedirect(reverse('walpapir:postdone'))#次に表示させるページの名前
 
-
+def postDone(request):
+    return render(request, 'walpapir/postDone.html')
 
 #They are debug functions.
 
