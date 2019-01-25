@@ -66,6 +66,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         help_text=_(
             'Designates whether the user can log into this admin site.'),
     )
+
     is_active = models.BooleanField(
         _('active'),
         default=True,
@@ -74,6 +75,7 @@ class User(AbstractBaseUser, PermissionsMixin):
             'Unselect this instead of deleting accounts.'
         ),
     )
+
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
 
     objects = UserManager()
@@ -138,16 +140,10 @@ class FreeMessages():
 
 
 from datetime import datetime
+
 class Photo(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='walpapir_image')#ファイルの名前
     title = models.CharField(max_length=30)
     time = models.DateTimeField(default=datetime.now)#自分で時間を設定する場合はdefaultはいらない。
     mode = models.NullBooleanField()#0:DESKTOP  1:MOBILE
-
-class samplePhoto(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='walpapir_image')
-    title = models.CharField(max_length=30)
-    time = models.DateTimeField(default=datetime.now)
-    mode = models.NullBooleanField()

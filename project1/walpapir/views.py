@@ -19,6 +19,7 @@ from django.shortcuts import render
 
 
 from .models import User,Photo
+
 #プロジェクトで使用しているUserモデルを取得
 User = get_user_model()
 
@@ -188,10 +189,12 @@ def search(request):
         })
 
     j=search.split()
+    
     for s in j:
         photo=photo.filter(title__contains=s)
 
     page_last=int(photo.count()/img)+1
+
     return render(request,'walpapir/searchResults.html',{
         'photo':photo[0+(img*(page-1)):img+(img*(page-1))],
         'page':page,
