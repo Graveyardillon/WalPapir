@@ -1,12 +1,54 @@
-{%for p in photo%}
-        <div align="center" style="float:left;" class="image_fild">
-          <div style="position:relative;margin:5px;width:190px;background:white;" class="image">
-            <span id="scale"></span>
-            <img src="{{p.image.url}}" style="width: 190px;height: 190px;border:solid 2px black;"  alt="{{p.title}}" oncontextmenu="return false;">
-            <div style="position:absolute;width:190px;background-color:rgba(0,0,0,0.7);bottom:6px;left:2px;display:none;" class="text">
-              <span style="color:white;" >title: {{p.title}}</span>
-            </div>
+{% extends './homeTemplate.html' %}
 
+{% load static %}
+
+{% block title %}{{Photo.title}}{% endblock %}
+
+{% block style %}
+
+a.active{
+  background-color: #3498db;
+  pointer-events: none;
+}
+
+li.slider{
+  width: 25%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #3498db;
+  z-index: 8;
+  transition: left 0.4s, background-color 0.4s;
+}
+
+{% endblock %}
+
+{% block mainContent %}
+
+
+<div id="wrap">
+  <div id="left-content">
+    <br><br><br><br><br>
+
+    {%for p in photo%}
+          <div align="center" style="float:left;" class="image_fild">
+            <div style="position:relative;margin:5px;width:190px;background:white;" class="image">
+              <span id="scale"></span>
+              <img src="{{p.image.url}}" style="width: 190px;height: 190px;border:solid 2px black;"  alt="{{p.title}}" oncontextmenu="return false;">
+              <div style="position:absolute;width:190px;background-color:rgba(0,0,0,0.7);bottom:6px;left:2px;display:none;" class="text">
+                <span style="color:white;" >title: {{p.title}}</span>
+              </div>
+            </div>
           </div>
-        </div>
-        {%endfor%}
+    {%endfor%}
+
+    <br><br><br><br><br>
+  </div>
+  <div id="right-content">
+    <br><br>
+  </div>
+</div>
+
+
+{% endblock %}

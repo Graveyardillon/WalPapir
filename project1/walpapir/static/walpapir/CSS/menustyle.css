@@ -320,6 +320,28 @@ a {
     z-index: 40;
   }
 
+  .searchButton{
+    display: inline-block;
+    position: absolute;
+    background-color: #3498db;
+    color: #fff;
+    transition: 0.5s;
+    padding: 10px;
+    height: 17px;
+    width: 20px;
+    right: 18px;
+    top: 18px;
+    font-size: 14px;
+    z-index: 41;
+    border-radius: 0 14px 14px 0;
+    border-color: #3498db;
+  }
+
+  .searchButton:hover {
+    background-color: #fff;
+    color: #3498db;
+  }
+
   /* containers */
   #wrap {
     display:flex;
