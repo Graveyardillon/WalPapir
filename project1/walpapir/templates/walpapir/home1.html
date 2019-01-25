@@ -22,21 +22,27 @@ li.slider{
 
 {% endblock %}
 
+<script type="text/javascript">
+
+  var img = new Array();
+
+  {% for samplephoto in samplePhoto %}
+    img.push()
+  {% endfor %}
+</script>
+
 {% block mainContent %}
 
     <div id="wrap">
       <div id="left-content">
         <br><br><br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br>
+
+        {% for showPhoto in samplePhoto %}
+
+
+
+        {% endfor %}
+
         <br><br><br><br><br>
       </div>
       <div id="right-content">

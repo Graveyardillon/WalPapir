@@ -142,7 +142,8 @@ $(function(){
 
   .effect.rightPointEffect {
     top: 1200px;
-    left: 38%;
+    left: 50%;
+    transform: translate(-50%);
     width: 120px;
     background-color: #0074e8;
     transition: all 0.2s linear 0s;
@@ -298,6 +299,7 @@ body {
 <!-- submission paper -->
 <form action="{%url 'walpapir:page4post'%}" method="POST" enctype="multipart/form-data">
 {% csrf_token %}
+  <input type="hidden" value="{{user.id}}" name="user">
   <div id="formPaperPNG">
     <div align="center"><br><b>Post Paper</b></div>
     <hr style="border:1px dashed #ccc">
@@ -308,7 +310,7 @@ body {
 
       <div id="input_infor">
         <span style="visibility:hidden;color:red;" id="error">error</span>
-        <div style="width:100%;height: 20%"><span class="font" id="font_image">Image:</span><input type="file" id="input_image" style="display:none" name="input">
+        <div style="width:100%;height: 20%"><span class="font" id="font_image">Image:</span><input type="file" id="input_image" style="display:none" name="image">
           <button class="casualButton" onclick="$('#input_image').click();" style="position: relative;left:10px" type="button"><i class="fas fa-ellipsis-h"></i>&nbsp;Choose File</button>
         </div>
         <div style="width:100%;height: 40%;">
@@ -333,17 +335,12 @@ body {
   <div class="container">
     <div class="buttonEffect">
       <button id="submit" type="submit" style="display:none"></button>
-      <button class="effect rightPointEffect" type="button" title="Post" id="button">
+      <button class="effect rightPointEffect" type="submit" title="Post" id="button" style="border:0;">
         Post</button>
       </div>
-
-  </div>
+    </div>
 </form>
 <!-- submission button -->
 
-<div id="right-content">
-  <br><br>
-</div>
-</div>
 
 {% endblock %}

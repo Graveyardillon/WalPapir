@@ -42,7 +42,7 @@ def prehome(request):
     return render(request, 'walpapir/prehome.html')
 
 def page4post(request):
-    if User.is_authenticated:
+    if not User.is_authenticated:
         return HttpResponseRedirect(reverse('walpapir:login'))
 
     if request.method=='GET':
@@ -51,12 +51,15 @@ def page4post(request):
     image=request.FILES['image']
     title=request.POST['title']
     mode=request.POST['radio']
+    user_id=request.POST['user']
 
-    User.photo_set.create(image=image,title=title,mode=mode)
+    user=User.objects.get(id=user_id)
+    user.photo_set.create(image=image,title=title,mode=mode)
 
-    return HttpResponseRedirect(reverse('walpapir:home'))#次に表示させるページの名前
+    return HttpResponseRedirect(reverse('walpapir:postdone'))#次に表示させるページの名前
 
-
+def postDone(request):
+    return render(request, 'walpapir/postDone.html')
 
 #They are debug functions.
 
@@ -160,7 +163,6 @@ class UserCreateComplete(generic.TemplateView):
                     return super().get(request, **kwargs)
 
         return HttpResponseBadRequest()
-
 
 photo=Photo.objects.all()
 img=4

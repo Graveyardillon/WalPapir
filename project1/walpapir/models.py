@@ -144,3 +144,10 @@ class Photo(models.Model):
     title = models.CharField(max_length=30)
     time = models.DateTimeField(default=datetime.now)#自分で時間を設定する場合はdefaultはいらない。
     mode = models.NullBooleanField()#0:DESKTOP  1:MOBILE
+
+class samplePhoto(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='walpapir_image')
+    title = models.CharField(max_length=30)
+    time = models.DateTimeField(default=datetime.now)
+    mode = models.NullBooleanField()

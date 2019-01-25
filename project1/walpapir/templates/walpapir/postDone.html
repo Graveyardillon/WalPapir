@@ -1,0 +1,42 @@
+{% extends './homeTemplate.html' %}
+
+{% block title %}HOME{% endblock %}
+
+{% block style %}
+
+a.active{
+  background-color: #3498db;
+  pointer-events: none;
+}
+
+li.slider{
+  width: 25%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #3498db;
+  z-index: 8;
+  transition: left 0.4s, background-color 0.4s;
+}
+
+#left-content {
+  width: 88%;
+  right: 6%;
+}
+
+{% endblock %}
+
+{% block mainContent %}
+
+    <div id="wrap">
+      <div id="left-content">
+        <br><br><br><br><br>
+        <br><br><br><br><br>
+        <p align="center">アップロードは正常に完了されました。</p>
+        <br><br><br><br><br>
+        <br><br><br><br><br>
+        <br><br><br><br><br>
+      </div>
+
+{% endblock %}
