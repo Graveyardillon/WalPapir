@@ -452,22 +452,6 @@
 
 {% block mainContent %}
 
-<script type="text/javascript">
-  $(function(){
-    const rpe = $('.rightPointEffect');
-    rpe.on('click', function(){
-      //check whether the user has enough point to redeem(1st)
-      if(parseInt({{User.get_point}}) >= 1000){
-        {{FreeMessages.validateShortMsg}}
-        location.href = "{% url 'walpapir:redeem_d' %}"
-      }else{
-        {{FreeMessages.errorShortMsg}}
-        location.href = "{% url 'walpapir:user_d' %}"
-      }
-    });
-  })
-</script>
-
 <button class="effectU rightPointEffect" type="button" href="{% url 'walpapir:redeem_d' %}">
   Redeem Points
 </button>
@@ -488,14 +472,8 @@
 
       <div class="sentenceBox">
 
-        <font size="6">{% block userName %}{{ User.get_point }}
-          {% if User.get_handle_name == null %}
-            NONAME
-          {% else %}
-            {{User.get_handle_name}}
-          {% endif %}
-          {% endblock %}
-          &nbsp;&nbsp;&nbsp;&nbsp;{{FreeMessages.getRdmErrorMsg1}}</font>
+        <font size="6">
+        </font>
         <br><br>
         <div id="fontAdjuster">Following:&nbsp;X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Follower:&nbsp;Y</div>
@@ -505,11 +483,7 @@
         <br><br>
         <font size="4">
           {% block description %}
-            {% if User.get_description == null %}
               No description
-            {% else %}
-              {{User.get_description}}
-            {% endif %}
           {% endblock %}
         </font>
       </div>

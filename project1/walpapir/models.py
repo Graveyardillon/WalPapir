@@ -102,15 +102,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         """Send an email to this user."""
         send_mail(subject, message, from_email, [self.email], **kwargs)
 
-    def get_point(self):
-        return self.point
-
-    def get_handle_name(self):
-        return self.handle_name
-
-    def get_description(self):
-        return self.description
-
     @property
     def username(self):
         """username属性のゲッター

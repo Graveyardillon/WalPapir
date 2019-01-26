@@ -165,6 +165,7 @@ class UserCreateComplete(generic.TemplateView):
 
         return HttpResponseBadRequest()
 
+
 photo=Photo.objects.all()
 img=4
 search=""
@@ -174,9 +175,6 @@ def search(request):
     global photo,img,search,page_last
     lists=request.GET
     search,page=lists["search"],int(lists["page"])
-
-
-
 
     if search=="":
         page_last=int(photo.count()/img)+1
@@ -189,7 +187,7 @@ def search(request):
         })
 
     j=search.split()
-    
+
     for s in j:
         photo=photo.filter(title__contains=s)
 
