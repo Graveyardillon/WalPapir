@@ -102,10 +102,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         """Send an email to this user."""
         send_mail(subject, message, from_email, [self.email], **kwargs)
 
-    def addPoint(self):
-        self.point += 1
-        self.pointCount += 1
-
     def get_point(self):
         return self.point
 
@@ -123,20 +119,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         メールアドレスを返す
         """
         return self.email
-
-
-class FreeMessages():
-
-    rdmErrorMsg1 = models.CharField(_('rdmErrorMsg1'), max_length=40, blank=True)
-
-    def validateShortMsg(self):
-        self.rdmErrorMsg1 = ""
-
-    def errorShortMsg(self):
-        self.rdmErrorMsg1 = "You don't have point enough to redeem!"
-
-    def getRdmErrorMsg1(self):
-        return rdmErrorMsg1
 
 
 from datetime import datetime

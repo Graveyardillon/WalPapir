@@ -335,12 +335,13 @@ a {
     font-size: 14px;
     z-index: 41;
     border-radius: 0 14px 14px 0;
-    border-color: #3498db;
+    border: 0;
   }
 
   .searchButton:hover {
     background-color: #fff;
     color: #3498db;
+    border-color: #3498db;
   }
 
   /* containers */
