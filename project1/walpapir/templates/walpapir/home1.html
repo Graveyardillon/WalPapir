@@ -22,21 +22,20 @@ li.slider{
 
 {% endblock %}
 
-<script type="text/javascript">
-
-  var img = new Array();
-
-  {% for i in Photo %}
-
-</script>
-
 {% block mainContent %}
 
     <div id="wrap">
       <div id="left-content">
         <br><br><br><br><br>
 
-        {% for photo in  %}
+        {% for p in photo %}
+
+          <img src="{{p.image.url}}" style="width:190px;height:190px;border:solid 2px black;" alt="{{p.title}}" oncontextmenu="return false;">
+          <div style="position:absolute;width:190px;background-color:rgba(0,0,0,0.7);bottom:6px;left:2px;display:none;" class="text">
+            <span style="color:white;" >title: {{p.title}}</span>
+          </div>
+
+        {% endfor %}
 
         <br><br><br><br><br>
       </div>

@@ -44,8 +44,11 @@ li.slider{
 #formPaperPNG{
   font-size: 35px;
   width: 700px;
-  left: 23%;
-  height: 400px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+  height: 430px;
   position: absolute;
   top: 250px;
   margin-bottom: 50px;
@@ -71,8 +74,8 @@ li.slider{
   width: 130%;
 }
 
-.effect.rightPointEffect {
-  top: 680px;
+.effect .rightPointEffect {
+  top: 750px;
 }
 
 #RightSideOfPaper p b {
@@ -84,13 +87,23 @@ li.slider{
 {% block mainContent %}
 <!-- submission paper -->
 
+<form action="{% url 'walpapir:HNRegister' %}" method="post" name="form1">
 <div id="formPaperPNG">
   <div id="LeftSideOfPaper">
 
   </div>
   <div id="RightSideOfPaper">
     <p align="left"><b>Registration Form</b></p>
-    <form action="#" method="post" name="form1">
+      <input type="text" name="handle_name" style="
+      font-size: 100%;
+      font-family: inherit;
+      border: none;
+      background-color: rgba(0,0,0,0);
+      width: 100%;
+      height: 39px;
+      "
+      placeholder="username" >
+      <br>
       {{ form.non_field_errors }}
       {% for field in form %}<br>
       <div class="form-group">
@@ -99,6 +112,7 @@ li.slider{
       <font size="3px">{{ field.errors }}</font>
       </div>
       {% endfor %}
+
       {% csrf_token %}
 
   </div>

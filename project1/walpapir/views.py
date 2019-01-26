@@ -27,8 +27,15 @@ def iv(request):
     return render(request, 'walpapir/imageView.html')
 
 # Create your views here.
+
+homePhoto = Photo.objects.all()
+
 def home(request):
-    return render(request, 'walpapir/home1.html')
+    global homePhoto
+
+    return render(request, 'walpapir/home1.html', {
+        'photo':homePhoto,
+    })
 
 def mobile(request):
     return render(request, 'walpapir/mobile.html')
@@ -86,7 +93,6 @@ class Login(LoginView):
     """ログインページ"""
     form_class = LoginForm
     template_name = 'walpapir/page4Login.html'
-
 
 class Logout(LoginRequiredMixin, LogoutView):
     """ログアウトページ"""
@@ -164,6 +170,14 @@ class UserCreateComplete(generic.TemplateView):
                     return super().get(request, **kwargs)
 
         return HttpResponseBadRequest()
+
+def registarUserName(request):
+    lists = request.POST
+    handle_name = lists["handle_name"]
+
+    User.handle_name = handle_name
+
+    return render(request, 'walpapir/user_create_done.html')
 
 
 photo=Photo.objects.all()

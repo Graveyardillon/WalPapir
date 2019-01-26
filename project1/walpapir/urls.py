@@ -48,5 +48,6 @@ urlpatterns = [
     path('search/',views.search,name='search'),
     path('ajax/',views.ajax,name="ajax"),
     path('iv/', views.iv, name="iv"),
+    path('registarUserName', views.registarUserName, name="HNRegister"),
 
 ]
