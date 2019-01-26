@@ -70,6 +70,14 @@ $(function(){
       })
     })
 
+
+//selectの変更時の処理
+$(function(){
+        $("#select").change(function(){
+          $("#submit").click();
+        })
+    });
+
 </script>
 {%endblock%}
 
@@ -152,12 +160,13 @@ body{
             <input type="text" class="search_dark" value="{{search}}" name="search">
           </div>
           <div style="height:100%;width:50%;float:right;position:relative;">
-            <select name="select" style="top:25%;height:50%;width:50%;position: relative;">
-              <option　value="new">新規</option>
-              <option value="popular">人気</option>
+            <select name="select" style="top:25%;height:50%;width:50%;position: relative;" id="select">
+              <option value="0">新しい順</option>
+              <option value="1" {%if select == 1%} selected="selected" {%endif%}>古い順</option>
             </select>
           </div>
         </div>
+        <button type="submit" style="display:none" id="submit"></button>
       </form>
         <hr style="border:1px dashed #ccc">
         <div style="width:100%;float: left;" id="fild">

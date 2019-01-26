@@ -174,7 +174,12 @@ page_last=0
 def search(request):
     global photo,img,search,page_last
     lists=request.GET
-    search,page=lists["search"],int(lists["page"])
+    search,page,select=lists["search"],int(lists["page"]),lists["select"]
+
+    if(select=="0"):
+        photo=photo.order_by("-time")
+    elif(select=="1"):
+        photo=photo.order_by("time")
 
     if search=="":
         page_last=int(photo.count()/img)+1
@@ -184,6 +189,7 @@ def search(request):
             'search':search,
             'page_last':page_last,
             'count':photo.count(),
+            'select':int(select),
         })
 
     j=search.split()
