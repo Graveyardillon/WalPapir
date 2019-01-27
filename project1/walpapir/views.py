@@ -29,6 +29,8 @@ def iv(request):
 # Create your views here.
 
 homePhoto = Photo.objects.all()
+mobilePhoto = Photo.objects.all()
+desktopPhoto = Photo.objects.all()
 
 def home(request):
     global homePhoto
@@ -38,10 +40,18 @@ def home(request):
     })
 
 def mobile(request):
-    return render(request, 'walpapir/mobile.html')
+    global mobilePhoto
+
+    return render(request, 'walpapir/mobile.html', {
+        'photo':mobilePhoto,
+    })
 
 def desktop(request):
-    return render(request, 'walpapir/desktop.html')
+    global desktopPhoto
+
+    return render(request, 'walpapir/desktop.html', {
+        'photo':desktopPhoto,
+    })
 
 def how2use(request):
     return render(request, 'walpapir/how2use.html')
@@ -190,7 +200,7 @@ def search(request):
     lists=request.GET
     search,page,select=lists["search"],int(lists["page"]),lists["select"]
     photo=Photo.objects.all()
-    
+
     if(select=="0"):
         photo=photo.order_by("-time")
     elif(select=="1"):
