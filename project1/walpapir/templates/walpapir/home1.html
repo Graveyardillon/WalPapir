@@ -4,6 +4,53 @@
 
 {% block title %}HOME{% endblock %}
 
+{% block additionalLinks %}
+
+<script type="text/javscript">
+
+  $(function(){
+    var wid
+    if($(window).width()>800){
+    wid = $(window).width()*0.6;
+    }else{
+      wid = $(window).width()*0.88;
+    }
+    var fil = Math.floor(wid/200);
+    fil = Math.floor(100/fil);
+    fil = fil+"%";
+    $(".image_fild").css("width",fil);
+
+    $(window).resize(function(){
+    var wid
+    if($(window).width()>800){
+      wid = $(window).width()*0.6;
+    }else{
+      wid = $(window).width()*0.88;
+    }
+    var fil = Math.floor(wid/200);
+    fil = Math.floor(100/fil);
+    fil = fil+"%";
+    $(".image_fild").css("width",fil);
+  })
+})
+
+
+$(function(){
+  $(".image").mouseover(function(){
+    $(this).find("img").css("border","solid 2px blue");
+    $(this).find("div").css("display","inline");
+  }).mouseout(function(){
+    $(this).find("img").css("border","solid 2px black");
+    $(this).find("div").css("display","none");
+  })
+})
+
+var page = 1;
+
+</script>
+
+{% endblock %}
+
 {% block style %}
 
 a.active{
@@ -20,6 +67,25 @@ li.slider{
   background-color: #3498db;
   z-index: 8;
   transition: left 0.4s, background-color 0.4s;
+}
+
+body{
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+}
+
+.page{
+  color:blue;
+  font-size:1.5em;
+  margin:auto 5px;
+}
+
+.page:hover{
+  color:turquoise;
+}
 
 #scale{
    background: url("{%static 'walpapir/UI/scale.png'%}");
@@ -30,7 +96,6 @@ li.slider{
    margin:2px;
 }
 
-}
 
 {% endblock %}
 
@@ -40,15 +105,21 @@ li.slider{
       <div id="left-content">
         <br><br><br><br><br>
 
+        <div style="width:100%;float: left;" id="fild">
         {% for p in photo %}
 
-        <span id="scale"></span>
-          <img src="{{p.image.url}}" style="width:190px;height:190px;border:solid 2px black;" alt="{{p.title}}" oncontextmenu="return false;">
-          <div style="position:absolute;width:190px;background-color:rgba(0,0,0,0.7);bottom:6px;left:2px;display:none;" class="text">
-            <span style="color:white;" >title: {{p.title}}</span>
+        <div align="center" style="float:left;" class="image_fild">
+          <div style="position:relative;margin:5px;width:190px;background:white;" class="image">
+            <span id="scale"></span>
+            <img src="{{p.image.url}}" style="width: 190px;height: 190px;border:solid 2px black;"  alt="{{p.title}}" oncontextmenu="return false;">
+            <div style="position:absolute;width:190px;background-color:rgba(0,0,0,0.7);bottom:6px;left:2px;display:none;" class="text">
+              <span style="color:white;" >{{p.title}}</span>
+            </div>
           </div>
+        </div>
 
         {% endfor %}
+        </div>
 
         <br><br><br><br><br>
       </div>
