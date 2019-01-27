@@ -181,7 +181,7 @@ def registarUserName(request):
 
 
 photo=Photo.objects.all()
-img=4
+img=40
 search=""
 page_last=0
 
@@ -189,7 +189,8 @@ def search(request):
     global photo,img,search,page_last
     lists=request.GET
     search,page,select=lists["search"],int(lists["page"]),lists["select"]
-
+    photo=Photo.objects.all()
+    
     if(select=="0"):
         photo=photo.order_by("-time")
     elif(select=="1"):
