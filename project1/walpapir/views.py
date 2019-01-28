@@ -191,7 +191,7 @@ def registarUserName(request):
 
 
 photo=Photo.objects.all()
-img=40
+img=16
 search=""
 page_last=0
 

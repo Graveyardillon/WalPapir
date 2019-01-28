@@ -51,7 +51,7 @@ $(function(){
       $("#button").click(function(){
         page++;
         $.ajax({
-          url:"{%url 'walpapir:ajax'%}"+"?search={{search}}&page="+page,
+          url:"{%url 'walpapir:ajax'%}"+"?search={{search}}&select=0&page="+page,
           method:"GET",
           dataType:"text",
         }).done(function(data){
