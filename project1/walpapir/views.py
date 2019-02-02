@@ -1,18 +1,18 @@
 #For registration
 from django.conf import settings
 from django.contrib.auth import get_user_model
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.views import (
     LoginView, LogoutView
 )
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.signing import BadSignature, SignatureExpired, loads, dumps
 from django.http import Http404, HttpResponseBadRequest,HttpResponse,HttpResponseRedirect
-from django.shortcuts import redirect
+from django.shortcuts import redirect, resolve_url
 from django.template.loader import get_template
 from django.views import generic
 from .forms import (
-    LoginForm, UserCreateForm
+    LoginForm, UserCreateForm, UserUpdateForm
 )
 from django.urls import reverse
 from django.shortcuts import render
@@ -178,14 +178,14 @@ class UserCreateComplete(generic.TemplateView):
 
         return HttpResponseBadRequest()
 
-def registarUserName(request):
+"""def registarUserName(request):
     lists = request.POST
     handle_name = lists["handle_name"]
 
     User.handle_name = handle_name
 
     return render(request, 'walpapir/user_create_done.html')
-
+"""
 
 photo=Photo.objects.all()
 img=16
@@ -233,3 +233,22 @@ def ajax(request):
     global photo,img,search,page_last
     page=int(request.GET["page"])
     return HttpResponse(render(request,'walpapir/image.html',{'photo':photo[0+(img*(page-1)):img+(img*(page-1))],}))
+
+class OnlyYouMixin(UserPassesTestMixin):
+    raise_exception = True
+
+    def test_func(self):
+        user = self.request.user
+        return user.pk == self.kwargs['pk'] or user.is_superuer
+
+class UserDetail(OnlyYouMixin, generic.DetailView):
+    model = User
+    template_name = 'userPage.html'
+
+class UserUpdate(OnlyYouMixin, generic.UpdateView):
+    model = User
+    form_class = UserUpdateForm
+    template_name = 'userEdit_d.html'
+
+    def get_success_url(self):
+        return resolve_url('userPage', pk=self.kwargs['pk'])

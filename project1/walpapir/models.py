@@ -107,9 +107,9 @@ class User(AbstractBaseUser, PermissionsMixin):
         """username属性のゲッター
 
         他アプリケーションが、username属性にアクセスした場合に備えて定義
-        メールアドレスを返す
+        handle_nameを返す
         """
-        return self.email
+        return self.handle_name
 
 
 from datetime import datetime

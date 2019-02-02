@@ -48,7 +48,7 @@ li.slider{
   transform: translate(-50%, 0);
   -moz-transform: translate(-50%, 0);
   -webkit-transform: translate(-50%, 0);
-  height: 430px;
+  height: 490px;
   position: absolute;
   top: 250px;
   margin-bottom: 50px;
@@ -75,7 +75,7 @@ li.slider{
 }
 
 .effect .rightPointEffect {
-  top: 750px;
+  top: 950px;
 }
 
 #RightSideOfPaper p b {
@@ -86,15 +86,13 @@ li.slider{
 
 {% block mainContent %}
 <!-- submission paper -->
-
-<form action="{% url 'walpapir:HNRegister' %}" method="post" name="form1">
+<form action="#" name="form1" method="post">
 <div id="formPaperPNG">
   <div id="LeftSideOfPaper">
-
   </div>
   <div id="RightSideOfPaper">
     <p align="left"><b>Registration Form</b></p>
-      <input type="text" name="handle_name" style="
+  <!--    <input type="text" name="handle_name" style="
       font-size: 100%;
       font-family: inherit;
       border: none;
@@ -103,7 +101,7 @@ li.slider{
       height: 39px;
       "
       placeholder="username" >
-      <br>
+      <br> -->
       {{ form.non_field_errors }}
       {% for field in form %}<br>
       <div class="form-group">
@@ -123,11 +121,10 @@ li.slider{
 <!-- submission button -->
 <div class="container">
   <div class="buttonEffect">
-      <a align="center"class="effect rightPointEffect" href="javascript:form1.submit()">Sign up</a>
+      <a align="center"class="effect rightPointEffect" href="javascript:form1.submit()" style="top: 800px;">Sign up</a>
     </div>
-  </form>
 </div>
-
+</form>
 <!-- submission button -->
 
 {% endblock %}
