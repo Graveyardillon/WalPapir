@@ -65,14 +65,24 @@ body {
   width: 100%;
 }
 
-#prelogo {
-  width: auto;
-  height: auto;
-  position: absolute;
-  top: 39%;
-  right: 75%;
-  cursor: pointer;
-  z-index: 2;
+@media screen and (min-width:1600px){
+
+  #prelogo {
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 40%;
+    right: 75%;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+}
+
+@media screen and (max-width:1599px){
+  #prelogo {
+    display:none;
+  }
 }
 
 .prelogoword {
@@ -87,6 +97,11 @@ body {
   color: #fff;
   cursor: pointer;
   z-index: 3;
+  transition: 0.8s;
+}
+
+.prelogoword:hover {
+  color: #000;
 }
 
 .upBox {
