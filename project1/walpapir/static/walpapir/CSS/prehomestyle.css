@@ -69,7 +69,7 @@ body {
   width: auto;
   height: auto;
   position: absolute;
-  top: 38%;
+  top: 39%;
   right: 75%;
   cursor: pointer;
   z-index: 2;
@@ -90,7 +90,7 @@ body {
 }
 
 .upBox {
-  
+
 }
 
 @keyframes logoAnim {

@@ -37,6 +37,7 @@ urlpatterns = [
     path('mobile/', views.mobile, name='mobile'),
     #userpage and several other pages needs some updates
     path('howToUse/', views.how2use, name='how2use'),
+    path('prehome/', views.prehome, name='prehome'),
     path('login/', views.Login.as_view(), name='login'),
     path('logout/', views.Logout.as_view(), name='logout'),
     path('prehome/', views.prehome, name='prehome'),
