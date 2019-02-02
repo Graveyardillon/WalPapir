@@ -5,6 +5,16 @@
 {%block additionalLinks %}
 <script type="text/javascript">
 
+$(function img(){
+  $(".image").mouseover(function(){
+    $(this).find("img").css("border","solid 2px blue");
+    $(this).find("div").css("display","inline");
+  }).mouseout(function(){
+    $(this).find("img").css("border","solid 2px black");
+    $(this).find("div").css("display","none");
+  })
+})
+
 
 $(function(){
   var wid
@@ -66,6 +76,15 @@ $(function(){
           fil = Math.floor(100/fil);
           fil = fil+"%";
           $(".image_fild").css("width",fil);
+
+          $(".image").mouseover(function(){
+            $(this).find("img").css("border","solid 2px blue");
+            $(this).find("div").css("display","inline");
+          }).mouseout(function(){
+            $(this).find("img").css("border","solid 2px black");
+            $(this).find("div").css("display","none");
+          })
+
         }).find()
       })
     })
@@ -140,7 +159,7 @@ body{
   width: 70%;
   height: 50%;
   font-size: 19px;
-  z-index: 40;
+ 
   color:#ccc;
   float:right;
 }
