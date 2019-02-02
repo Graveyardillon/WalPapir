@@ -57,6 +57,8 @@ def prehome(request):
     return render(request, 'walpapir/prehome.html')
 
 def page4post(request):
+
+    #ログインしてないと入れない
     if not User.is_authenticated:
         return HttpResponseRedirect(reverse('walpapir:login'))
 
