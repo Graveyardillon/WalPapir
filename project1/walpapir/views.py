@@ -28,26 +28,23 @@ def iv(request):
 
 # Create your views here.
 
-homePhoto = Photo.objects.all()
-mobilePhoto = Photo.objects.all()
-desktopPhoto = Photo.objects.all()
 
 def home(request):
-    global homePhoto
+    homePhoto = Photo.objects.all()
 
     return render(request, 'walpapir/home1.html', {
         'photo':homePhoto,
     })
 
 def mobile(request):
-    global mobilePhoto
+    mobilePhoto = Photo.objects.all()
 
     return render(request, 'walpapir/mobile.html', {
         'photo':mobilePhoto,
     })
 
 def desktop(request):
-    global desktopPhoto
+    desktopPhoto = Photo.objects.all()
 
     return render(request, 'walpapir/desktop.html', {
         'photo':desktopPhoto,
