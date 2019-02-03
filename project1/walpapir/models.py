@@ -1,5 +1,4 @@
 from django.db import models
-
 # Create your models here.
 from django.db import models
 from django.core.mail import send_mail
@@ -45,7 +44,7 @@ class UserManager(BaseUserManager):
         return self._create_user(email, password, **extra_fields)
 
 
-class User(AbstractBaseUser, PermissionsMixin):
+class User(AbstractBaseUser, PermissionsMixin, models.Model):
     """カスタムユーザーモデル."""
 
     email = models.EmailField(_('email address'), unique=True)
@@ -53,7 +52,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(_('last name'), max_length=150, blank=True)
 
     handle_name = models.CharField(max_length = 20, blank=True)
-    self_introduction = models.TextField(blank=True)
+    bio = models.TextField(blank=True)
 
     #point has user point.
     point = models.IntegerField(default=0)
@@ -120,3 +119,8 @@ class Photo(models.Model):
     title = models.CharField(max_length=30)
     time = models.DateTimeField(default=datetime.now)#自分で時間を設定する場合はdefaultはいらない。
     mode = models.NullBooleanField()#0:DESKTOP  1:MOBILE
+
+class ProfilePicture(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='walpapir_prof')
+    time = models.DateTimeField(default=datetime.now)
