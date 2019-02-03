@@ -55,4 +55,6 @@ urlpatterns = [
     path('user/<int:pk>', views.UserDetail.as_view(), name='user_detail'),
     path('user_edit/<int:pk>', views.UserUpdate.as_view(), name='user_update'),
 
+    #imageView
+    path('image_view/', views.imageView, name='image_view'),
 ]

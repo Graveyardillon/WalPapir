@@ -78,6 +78,9 @@ def page4post(request):
 def postDone(request):
     return render(request, 'walpapir/postDone.html')
 
+def imageView(request):
+    return render(request, 'walpapir/imageView.html')
+
 #They are debug functions.
 
 def user_d(request):
@@ -251,12 +254,12 @@ class OnlyYouMixin(UserPassesTestMixin):
 
 class UserDetail(OnlyYouMixin, generic.DetailView):
     model = User
-    template_name = 'userPage.html'
+    template_name = 'walpapir/userPage.html'
 
 class UserUpdate(OnlyYouMixin, generic.UpdateView):
     model = User
     form_class = UserUpdateForm
-    template_name = 'userEdit_d.html'
+    template_name = 'walpapir/userEdit_d.html'
 
     def get_success_url(self):
         return resolve_url('userPage', pk=self.kwargs['pk'])

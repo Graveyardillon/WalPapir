@@ -109,7 +109,9 @@ body{
         <div align="center" style="float:left;" class="image_fild">
           <div style="position:relative;margin:5px;width:190px;background:white;" class="image">
             <span id="scale"></span>
+            <a href="{% url 'walpapir:image_view' %}">
             <img src="{{p.image.url}}" style="width: 190px;height: 190px;border:solid 2px black;"  alt="{{p.title}}" oncontextmenu="return false;">
+            </a>
             <div style="position:absolute;width:190px;background-color:rgba(0,0,0,0.7);bottom:6px;left:2px;display:none;" class="text">
               <span style="color:white;" >{{p.title}}</span>
             </div>
