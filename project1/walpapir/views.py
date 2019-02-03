@@ -18,7 +18,7 @@ from django.urls import reverse
 from django.shortcuts import render
 
 
-from .models import User,Photo
+from .models import User,Photo,ProfilePicture
 
 #プロジェクトで使用しているUserモデルを取得
 User = get_user_model()
@@ -81,7 +81,13 @@ def postDone(request):
 #They are debug functions.
 
 def user_d(request):
-    return render(request, 'walpapir/userPage.html')
+    user_photo = Photo.objects.all()
+    icon_photo = ProfilePicture.objects.all()
+
+    return render(request, 'walpapir/userPage.html', {
+        'photo': user_photo,
+        'icon': icon_photo,
+    })
 
 def redeem_d(request):
     return render(request, 'walpapir/page4Redeem.html')

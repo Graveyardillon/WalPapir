@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-  {{user.handle_name}}
+  {{user.handle_name}}'s userpage
 {% endblock %}
 
 {% block basicLinks %}
@@ -547,9 +547,12 @@ $(function(){
 
     <div class="contentBoxUnder">
       <div class="postContent">{% block postContent %}
+
+        <div style="width:100%;float:left;" id="fild">
         {% for p in photo %}
 
-        {% if photo_user == user %}
+        {% if photo.user == user %}
+
         <div align="center" style="float:left;" class="image_fild">
           <div style="position:relative;margin:5px;width:190px;background:white;" class="image">
             <span id="scale"></span>
@@ -559,9 +562,11 @@ $(function(){
             </div>
           </div>
         </div>
+        
         {% endif %}
 
         {% endfor %}
+        </div>
       {% endblock %}</div>
       <div class="favContent">{% block favContent %}
         favcontent
