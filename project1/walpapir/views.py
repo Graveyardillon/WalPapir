@@ -15,17 +15,13 @@ from .forms import (
     LoginForm, UserCreateForm, UserUpdateForm
 )
 from django.urls import reverse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 
-from .models import User,Photo,ProfilePicture
+from .models import User, Photo, ProfilePicture
 
 #プロジェクトで使用しているUserモデルを取得
 User = get_user_model()
-
-def iv(request):
-    return render(request, 'walpapir/imageView.html')
-
 # Create your views here.
 
 
@@ -77,9 +73,6 @@ def page4post(request):
 
 def postDone(request):
     return render(request, 'walpapir/postDone.html')
-
-def imageView(request):
-    return render(request, 'walpapir/imageView.html')
 
 #They are debug functions.
 
@@ -263,3 +256,8 @@ class UserUpdate(OnlyYouMixin, generic.UpdateView):
 
     def get_success_url(self):
         return resolve_url('userPage', pk=self.kwargs['pk'])
+
+def imageView(request, photo_id):
+    return render(request, 'walpapir/imageView.html', {
+        'photo': Photo,
+    })

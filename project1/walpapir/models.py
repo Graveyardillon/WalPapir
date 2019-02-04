@@ -52,7 +52,7 @@ class User(AbstractBaseUser, PermissionsMixin, models.Model):
     last_name = models.CharField(_('last name'), max_length=150, blank=True)
 
     handle_name = models.CharField(max_length = 20, blank=True)
-    bio = models.TextField(blank=True)
+    bio = models.CharField(blank=True, default='bio', max_length=300)
 
     #point has user point.
     point = models.IntegerField(default=0)

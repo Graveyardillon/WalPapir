@@ -26,7 +26,7 @@
 
         <div class="sentenceBox">
           <font size="6">{% block userName %}
-              <input type="text" class="editText" name="handle_name" placeholder="{% if User.get_handle_name != null %}{{User.get_handle_name}}{% else %}NONAME{% endif %}">
+              <input type="text" class="editText" name="handle_name" placeholder="{{user.handle_name}}">
             {% endblock %}
             &nbsp;&nbsp;&nbsp;&nbsp;{{FreeMessages.getRdmErrorMsg1}}</font>
           <br><br>
@@ -38,18 +38,18 @@
           <br><br>
           <font size="4">
             {% block description %}
-              <input type="textarea" placeholder="{% if User.get_description != null %}{{User.get_description}}{% else %}bio{% endif %}" class="editText" name="userDescription">
+              <input type="textarea" placeholder="{{user.bio}}" class="editText" name="userDescription">
             {% endblock %}
 
             <div class="container">
               <div class="buttonEffect">
-                <button class="effect rightPointEffect" style="
+                <span class="effect rightPointEffect" style="
                 position: relative;
                 top: 40px;
                 left: 20%;
                 z-index: 120;"
                 type="submit" title="Apply">
-                  Apply</button>
+                  Apply</span>
                 </div>
             </div>
         </font>
