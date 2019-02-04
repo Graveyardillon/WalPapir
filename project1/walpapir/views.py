@@ -257,7 +257,10 @@ class UserUpdate(OnlyYouMixin, generic.UpdateView):
     def get_success_url(self):
         return resolve_url('userPage', pk=self.kwargs['pk'])
 
-def imageView(request, photo_id):
-    return render(request, 'walpapir/imageView.html', {
-        'photo': Photo,
-    })
+class ImageView(generic.TemplateView):
+    template_name = 'walpapir/imageView.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ImageView, self).get_context_data(**kwargs)
+        context['photo'] = Photo.objects.get(pk=self.kwargs.get('pk'))
+        return context
