@@ -120,6 +120,22 @@ class Photo(models.Model):
     time = models.DateTimeField(default=datetime.now)#自分で時間を設定する場合はdefaultはいらない。
     mode = models.NullBooleanField()#0:DESKTOP  1:MOBILE
 
+    '''def previousPhotoID(self):
+        if self.id != 1:
+            pre = self.id-1
+        else:
+            pre = -1
+
+        return pre
+
+    def nextPhotoID(self):
+        if self.id != 1:
+            next = self.id+1
+        else:
+            next = -1
+
+        return next'''
+
 class ProfilePicture(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='walpapir_prof')
