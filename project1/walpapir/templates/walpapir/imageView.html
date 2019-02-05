@@ -22,13 +22,15 @@ li.slider{
 }
 
 #left-content {
+  border-radius: 12px;
+  font-family: "Roboto Slab", sans-serif;
   width: 80%;
   position: absolute;
   left: 6%;
   top: 170px;
   background-image:  url("{% static 'walpapir/UI/paper.png' %}");
   text-align: center;
-  border-radius: 12px;
+  padding-bottom: 70px;
 }
 
 #right-content {
@@ -38,6 +40,7 @@ li.slider{
   top: 250px;
   background-image: url("{% static 'walpapir/UI/paper.png' %}");
   border-radius: 12px;
+
   display: none;
 }
 
@@ -51,15 +54,17 @@ li.slider{
 
     <div id="wrap">
       <div id="left-content">
-        <br><br><br><br><br>
+        <br><br><br>
         <div id="previousButton">
           <i class="fas fa-caret-left"></i>
         </div>
         <div id="nextButton">
           <i class="fas fa-caret-right"></i>
         </div>
-        <br><br><br><br><br>
-
+        <div style="font-size:40px;"><p align="center">{{photo.title}}</p></div>
+        <hr style="border: 0.5px solid #ccc">
+        <br><br><br>
+        <img src="{{photo.image.url}}" style="border:solid 1px black">
         <br><br><br><br><br>
       </div>
 
