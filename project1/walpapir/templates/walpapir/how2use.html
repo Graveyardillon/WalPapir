@@ -31,6 +31,7 @@ $(document).ready(function() {
 
 {% block style %}
 
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+1p&subset=japanese');
 a.active{
   background-color: #3498db;
   pointer-events: none;
@@ -93,6 +94,8 @@ body {
   height: auto;
   width: auto;
   border-radius: 20px;
+  font-family: "Roboto Slab", "M PLUS 1p", sans-serif;
+  color: #222;
 }
 
 {% endblock %}
@@ -102,7 +105,13 @@ body {
 <div id='multiscroll'>
   <div class="ms-left">
     <div class="ms-section mleft1">
-      <div class="contentPaper"></div>
+      <div class="contentPaper">
+        <p align="center"><span style="font-size:50px;">平等なチャンス</span><br>
+        <br><br><br>
+        <span style="font-size:25px;">
+        どんなユーザーでも平等に写真を公開できます。<br>
+      興味のあるジャンル、探しているジャンルごとに表示されるので<br>人気にかかわらず自分の写真を見てもらうことができます。
+      </span></p></div>
     </div>
     <div class="ms-section mleft2">
 
