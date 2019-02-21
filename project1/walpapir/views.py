@@ -23,6 +23,7 @@ import os.path
 from .models import User, Photo
 
 
+
 #プロジェクトで使用しているUserモデルを取得
 User = get_user_model()
 # Create your views here.
@@ -80,14 +81,12 @@ def postDone(request):
 #They are debug functions.
 
 def user_d(request):
-
     user_photo = Photo.objects.all()
-
-
     return render(request, 'walpapir/userPage.html', {
         'photo': user_photo,
         
     })
+
 
 
 def redeem_d(request):

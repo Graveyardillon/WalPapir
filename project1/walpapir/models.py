@@ -139,3 +139,4 @@ class Photo(models.Model):
 
         return next'''
 
+
