@@ -5,7 +5,7 @@
     position: absolute;
     color: #767676;
     font-size: 130px;
-    margin-top: 60px;
+    top: 280px;
     left: 20px;
   }
 
@@ -21,7 +21,7 @@
     position: absolute;
     color: #767676;
     font-size: 130px;
-    margin-top: 60px;
+    top: 280px;
     right: 20px;
   }
 

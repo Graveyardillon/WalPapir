@@ -48,11 +48,13 @@ urlpatterns = [
     path('signup/complete/<token>/', views.UserCreateComplete.as_view(), name='signup_complete'),
     path('search/',views.search,name='search'),
     path('ajax/',views.ajax,name="ajax"),
-    path('iv/', views.iv, name="iv"),
     #path('registarUserName', views.registarUserName, name="HNRegister"),
 
     #user pages
     path('user/<int:pk>', views.UserDetail.as_view(), name='user_detail'),
     path('user_edit/<int:pk>', views.UserUpdate.as_view(), name='user_update'),
+
+    #imageView
+    path('image/<int:pk>', views.ImageView.as_view(), name='image_view'),
 
 ]

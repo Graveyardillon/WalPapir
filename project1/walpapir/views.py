@@ -15,17 +15,16 @@ from .forms import (
     LoginForm, UserCreateForm, UserUpdateForm
 )
 from django.urls import reverse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
+import os
+import os.path
 
-from .models import User,Photo
+from .models import User, Photo
+
 
 #プロジェクトで使用しているUserモデルを取得
 User = get_user_model()
-
-def iv(request):
-    return render(request, 'walpapir/imageView.html')
-
 # Create your views here.
 
 
@@ -81,13 +80,40 @@ def postDone(request):
 #They are debug functions.
 
 def user_d(request):
-    return render(request, 'walpapir/userPage.html')
+
+    user_photo = Photo.objects.all()
+
+
+    return render(request, 'walpapir/userPage.html', {
+        'photo': user_photo,
+        
+    })
+
 
 def redeem_d(request):
     return render(request, 'walpapir/page4Redeem.html')
 
 def userEdit_d(request):
-    return render(request, 'walpapir/userEdit_d.html')
+    if request.method=="GET":
+        return render(request, 'walpapir/userEdit_d.html')
+
+    user_id =request.POST["id"]
+    user=User.objects.get(id=user_id)
+
+    if "image" in request.FILES:
+        if user.profilepicture.name != "profile_image/180x120.jpeg":
+            a=os.path.join(settings.MEDIA_ROOT,user.profilepicture.name)
+            os.remove(a)
+
+        user.profilepicture=request.FILES["image"]
+        user.save()
+
+    user_photo = Photo.objects.all()
+    
+    return render(request, 'walpapir/userPage.html', {
+        'photo': user_photo,
+        
+    })
 
 def userCreateComplete_d(request):
     return render(request, 'walpapir/user_create_complete_d.html')
@@ -245,12 +271,31 @@ class OnlyYouMixin(UserPassesTestMixin):
 
 class UserDetail(OnlyYouMixin, generic.DetailView):
     model = User
-    template_name = 'userPage.html'
+    template_name = 'walpapir/userPage.html'
 
 class UserUpdate(OnlyYouMixin, generic.UpdateView):
     model = User
     form_class = UserUpdateForm
-    template_name = 'userEdit_d.html'
+    template_name = 'walpapir/userEdit_d.html'
 
     def get_success_url(self):
         return resolve_url('userPage', pk=self.kwargs['pk'])
+
+
+i = 0
+
+
+class ImageView(generic.TemplateView):
+    template_name = 'walpapir/imageView.html'
+
+    def get_context_data(self, **kwargs):
+        global i
+        context = super(ImageView, self).get_context_data(**kwargs)
+        context['photo'] = Photo.objects.get(pk=self.kwargs.get('pk'))
+
+        while(Photo.objects.get(pk=self.kwargs.get('pk')+i) != Photo.objects.get(pk=self.kwargs.get('pk'))):
+            i = i + 1
+
+        context['next'] = i + self.kwargs.get('pk')
+
+        return context

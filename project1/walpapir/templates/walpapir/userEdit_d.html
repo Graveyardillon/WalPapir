@@ -9,24 +9,73 @@
   {% endif %}
 {% endblock %}
 
+{% block additionalStyles %}
 
+#profile:hover{
+  cursor:pointer;
+}
+
+{% endblock %}
+
+{%block javascript%}
+<script type="text/javascript">
+var image=0;
+
+$(function(){
+  $("#picture").change(
+    function(){
+      if(!this.files.length ) {
+          return;
+      }
+      var file = $(this).prop('files')[0];//[0]はリストだから。　filesはjQueryの定数？なのでpropを使う
+
+      var fr = new FileReader();
+      if(file.type.match(/image/)){
+      fr.onload = function() {
+          $('#profile').attr('src', fr.result).css('display','inline');//srcはhtmlの属性なのでattrを使う
+          image=0;
+      }}else{
+        $('#profile').attr('src', "" );//srcはhtmlの属性なのでattrを使う
+        image=1;
+      }
+      fr.readAsDataURL(file);
+  })
+})
+
+$(function(){
+  $("#userEdit").submit(function(){
+    if(image==1){
+      return false;
+    }
+  })
+})
+
+</script>
+{%endblock%}
 
 {% block mainContent %}
 <div id="wrap">
 
   <div id="flexibleBox">
-    <form action="#" method="post" name="userEdit">
+    <form action="{%url 'walpapir:userEdit_d'%}" enctype="multipart/form-data" method="post" name="userEdit" id="userEdit">
       {% csrf_token %}
 
       <div class="notContentBox">
 
         <div class="iconBox">{% block iconBox %}
-          <input type="image" src="{% static 'walpapir/180x120.jpeg' %}"/>
+            
+              
+              <img id="profile" onmousedown="return false;" src="{{user.profilepicture.url}}" onclick="$('#picture').click();">
+              <input type="file" style="display:none;" id="picture" name="image">
+              <input type="hidden" value="{{user.id}}" name="id">
+              </form>
+          
+
         {% endblock %}</div>
 
         <div class="sentenceBox">
           <font size="6">{% block userName %}
-              <input type="text" class="editText" name="handle_name" placeholder="{% if User.get_handle_name != null %}{{User.get_handle_name}}{% else %}NONAME{% endif %}">
+              <input type="text" class="editText" name="handle_name" placeholder="{{user.handle_name}}">
             {% endblock %}
             &nbsp;&nbsp;&nbsp;&nbsp;{{FreeMessages.getRdmErrorMsg1}}</font>
           <br><br>
@@ -38,7 +87,7 @@
           <br><br>
           <font size="4">
             {% block description %}
-              <input type="textarea" placeholder="{% if User.get_description != null %}{{User.get_description}}{% else %}bio{% endif %}" class="editText" name="userDescription">
+              <input type="textarea" placeholder="{{user.bio}}" class="editText" name="userDescription">
             {% endblock %}
 
             <div class="container">
@@ -48,8 +97,9 @@
                 top: 40px;
                 left: 20%;
                 z-index: 120;"
-                type="submit" title="Apply">
+                type="submit" title="Apply" id="apply">
                   Apply</button>
+
                 </div>
             </div>
         </font>

@@ -85,7 +85,7 @@
           MOBILE</a></li>
 
       {% if user.is_authenticated %}
-      <li><a href="{% url 'walpapir:user_d' %}">
+      <li><a href="{% url 'walpapir:user_detail' user.pk %}">
           USER</a></li>
       {% else %}
       <li><a href="{% url 'walpapir:login' %}">

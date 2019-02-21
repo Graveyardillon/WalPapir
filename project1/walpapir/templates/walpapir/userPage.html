@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-  {{user.handle_name}}
+  {{user.handle_name}}'s userpage
 {% endblock %}
 
 {% block basicLinks %}
@@ -85,8 +85,9 @@
     position: absolute;
     top: 50px;
     left: 12%;
-    height: 180px;
-    width: 120px;
+    width:  180px;      
+    height: 180px; 
+     
   }
   .sentenceBox {
     position: absolute;
@@ -261,6 +262,14 @@
     width: 100%;
     height: 39px;
   }
+
+  #profile{
+    border-radius:  50% ;  
+    width:  180px;      
+    height: 180px;  
+  }
+
+  
 }
 
 
@@ -329,8 +338,8 @@
     position: absolute;
     top: 50px;
     left: 12%;
-    height: 180px;
-    width: 120px;
+    width:  180px;      
+    height: 180px;  
   }
   .sentenceBox {
     position: absolute;
@@ -440,8 +449,17 @@
     width: 100%;
     height: 39px;
   }
+  #profile{
+    border-radius: 50%;  
+    width:  100%;      
+    height: 100%;      
+  }
+  
+  
 }
 
+{% block additionalStyles %}{%endblock%}
+{% endblock %}
 {% block additionalLinks %}
 
 <script type="text/javascript">
@@ -484,12 +502,11 @@ $(function(){
 })
 
 </script>
-
+{%block javascript%}{%endblock%}
 {% endblock %}
 
-{% block additionalStyles %}{% endblock %}
 
-{% endblock %}
+
 
 {% block mainContent %}
 
@@ -504,11 +521,13 @@ $(function(){
     <div class="notContentBox">
       {% block editButton %}
       <a class="logoutButton" href="{% url 'walpapir:logout' %}">Logout</a>
-      <a class="editButton" href="{% url 'walpapir:userEdit_d' %}">Edit</a>
+      <a class="editButton" href="{% url 'walpapir:user_update' user.pk %}">Edit</a>
       {% endblock %}
 
       <div class="iconBox">{% block iconBox %}
-        <input type="image" src="{% static 'walpapir/180x120.jpeg' %}"/>
+        
+        <img id="profile" onmousedown="return false;" src="{{user.profilepicture.url}}">
+        
       {% endblock %}</div>
 
       <div class="sentenceBox">
@@ -547,9 +566,12 @@ $(function(){
 
     <div class="contentBoxUnder">
       <div class="postContent">{% block postContent %}
+
+        <div style="width:100%;float:left;" id="fild">
         {% for p in photo %}
 
-        {% if photo_user == user %}
+        {% if photo.user == user %}
+
         <div align="center" style="float:left;" class="image_fild">
           <div style="position:relative;margin:5px;width:190px;background:white;" class="image">
             <span id="scale"></span>
@@ -559,9 +581,11 @@ $(function(){
             </div>
           </div>
         </div>
+
         {% endif %}
 
         {% endfor %}
+        </div>
       {% endblock %}</div>
       <div class="favContent">{% block favContent %}
         favcontent

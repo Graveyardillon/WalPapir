@@ -7,7 +7,7 @@ from django.contrib.auth.base_user import AbstractBaseUser
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 from django.contrib.auth.base_user import BaseUserManager
-
+import os.path
 
 class UserManager(BaseUserManager):
     """ユーザーマネージャー."""
@@ -52,12 +52,14 @@ class User(AbstractBaseUser, PermissionsMixin, models.Model):
     last_name = models.CharField(_('last name'), max_length=150, blank=True)
 
     handle_name = models.CharField(max_length = 20, blank=True)
-    bio = models.TextField(blank=True)
+    bio = models.CharField(blank=True, default='bio', max_length=300)
 
     #point has user point.
     point = models.IntegerField(default=0)
     #pointCount exists only for making sure the validity of how the point was gained.
     pointCount = models.IntegerField(default=0)
+
+    profilepicture = models.ImageField(upload_to="profile_image",default=os.path.join("profile_image","180x120.jpeg"))
 
     is_staff = models.BooleanField(
         _('staff status'),
@@ -120,7 +122,20 @@ class Photo(models.Model):
     time = models.DateTimeField(default=datetime.now)#自分で時間を設定する場合はdefaultはいらない。
     mode = models.NullBooleanField()#0:DESKTOP  1:MOBILE
 
-class ProfilePicture(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='walpapir_prof')
-    time = models.DateTimeField(default=datetime.now)
+
+    '''def previousPhotoID(self):
+        if self.id != 1:
+            pre = self.id-1
+        else:
+            pre = -1
+
+        return pre
+
+    def nextPhotoID(self):
+        if self.id != 1:
+            next = self.id+1
+        else:
+            next = -1
+
+        return next'''
+

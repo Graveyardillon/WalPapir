@@ -28,7 +28,7 @@ a {
 @media screen and (min-width: 801px) {
   @import url('https://fonts.googleapis.com/css?family=Pacifico');
   @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,700');
-
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+1p&subset=japanese');
   html, body {
     box-sizing: border-box;
     margin: 0;
@@ -46,7 +46,7 @@ a {
   }
 
   body {
-    font-family: "Roboto Slab", sans-serif;
+    font-family: "Roboto Slab", "M PlUS 1p", sans-serif;
     background: #333 url("../UI/BLBackground.png") repeat;
   }
 
