@@ -84,7 +84,7 @@ def user_d(request):
     user_photo = Photo.objects.all()
     return render(request, 'walpapir/userPage.html', {
         'photo': user_photo,
-        
+
     })
 
 
@@ -108,10 +108,10 @@ def userEdit_d(request):
         user.save()
 
     user_photo = Photo.objects.all()
-    
+
     return render(request, 'walpapir/userPage.html', {
         'photo': user_photo,
-        
+
     })
 
 def userCreateComplete_d(request):
