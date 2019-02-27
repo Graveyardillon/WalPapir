@@ -147,18 +147,23 @@
     <!-- hamburgerMenu -->
     {% endblock %}
 
-    {% block mainContent %}<div id="wrap"></div>{% endblock %}
+
+    {% block mainContent %}
+
+    {% endblock %}
 
     <br>
     <br>
 
-    <div id="footer">
+    {% block footer %}
+    <div class="footer">
       <div style="left: 10%;height:100%;">
         <span style="font-size:30px; color:#ffc107;">About us</span><br>
         How to use?<br>
       </div>
-
     </div>
+    {% endblock %}
+
 
 
   </body>

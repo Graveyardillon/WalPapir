@@ -85,9 +85,9 @@
     position: absolute;
     top: 50px;
     left: 12%;
-    width:  180px;      
-    height: 180px; 
-     
+    width:  180px;
+    height: 180px;
+
   }
   .sentenceBox {
     position: absolute;
@@ -264,12 +264,12 @@
   }
 
   #profile{
-    border-radius:  50% ;  
-    width:  180px;      
-    height: 180px;  
+    border-radius:  50% ;
+    width:  180px;
+    height: 180px;
   }
 
-  
+
 }
 
 
@@ -338,8 +338,8 @@
     position: absolute;
     top: 50px;
     left: 12%;
-    width:  180px;      
-    height: 180px;  
+    width:  180px;
+    height: 180px;
   }
   .sentenceBox {
     position: absolute;
@@ -450,12 +450,12 @@
     height: 39px;
   }
   #profile{
-    border-radius: 50%;  
-    width:  100%;      
-    height: 100%;      
+    border-radius: 50%;
+    width:  100%;
+    height: 100%;
   }
-  
-  
+
+
 }
 
 {% block additionalStyles %}{%endblock%}
@@ -514,8 +514,6 @@ $(function(){
   Redeem Points
 </button>
 
-<div id="wrap">
-
   <div id="flexibleBox">
 
     <div class="notContentBox">
@@ -525,9 +523,9 @@ $(function(){
       {% endblock %}
 
       <div class="iconBox">{% block iconBox %}
-        
+
         <img id="profile" onmousedown="return false;" src="{{user.profilepicture.url}}">
-        
+
       {% endblock %}</div>
 
       <div class="sentenceBox">
@@ -596,5 +594,4 @@ $(function(){
   <div id="right-content">
     <br><br>
   </div>
-</div>
 {% endblock %}

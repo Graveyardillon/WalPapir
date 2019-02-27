@@ -54,7 +54,6 @@ $(function(){
 {%endblock%}
 
 {% block mainContent %}
-<div id="wrap">
 
   <div id="flexibleBox">
     <form action="{%url 'walpapir:userEdit_d'%}" enctype="multipart/form-data" method="post" name="userEdit" id="userEdit">
@@ -63,13 +62,13 @@ $(function(){
       <div class="notContentBox">
 
         <div class="iconBox">{% block iconBox %}
-            
-              
+
+
               <img id="profile" onmousedown="return false;" src="{{user.profilepicture.url}}" onclick="$('#picture').click();">
               <input type="file" style="display:none;" id="picture" name="image">
               <input type="hidden" value="{{user.id}}" name="id">
               </form>
-          
+
 
         {% endblock %}</div>
 
@@ -113,5 +112,4 @@ $(function(){
   <div id="right-content">
     <br><br>
   </div>
-</div>
 {% endblock %}

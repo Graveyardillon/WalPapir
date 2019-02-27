@@ -159,7 +159,7 @@ body{
   width: 70%;
   height: 50%;
   font-size: 19px;
- 
+
   color:#ccc;
   float:right;
 }
@@ -169,7 +169,6 @@ body{
 
 {% block mainContent %}
 
-    <div id="wrap">
       <div id="left-content">
         <div align="center" style="width:100%"><h2>Search : "&nbsp;{{search}}&nbsp;"&nbsp;&nbsp;{{count}}件&nbsp;</h2></div>
         <form action="{%url 'walpapir:search'%}" method="GET">
@@ -213,6 +212,5 @@ body{
       <div id="right-content">
         <br><br>
       </div>
-    </div>
 
 {% endblock %}
