@@ -37,4 +37,36 @@
 
 @media screen and (max-width:800px){
 
+  #previousButton {
+    position: absolute;
+    color: #767676;
+    font-size: 100px;
+    top: 280px;
+    left: 20px;
+  }
+
+  #previousButton:hover {
+    color: #000;
+  }
+
+  #previousButton a {
+    text-decoration:
+  }
+
+  #nextButton {
+    position: absolute;
+    color: #767676;
+    font-size: 100px;
+    top: 280px;
+    right: 20px;
+  }
+
+  #nextButton:hover {
+    color: #000;
+  }
+
+  #nextButton a {
+    text-decoration: none;
+  }
+
 }
