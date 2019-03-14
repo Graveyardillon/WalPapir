@@ -62,14 +62,21 @@ body {
 
       <div id="left-content">
         <br><br><br>
+        {% if prev != -1 %}
+        <a href="{% url 'walpapir:image_view' prev %}">
         <div id="previousButton">
           <i class="fas fa-caret-left"></i>
         </div>
+        </a>
+        {% endif %}
+
+        {% if next != -1 %}
         <a href="{% url 'walpapir:image_view' next %}">
         <div id="nextButton">
           <i class="fas fa-caret-right"></i>
         </div>
         </a>
+        {% endif %}
 
         <div style="font-size:40px;"><p align="center">{{photo.title}}</p></div>
         <hr style="border: 0.5px solid #ccc">

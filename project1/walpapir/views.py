@@ -290,11 +290,19 @@ class ImageView(generic.TemplateView):
     def get_context_data(self, **kwargs):
         global i
         context = super(ImageView, self).get_context_data(**kwargs)
-        context['photo'] = Photo.objects.get(pk=self.kwargs.get('pk'))
+        photo=Photo.objects.all()
+        
+        try:
+            context['prev'] = photo.filter(id__lt=self.kwargs.get('pk')).order_by("-id")[0].id
+        except:
+            context['prev'] = -1
 
-        while(Photo.objects.get(pk=self.kwargs.get('pk')+i) != Photo.objects.get(pk=self.kwargs.get('pk'))):
-            i = i + 1
+        context['photo'] = photo.filter(id__gte=self.kwargs.get('pk'))[0]
 
-        context['next'] = i + self.kwargs.get('pk')
-
+        try:
+            context['next'] = photo.filter(id__gt=self.kwargs.get('pk'))[0].id
+        except:
+            context['next'] = -1
         return context
+
+
