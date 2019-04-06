@@ -81,12 +81,10 @@ def postDone(request):
 #They are debug functions.
 
 def user_d(request):
-    user_photo = Photo.objects.all()
-    return render(request, 'walpapir/userPage.html', {
+    user_photo = User.photo_set.all()
+    return render(request, 'walpapir/user_d', {
         'photo': user_photo,
-
     })
-
 
 
 def redeem_d(request):
@@ -291,7 +289,7 @@ class ImageView(generic.TemplateView):
         global i
         context = super(ImageView, self).get_context_data(**kwargs)
         photo=Photo.objects.all()
-        
+
         try:
             context['prev'] = photo.filter(id__lt=self.kwargs.get('pk')).order_by("-id")[0].id
         except:
@@ -304,5 +302,3 @@ class ImageView(generic.TemplateView):
         except:
             context['next'] = -1
         return context
-
-

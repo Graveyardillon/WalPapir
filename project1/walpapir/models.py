@@ -138,5 +138,3 @@ class Photo(models.Model):
             next = -1
 
         return next'''
-
-
