@@ -413,22 +413,38 @@ a {
     font-size: 18px;
     z-index: 7;
     margin-top: calc(100% + 40px);
-    display: flex;
+    display: none;
   }
 
   .footer-left {
     display: block;
     position: absolute;
     left: 10%;
+    font-size: 35px;
+    color: #ffc107;
   }
 
   .footer-right {
     display: block;
     position: absolute;
     right: 10%;
+    font-size: 35px;
+    color: #ffc107;
+  }
+
+  .footer-left a{
+    font-size: 18px;
   }
 
   .footer-left a:hover{
+    color: #ffc107;
+  }
+
+  .footer-right a{
+    font-size: 18px;
+  }
+
+  .footer-right a:hover{
     color: #ffc107;
   }
 
@@ -800,7 +816,7 @@ a {
     margin-left: 40%;
     cursor: default;
   }
-  
+
   .footer {
     position: absolute;
     width: 100%;
@@ -810,23 +826,39 @@ a {
     font-size: 18px;
     z-index: 7;
     margin-top: calc(100% + 40px);
-    display: flex;
+    display: none;
   }
 
   .footer-left {
     display: block;
     position: absolute;
     left: 10%;
+    font-size:25px;
+    color:#ffc107;
   }
 
   .footer-right {
     display: block;
     position: absolute;
     right: 10%;
+    font-size:25px;
+    color:#ffc107;
+  }
+
+  .footer-left a{
+    font-size: 16px;
   }
 
   .footer-left a:hover{
     color: #ffc107;
+  }
+
+  .footer-right a{
+    font-size: 16px;
+  }
+
+  .footer-right a:hover{
+    color: #ffc107
   }
 
   .scrollToTopButton {

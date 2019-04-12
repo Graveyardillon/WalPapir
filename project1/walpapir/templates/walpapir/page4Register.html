@@ -16,70 +16,143 @@
 {% endblock %}
 
 {% block style %}
-input {
-  font-size: 100%;
-  font-family: inherit;
-  border: none;
-  background-color: rgba(0,0,0,0);
-  width: 100%;
-  height: 39px;
+
+@media screen and (min-width: 801px){
+
+  input {
+    font-size: 100%;
+    font-family: inherit;
+    border: none;
+    background-color: rgba(0,0,0,0);
+    width: 100%;
+    height: 39px;
+  }
+
+  a.active{
+    background-color: #3498db;
+    pointer-events: none;
+  }
+
+  li.slider{
+    width: 25%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #3498db;
+    z-index: 8;
+    transition: left 0.4s, background-color 0.4s;
+  }
+
+  #formPaperPNG{
+    font-size: 35px;
+    width: 700px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -webkit-transform: translate(-50%, 0);
+    height: 490px;
+    position: absolute;
+    top: 250px;
+    margin-bottom: 50px;
+    background-image: url("{% static 'walpapir/UI/paper.png' %}");
+    background-repeat: repeat-y, repeat;
+    border-radius: 12px;
+    display: flex;
+    -webkit-box-shadow: 0px 2px 14px #000;
+    box-shadow: 0px 2px 14px #000;
+    display: flex;
+  }
+
+  #LeftSideOfPaper {
+    top: 0;
+    left: 0;
+    width: 20%;
+  }
+
+  #RightSideOfPaper {
+    font-family: Courier, monospace;
+    top: 0;
+    right: 0;
+    width: 130%;
+  }
+
+  .effect .rightPointEffect {
+    top: 950px;
+  }
+
+  #RightSideOfPaper p b {
+    font-family:"Lato", sans-serif;
+  }
 }
 
-a.active{
-  background-color: #3498db;
-  pointer-events: none;
-}
+@media screen and (max-width: 800px){
 
-li.slider{
-  width: 25%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  background-color: #3498db;
-  z-index: 8;
-  transition: left 0.4s, background-color 0.4s;
-}
+  input {
+    font-size: 100%;
+    font-family: inherit;
+    border: none;
+    background-color: rgba(0,0,0,0);
+    width: 100%;
+    height: 39px;
+  }
 
-#formPaperPNG{
-  font-size: 35px;
-  width: 700px;
-  left: 50%;
-  transform: translate(-50%, 0);
-  -moz-transform: translate(-50%, 0);
-  -webkit-transform: translate(-50%, 0);
-  height: 490px;
-  position: absolute;
-  top: 250px;
-  margin-bottom: 50px;
-  background-image: url("{% static 'walpapir/UI/lines.png' %}"), url("{% static 'walpapir/UI/paper.png' %}");
-  background-repeat: repeat-y, repeat;
-  border-radius: 12px;
-  display: flex;
-  -webkit-box-shadow: 0px 2px 14px #000;
-  box-shadow: 0px 2px 14px #000;
-  display: flex;
-}
+  a.active{
+    background-color: #3498db;
+    pointer-events: none;
+  }
 
-#LeftSideOfPaper {
-  top: 0;
-  left: 0;
-  width: 20%;
-}
+  li.slider{
+    width: 25%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #3498db;
+    z-index: 8;
+    transition: left 0.4s, background-color 0.4s;
+  }
 
-#RightSideOfPaper {
-  font-family: Courier, monospace;
-  top: 0;
-  right: 0;
-  width: 130%;
-}
+  #formPaperPNG{
+    font-size: 35px;
+    width: 700px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -webkit-transform: translate(-50%, 0);
+    height: 490px;
+    position: absolute;
+    top: 200px;
+    margin-bottom: 50px;
+    background-image: url("{% static 'walpapir/UI/paper.png' %}");
+    background-repeat: repeat-y, repeat;
+    border-radius: 12px;
+    display: flex;
+    -webkit-box-shadow: 0px 2px 14px #000;
+    box-shadow: 0px 2px 14px #000;
+    display: flex;
+  }
 
-.effect .rightPointEffect {
-  top: 950px;
-}
+  #LeftSideOfPaper {
+    top: 0;
+    left: 0;
+    width: 20%;
+  }
 
-#RightSideOfPaper p b {
-  font-family:"Lato", sans-serif;
+  #RightSideOfPaper {
+    font-family: Courier, monospace;
+    top: 0;
+    right: 0;
+    width: 130%;
+  }
+
+  .effect .rightPointEffect {
+    top: 950px;
+  }
+
+  #RightSideOfPaper p b {
+    font-family:"Lato", sans-serif;
+  }
 }
 
 {% endblock %}

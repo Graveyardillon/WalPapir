@@ -56,12 +56,53 @@ body {
 
 {% block additionalLinks %}
 <link rel="stylesheet" href="{% static 'walpapir/CSS/ImageView.css' %}">
+
+<script type="text/javascript">
+
+  //Filter of fast-style-transfer
+  $(function styleFilter(){
+    $(".styleFilter").mouseover(function(){
+      $(this).find("img").css("border","solid 2px blue");
+      $(this).find("div").css("display", "inline");
+    }).mouseout(function(){
+      $(this).find("img").css("border", "solid 2px black");
+      $(this).find("div").css("display", "none");
+    })
+  })
+
+  $(function(){
+    var wid;
+    if($(window).width()>800){
+      wid = $(window).width()*0.6;
+    }else{
+      wid = $(window).width()*0.88;
+    }
+    var fil = Math.floor(wid/200);
+    fil = Math.floor(100/fil);
+    fil = fil + "%";
+    $(".image_fild").css("width", fil);
+
+    $(window).resize(function(){
+      var wid;
+      if($(window).width()>800){
+        wid = $(window).width()*0.6;
+      }else{
+        wid = $(window).width()*0.88;
+      }
+      var fil = Math.floor(wid/200);
+      fil = Math.floor(100/fil);
+      fil = fil + "%";
+      $(".image_fild").css("width", fil);
+    })
+  })
+
+</script>
 {% endblock %}
 
 {% block mainContent %}
 
       <div id="left-content">
-        <br><br><br>
+        <br>
         {% if prev != -1 %}
         <a href="{% url 'walpapir:image_view' prev %}">
         <div id="previousButton">
@@ -82,7 +123,9 @@ body {
         <hr style="border: 0.5px solid #ccc">
         <br><br><br>
         <img src="{{photo.image.url}}" style="border:solid 1px black">
-        <br><br><br><br><br>
+        <br><br><br>
+        <hr style="border: 0.5px solid #ccc">
+        <br><br>
       </div>
 
       <div id="right-content">
