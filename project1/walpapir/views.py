@@ -68,10 +68,8 @@ def page4post(request):
     image=request.FILES['image']
     title=request.POST['title']
     mode=request.POST['radio']
-    user_id=request.POST['user']
 
-    user=User.objects.get(id=user_id)
-    user.photo_set.create(image=image,title=title,mode=mode)
+    request.user.photo_set.create(image=image,title=title,mode=mode)
 
     return HttpResponseRedirect(reverse('walpapir:postdone'))#次に表示させるページの名前
 
@@ -270,10 +268,6 @@ class UserDetail(OnlyYouMixin, generic.DetailView):
     model = User
     template_name = 'walpapir/userPage.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["photo"]=self.request.user.photo_set.all()
-        return context
 
 class UserUpdate(OnlyYouMixin, generic.UpdateView):
     model = User

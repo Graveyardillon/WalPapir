@@ -302,7 +302,6 @@ body {
 <!-- submission paper -->
 <form action="{%url 'walpapir:page4post'%}" method="POST" enctype="multipart/form-data">
 {% csrf_token %}
-  <input type="hidden" value="{{user.id}}" name="user">
   <div id="formPaperPNG">
     <div align="center"><br><b>Post Paper</b></div>
     <hr style="border:1px dashed #ccc">
