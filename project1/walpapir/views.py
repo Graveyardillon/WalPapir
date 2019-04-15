@@ -279,14 +279,12 @@ class UserUpdate(OnlyYouMixin, generic.UpdateView):
         return resolve_url('userPage', pk=self.kwargs['pk'])
 
 
-i = 0
-
 
 class ImageView(generic.TemplateView):
     template_name = 'walpapir/imageView.html'
 
     def get_context_data(self, **kwargs):
-        global i
+
         context = super(ImageView, self).get_context_data(**kwargs)
         photo=Photo.objects.all()
 
