@@ -272,7 +272,7 @@ class UserDetail(OnlyYouMixin, generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["photo"]=Photo.objects.all()
+        context["photo"]=self.request.user.photo_set.all()
         return context
 
 class UserUpdate(OnlyYouMixin, generic.UpdateView):

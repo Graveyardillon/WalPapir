@@ -565,6 +565,7 @@ $(function(){
     <div class="contentBoxUnder">
 
       <div class="postContent">{% block postContent %}
+        {%if photo.count != 0 %}
         postContent<br>
         <div style="width:100%;float:left;" class="fild">
 
@@ -583,6 +584,7 @@ $(function(){
         {% endfor %}
 
         </div>
+        {%endif%}
       {% endblock %}</div>
 
       <div class="favContent">{% block favContent %}
