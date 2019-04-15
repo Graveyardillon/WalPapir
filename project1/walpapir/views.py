@@ -270,6 +270,11 @@ class UserDetail(OnlyYouMixin, generic.DetailView):
     model = User
     template_name = 'walpapir/userPage.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["photo"]=Photo.objects.all()
+        return context
+
 class UserUpdate(OnlyYouMixin, generic.UpdateView):
     model = User
     form_class = UserUpdateForm
