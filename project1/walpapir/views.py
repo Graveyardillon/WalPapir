@@ -305,3 +305,24 @@ class ImageView(generic.TemplateView):
         except:
             context['next'] = -1
         return context
+
+class ImageView_u(generic.TemplateView):
+    template_name = 'walpapir/imageView.html'
+
+    def get_context_data(self, **kwargs):
+
+        context = super(ImageView_u, self).get_context_data(**kwargs)
+        photo=self.request.user.photo_set.all()
+
+        try:
+            context['prev'] = photo.filter(id__lt=self.kwargs.get('pk')).order_by("-id")[0].id
+        except:
+            context['prev'] = -1
+
+        context['photo'] = photo.filter(id__gte=self.kwargs.get('pk'))[0]
+
+        try:
+            context['next'] = photo.filter(id__gt=self.kwargs.get('pk'))[0].id
+        except:
+            context['next'] = -1
+        return context

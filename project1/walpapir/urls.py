@@ -56,5 +56,5 @@ urlpatterns = [
 
     #imageView
     path('image/<int:pk>', views.ImageView.as_view(), name='image_view'),
-
+    path('image_u/<int:pk>', views.ImageView_u.as_view(), name='image_view_u'),
 ]
