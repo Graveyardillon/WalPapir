@@ -126,7 +126,27 @@ body {
         <br><br><br>
         <hr style="border: 0.5px solid #ccc">
         <br><br>
+
+        <script>
+          const STYLE_NUMBERS = 6;
+          const STYLE_IMAGES = new Array('la_muse', 'rain_princess', 'the_scream', 'the_shipwreck_of_the_minotaur', 'udnie', 'wave');
+
+            for(var i=0;i<STYLE_NUMBERS;i++){
+              document.write('<div align=\"center\" style=\"float:left;\" class=\"image_fild\">');
+              document.write('<div style=\"position:relative;margin:5px;width:190px;background:white;\" class=\"image\">')
+              document.write('<span id=\"scale\"></span>');
+              document.write('<img src=\"{% static \"walpapir/style/'+STYLE_IMAGES[i]+'.jpg\" %}" >');
+              document.write('<div style=\"position:absolute;width:190px;background-color:rgba(0,0,0,0.7);bottom:6px;left:2px;display:none;\" class=\"text\">');
+              document.write('<span style=\"color:white;\">'+STYLE_IMAGES[i]+'</span>');
+              document.write('</div>');
+              document.write('</div>');
+              document.write('</div>');
+            }
+        </script>
+
       </div>
+
+
 
       <div id="right-content">
         <br><br>
