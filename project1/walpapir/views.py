@@ -59,7 +59,7 @@ def prehome(request):
 def page4post(request):
 
     #ログインしてないと入れない
-    if not User.is_authenticated:
+    if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse('walpapir:login'))
 
     if request.method=='GET':
@@ -292,7 +292,7 @@ class ImageView(generic.TemplateView):
         except:
             context['prev'] = -1
 
-        context['photo'] = photo.filter(id__gte=self.kwargs.get('pk'))[0]
+        context['photo'] = photo.get(id=self.kwargs.get('pk'))
 
         try:
             context['next'] = photo.filter(id__gt=self.kwargs.get('pk'))[0].id
@@ -313,7 +313,7 @@ class ImageView_u(generic.TemplateView):
         except:
             context['prev'] = -1
 
-        context['photo'] = photo.filter(id__gte=self.kwargs.get('pk'))[0]
+        context['photo'] = photo.get(id=self.kwargs.get('pk'))
 
         try:
             context['next'] = photo.filter(id__gt=self.kwargs.get('pk'))[0].id
