@@ -1,0 +1,344 @@
+{% extends './homeTemplate.html' %}
+{% load static %}
+{% block title %}add style image{% endblock %}
+
+{% block basicLinks %}
+
+<script src="{% static 'walpapir/jQuery/3-3-1.js' %}"></script>
+<link rel="stylesheet" href="{% static 'walpapir/CSS/menustyle.css' %}" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous" />
+<link rel="stylesheet" href="{% static 'walpapir/CSS/ButtonEffects.css' %}" />
+<script type="text/javascript" src="{% static 'walpapir/js/FixNavigation.js' %}"></script>
+<script src=" {% static 'walpapir/jQuery/pace.js' %}"></script>
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+
+<script type="text/javascript">
+
+//アップロードされた画像の表示
+$(function(){
+  $("#input_image").change(
+    function(){
+      if(!this.files.length ) {
+          return;
+      }
+      var file = $(this).prop('files')[0];//[0]はリストだから。　filesはjQueryの定数？なのでpropを使う
+
+      var fr = new FileReader();
+      if(file.type.match(/image/)){
+      fr.onload = function() {
+          $('#image').attr('src', fr.result).css('display','inline');//srcはhtmlの属性なのでattrを使う
+          $("#error_message").text("");
+      }}else{
+        $('#image').attr('src', "" ).css('display','none');//srcはhtmlの属性なのでattrを使う
+        $('#error_message').text("error message")
+      }
+      fr.readAsDataURL(file);
+  })
+})
+
+//ラジオボタンによって画像幅の変更
+$(function(){
+  $('input[name="radio"]:radio').change(function(){
+
+    if($(window).width()>800){
+      if($(this).val()=="0"){
+        $("#image").css({
+          "width":"80%",
+          "height":"100%"
+        });
+      }else{
+        $("#image").css({
+          "width":"50%",
+          "height":"100%"
+        });
+      }
+    }else{}
+
+  })
+})
+
+//POSTボタンを押された時のerror処理
+$(function(){
+  $("#button").click(function(){
+    if((!document.getElementById("input_image").files.length || $("#error_message").text()!="") && !$("#title").val()){
+      $("#error").css("visibility","visible");
+      $("#font_image").css("color","red");
+      $("#font_title").css("color","red");
+      window.scroll(0,100);
+    }else if(!document.getElementById("input_image").files.length || $("#error_message").text()!=""){
+      $("#error").css("visibility","visible");
+      $("#font_image").css("color","red");
+      $("#font_title").css("color","black");
+      window.scroll(0,100);
+    }else if(!$("#title").val()){
+      $("#error").css("visibility","visible");
+      $("#font_image").css("color","black");
+      $("#font_title").css("color","red");
+      window.scroll(0,100);
+    }else{
+      $("#submit").click();
+    }
+
+  });
+})
+
+//input textのEnterキー入力について
+$(function(){
+        $("#title"). keydown(function(e) {
+            if ((e.which && e.which === 13) || (e.keyCode && e.keyCode === 13)) {
+                $("#button").click();
+                return false;
+            } else {
+                return true;
+            }
+        });
+    });
+
+
+</script>
+{% endblock %}
+
+{% block style %}
+
+@media screen and (min-width:801px) {
+
+
+
+  a.active{
+    background-color: #3498db;
+    pointer-events: none;
+  }
+
+  li.slider{
+    width: 25%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #3498db;
+    z-index: 8;
+    transition: left 0.4s, background-color 0.4s;
+  }
+
+  #formPaperPNG{
+    font-family: Courier, monospace;
+    font-size: 35px;
+    width: 700px;
+    left: 50%;
+    transform: translate(-50%);
+    -moz-transform: translate(-50%);
+    -webkit-transform: translate(-50%);
+    height: 850px;
+    position: absolute;
+    top: 250px;
+    margin-bottom: 50px;
+    background: url("{% static "walpapir/UI/paper.png" %}") repeat;
+    border-radius: 12px;
+    -webkit-box-shadow: 0px 2px 14px #000;
+    box-shadow: 0px 2px 14px #000;
+    z-index: 4;
+    padding-left:30px;
+    padding-right:30px
+  }
+
+  .effect.rightPointEffect {
+    top: 1200px;
+    left: 50%;
+    transform: translate(-50%);
+    width: 120px;
+    background-color: #0074e8;
+    transition: all 0.2s linear 0s;
+  }
+
+  #information{
+    width:100%;
+    height:280px;
+  }
+
+  #image_zone{
+    width: 50%;
+    height: 100%;
+    float: left;
+  }
+
+   #image{
+    width:80%;
+    height:100%;
+
+   }
+
+  #input_infor{
+    width: 45%;
+    height: 100%;
+    float:right;
+
+
+  }
+
+  #title{
+    float:right;
+    font-family: inherit;
+    background: #ccc;
+    font-size:80%;
+    border:1px solid #000;
+    width: 100%;
+    height: 39px; /* This is a size of one line */
+  }
+
+  .font{
+    font-weight: 600;
+    font-size: 100%
+  }
+}
+
+
+
+
+
+
+@media screen and (max-width:800px){
+
+  a.active{
+    background-color: #3498db;
+    pointer-events: none;
+  }
+
+  li.slider{
+    width: 25%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #3498db;
+    z-index: 8;
+    transition: left 0.4s, background-color 0.4s;
+  }
+
+  #paperContainer {
+
+  }
+
+  #formPaperPNG{
+    font-family: Courier, monospace;
+    font-size: 35px;
+    width: 80%;
+    margin-left: 10%;
+    height: auto;
+    position: absolute;
+    margin-top: 150px;
+    margin-bottom: 50px;
+    background: url("{% static 'walpapir/UI/paper.png' %}") repeat;
+    background-repeat: repeat-y, repeat;
+    border-radius: 12px;
+    z-index: 4;
+  }
+
+  .casualButton {
+    position: absolute;
+    right: 35%;
+  }
+
+  body .container{
+    width:auto;
+    position:relative;
+    top:250px
+
+  }
+
+  #information{
+    width:100%;
+    height:550px;
+  }
+
+  #image_zone{
+
+    height: 280px;
+
+  }
+
+   #image{
+    width:90%;
+    height:100%;
+
+   }
+
+  #input_infor{
+    height: 280px;
+
+  }
+
+  #title{
+    float:right;
+    font-family: inherit;
+    background: #ccc;
+    font-size:80%;
+    border:1px solid #000;
+    width: 90%;
+    height: 39px; /* This is a size of one line */
+    margin-right:5%;
+  }
+
+  .font{
+    margin-left:5%;
+    font-weight: 600;
+    font-size: 100%
+  }
+}
+
+
+
+body {
+  height: 1310px;
+}
+
+
+
+{% endblock %}
+
+{% block mainContent %}
+
+<!-- submission paper -->
+
+<form action="{% url 'walpapir:style'}">
+  {% csrf_token %}
+    <div id="formPaperPNG">
+      <div align="center"><br><b>Style Paper</b></div>
+      <hr style='border:1px dashed #ccc'>
+      <div id="information">
+        <div id="image_zone" align="center"><img src="{% static 'walpapir/180x120.jpeg' %}" name="image" id="image" oncontextmenu="alert('aaaaa');return false;">
+          <a id="error_message" style="color:red"></a>
+          </div>
+
+          <div id="input_infor">
+            <span style="visibility:hidden;color:red;" id="error">error</span>
+            <div style="width:100%;height:20%;"><span class="font" id="font_image">Image:</span><input type="file" id="input_image" style="display:none;" name="image">
+              <button class="casualButton" onclick="$('#input_image').click();" style="position:relative;left:10px;" type="button"><i class="fas fa-ellipsis-h"></i>&nbsp;Choose Style</button>
+            </div>
+
+            <div style="width:100%;height:40%;">
+              <span class="font" id="font_title">Title:</span><br>
+              <input type="text" id="title" maxlength="20" placeholder="max 20" name="title">
+            </div>
+          </div>
+        </div>
+
+        <hr style="border:1px dashed #ccc;">
+      </div>
+
+<!-- submission paper -->
+
+<!-- submission button -->
+
+  <div class="container">
+    <div class="buttonEffect">
+      <button id="submit" type="submit" style="display:none"></button>
+      <button class="effect rightPointEffect" type="button" title="Post" id="button" style="border:0;">
+        Post</button>
+      </div>
+    </div>
+</form>
+<!-- submission button -->
+
+
+{% endblock %}

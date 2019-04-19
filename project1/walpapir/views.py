@@ -278,7 +278,6 @@ class UserUpdate(OnlyYouMixin, generic.UpdateView):
         return resolve_url('userPage', pk=self.kwargs['pk'])
 
 
-
 class ImageView(generic.TemplateView):
     template_name = 'walpapir/imageView.html'
 
@@ -322,3 +321,15 @@ class ImageView_u(generic.TemplateView):
         except:
             context['next'] = -1
         return context
+
+def style_transfer(request):
+
+    if request.method=='GET':
+        return render(request, 'walpapir/style.html')
+
+    image = request.FILES['image']
+    title = request.POST['title']
+
+    request.user.photo_set.create(image=image, title=title)
+
+    return HttpResponseRedirect(reverse('walpapir/style.html'))
