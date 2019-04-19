@@ -65,15 +65,18 @@ class User(AbstractBaseUser, PermissionsMixin, models.Model):
         _('staff status'),
         default=False,
         help_text=_(
-            'Designates whether the user can log into this admin site.'),
-    )
+            #'Designates whether the user can log into this admin site.'),
+            'aaa',
+            )
+        )
 
     is_active = models.BooleanField(
         _('active'),
         default=True,
         help_text=_(
-            'Designates whether this user should be treated as active. '
-            'Unselect this instead of deleting accounts.'
+            'aaa'
+            #'Designates whether this user should be treated as active. '
+            #'Unselect this instead of deleting accounts.'
         ),
     )
 
@@ -121,3 +124,7 @@ class Photo(models.Model):
     title = models.CharField(max_length=30)
     time = models.DateTimeField(default=datetime.now)#自分で時間を設定する場合はdefaultはいらない。
     mode = models.NullBooleanField()#0:DESKTOP  1:MOBILE
+
+class Style(models.Model):
+    image = models.ImageField(upload_to='walpapir_style')
+    title = models.CharField(max_length=20)

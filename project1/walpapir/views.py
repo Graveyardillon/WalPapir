@@ -20,7 +20,7 @@ from django.shortcuts import render, get_object_or_404
 import os
 import os.path
 
-from .models import User, Photo
+from .models import User, Photo, Style
 
 
 
@@ -286,6 +286,7 @@ class ImageView(generic.TemplateView):
 
         context = super(ImageView, self).get_context_data(**kwargs)
         photo=Photo.objects.all()
+        style=Style.objects.all()
 
         try:
             context['prev'] = photo.filter(id__lt=self.kwargs.get('pk')).order_by("-id")[0].id
@@ -293,6 +294,7 @@ class ImageView(generic.TemplateView):
             context['prev'] = -1
 
         context['photo'] = photo.get(id=self.kwargs.get('pk'))
+        context['style'] = style
 
         try:
             context['next'] = photo.filter(id__gt=self.kwargs.get('pk'))[0].id
