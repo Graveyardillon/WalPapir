@@ -188,6 +188,7 @@ body{
       </form>
         <hr style="border:1px dashed #ccc">
         <div style="width:100%;float: left;" id="fild">
+        {%if photo%}
 
         {%for p in photo%}
         <div align="center" style="float:left;" class="image_fild">
@@ -202,6 +203,10 @@ body{
           </div>
         </div>
         {%endfor%}
+
+        {%else%}
+          <p>No results.</p>
+        {%endif%}
 
       </div>
         <br><br><br>

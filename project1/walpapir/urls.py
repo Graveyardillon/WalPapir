@@ -59,5 +59,5 @@ urlpatterns = [
     path('image_u/<int:pk>', views.ImageView_u.as_view(), name='image_view_u'),
 
     #style Filter
-    path('STYLE__transferfilter', views.style_transfer, name='style'),
+    path('style', views.style_transfer, name='style'),
 ]
