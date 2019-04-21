@@ -358,7 +358,7 @@ a {
     background-image:  url("../UI/paper.png");
     text-align: center;
     border-radius: 12px;
-    display: block'
+    display: 'block';
   }
 
 
@@ -412,8 +412,6 @@ a {
     color: #fff;
     font-size: 18px;
     z-index: 7;
-    margin-top: calc(100% + 40px);
-    display: none;
   }
 
   .footer-left {

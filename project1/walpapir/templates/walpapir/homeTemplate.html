@@ -147,7 +147,7 @@
     <!-- hamburgerMenu -->
     {% endblock %}
 
-
+    
     {% block mainContent %}
 
     {% endblock %}
@@ -163,6 +163,11 @@
         $("body, html").animate({scrollTop: 0}, 300, 'linear');
       });
     });
+
+    $(function(){
+      var height = $(document).height()+10;
+      $(".footer").css("top",height+"px");
+    })
     </script>
 
     <div class="footer">
