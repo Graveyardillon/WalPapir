@@ -60,4 +60,5 @@ urlpatterns = [
 
     #style Filter
     path('style', views.style_transfer, name='style'),
+    path('profile',views.profile,name='profile'),
 ]

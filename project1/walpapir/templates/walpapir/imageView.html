@@ -159,7 +159,9 @@ body {
           </div>
 
           <div style="width:45%;float:right;">
-            <img src="{{photo.user.profilepicture.url}}" class="profile" onmousedown="return false;">
+              <form action="{%url 'walpapir:profile'%}" method="POST">
+                {% csrf_token %}
+                <input type="image" value="{{photo.user.id}}" name="user" src="{{photo.user.profilepicture.url}}" class="profile" onmousedown="return false;"></form>
             <span style="margin:20px 0px;float:left;font-size: 20px;">{{photo.user.email}}</span><!--名前にする-->
           </div>
         </div>
@@ -171,7 +173,7 @@ body {
         <div align="center" style="float:left;" class="image_fild">
           <div style="position:relative;margin:5px;width:190px;background:white;" class="image">
             <span id="scale"></span>
-            <img src="{{st.image.url}}" style="width: 190px;height: 190px;border:solid 2px black;" alt="{{st.title}}" oncontextmenu="return false;">
+           <img src="{{st.image.url}}" style="width: 190px;height: 190px;border:solid 2px black;" alt="{{st.title}}" oncontextmenu="return false;">
             <div style="position:absolute;width:190px;background-color:rgba(0,0,0,0.7);bottom:6px;left:2px;display:none;" class="text">
               <span style="color:white;" >{{st.title}}</span>
             </div>
