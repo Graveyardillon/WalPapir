@@ -307,15 +307,17 @@ class ImageView_u(generic.TemplateView):
     def get_context_data(self, **kwargs):
 
         context = super(ImageView_u, self).get_context_data(**kwargs)
-        photo=self.request.user.photo_set.all()
+        photo_now = Photo.objects.get(id=self.kwargs.get('pk'))
+        photo=photo_now.user.photo_set.all()
+        style=Style.objects.all()
 
         try:
             context['prev'] = photo.filter(id__lt=self.kwargs.get('pk')).order_by("-id")[0].id
         except:
             context['prev'] = -1
 
-        context['photo'] = photo.get(id=self.kwargs.get('pk'))
-
+        context['photo'] = photo_now
+        context['style'] = style
         try:
             context['next'] = photo.filter(id__gt=self.kwargs.get('pk'))[0].id
         except:
