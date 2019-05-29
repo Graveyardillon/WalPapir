@@ -159,9 +159,12 @@ body {
           </div>
 
           <div style="width:45%;float:right;">
-            <form action="{%url 'walpapir:profile'%}" method="POST">
-                {% csrf_token %}
-              <input type="image" value="{{photo.user.id}}" name="user" src="{{photo.user.profilepicture.url}}" class="profile" onmousedown="return false;"></form>
+              <!--
+              <form action="{%url 'walpapir:profile'%}" method="POST">
+                {% csrf_token %} -->
+                <a href="{% url 'walpapir:profile_s' photo.user.pk %}">
+                <input type="image" value="{{photo.user.id}}" name="user" src="{{photo.user.profilepicture.url}}" class="profile" onmousedown="return false;">
+              <!-- </form> --></a>
             <span style="margin:20px 0px;float:left;font-size: 20px;">{{photo.user.email}}</span><!--名前にする-->
           </div>
         </div>

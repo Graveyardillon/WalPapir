@@ -61,4 +61,5 @@ urlpatterns = [
     #style Filter
     path('style', views.style_transfer, name='style'),
     path('profile',views.profile,name='profile'),
+    path('profile<int:pk>', views.Profile_View.as_view(), name='profile_s')
 ]

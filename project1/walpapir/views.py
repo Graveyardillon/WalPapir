@@ -342,3 +342,15 @@ def profile(request):
     return render(request,'walpapir/profile.html',{
         "usr":User.objects.get(id=user_id),
     })
+
+class Profile_View(generic.TemplateView):
+    template_name = 'walpapir/userPage.html'
+
+    def get_context_data(self, **kwargs):
+
+        context = super(Profile_View, self).get_context_data(**kwargs)
+        user = User.objects.all()
+
+        context['user'] = user.get(id=self.kwargs.get('pk'))
+
+        return context
