@@ -115,7 +115,6 @@ class User(AbstractBaseUser, PermissionsMixin, models.Model):
         """
         return self.handle_name
 
-
 from datetime import datetime
 
 class Photo(models.Model):

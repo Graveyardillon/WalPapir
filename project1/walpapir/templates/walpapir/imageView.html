@@ -159,9 +159,9 @@ body {
           </div>
 
           <div style="width:45%;float:right;">
-              <form action="{%url 'walpapir:profile'%}" method="POST">
+            <form action="{%url 'walpapir:profile'%}" method="POST">
                 {% csrf_token %}
-                <input type="image" value="{{photo.user.id}}" name="user" src="{{photo.user.profilepicture.url}}" class="profile" onmousedown="return false;"></form>
+              <input type="image" value="{{photo.user.id}}" name="user" src="{{photo.user.profilepicture.url}}" class="profile" onmousedown="return false;"></form>
             <span style="margin:20px 0px;float:left;font-size: 20px;">{{photo.user.email}}</span><!--名前にする-->
           </div>
         </div>
@@ -169,7 +169,7 @@ body {
 
 
         {% for st in style %}
-        
+
         <div align="center" style="float:left;" class="image_fild">
           <div style="position:relative;margin:5px;width:190px;background:white;" class="image">
             <span id="scale"></span>
