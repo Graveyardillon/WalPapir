@@ -337,7 +337,7 @@ def style_transfer(request):
     return HttpResponseRedirect(reverse('walpapir/style.html'))
 
 def profile(request):
-    user_id=request.POST['user']
+    user_id = request.POST['user']
 
     return render(request,'walpapir/profile.html',{
         "usr":User.objects.get(id=user_id),
