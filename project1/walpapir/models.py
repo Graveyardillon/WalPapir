@@ -51,7 +51,7 @@ class User(AbstractBaseUser, PermissionsMixin, models.Model):
     first_name = models.CharField(_('first name'), max_length=30, blank=True)
     last_name = models.CharField(_('last name'), max_length=150, blank=True)
 
-    handle_name = models.CharField(max_length = 20, blank=True)
+    display_name = models.CharField(max_length = 20, blank=True)
     bio = models.CharField(blank=True, default='bio', max_length=300)
 
     #point has user point.
@@ -111,9 +111,9 @@ class User(AbstractBaseUser, PermissionsMixin, models.Model):
         """username属性のゲッター
 
         他アプリケーションが、username属性にアクセスした場合に備えて定義
-        handle_nameを返す
+        display_nameを返す
         """
-        return self.handle_name
+        return self.display_name
 
 from datetime import datetime
 

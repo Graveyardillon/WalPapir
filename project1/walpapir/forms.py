@@ -22,9 +22,9 @@ class UserCreateForm(UserCreationForm):
     class Meta:
         model = User
         if User.USERNAME_FIELD == 'email':
-            fields = ('email', 'handle_name')
+            fields = ('email', 'display_name')
         else:
-            fields = ('username', 'email', 'handle_name')
+            fields = ('username', 'email', 'display_name')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -38,9 +38,9 @@ class UserUpdateForm(forms.ModelForm):
     class Meta:
         model = User
         if User.USERNAME_FIELD == 'email':
-            fields = ('email', 'handle_name')
+            fields = ('email', 'display_name')
         else:
-            fields = ('username', 'email', 'handle_name')
+            fields = ('username', 'email', 'display_name')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
