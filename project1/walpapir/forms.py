@@ -16,21 +16,26 @@ class LoginForm(AuthenticationForm):
             field.widget.attrs['placeholder'] = field.label  # placeholderにフィールドのラベルを入れる
 
 
+
 class UserCreateForm(UserCreationForm):
     """ユーザー登録用フォーム"""
 
     class Meta:
         model = User
         if User.USERNAME_FIELD == 'email':
-            fields = ('email', 'display_name')
+            fields = ('email', 'handle_name')
         else:
-            fields = ('username', 'email', 'display_name')
+            fields = ('username', 'email', 'handle_name')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
         for field in self.fields.values():
             field.widget.attrs['class'] = 'form-control'
-            field.widget.attrs['placeholder'] = field.label
+            if not field.label=="Handle name":
+                field.widget.attrs['placeholder'] = field.label
+            else:
+                field.widget.attrs['placeholder'] = "Display name"
 
 class UserUpdateForm(forms.ModelForm):
     """ユーザ情報更新"""
@@ -38,9 +43,9 @@ class UserUpdateForm(forms.ModelForm):
     class Meta:
         model = User
         if User.USERNAME_FIELD == 'email':
-            fields = ('email', 'display_name')
+            fields = ('email', 'handle_name')
         else:
-            fields = ('username', 'email', 'display_name')
+            fields = ('username', 'email', 'handle_name')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
