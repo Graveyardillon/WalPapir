@@ -33,6 +33,37 @@
     text-decoration: none;
   }
 
+  .downloadButton {
+    position: relative;
+
+    top: -500px;
+    left: 91%;
+
+    width: 35px;
+    height: 35px;
+
+    background-color: #ffddee;
+    color: #ff3e9e;
+    line-height: 35px;
+
+    text-align: center;
+    align-content: center;
+
+    transition: transform ease-out 200ms;
+    transition: -webkit-transform ease-out 200ms;
+
+    border-radius: 100%;
+    border: solid;
+    border-color: #ff3e9e;
+    border-width: 0.5px;
+  }
+
+  .downloadButton:hover {
+    background-color: #ff3e9e;
+    color: #ffddee;
+    transition: background-color 150ms ease-in;
+  }
+
 }
 
 @media screen and (max-width:800px){
