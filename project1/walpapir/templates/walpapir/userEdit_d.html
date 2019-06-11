@@ -27,7 +27,7 @@ $(function(){
       if(!this.files.length ) {
           return;
       }
-      var file = $(this).prop('files')[0];//[0]はリストだから。　filesはjQueryの定数？なのでpropを使う
+      var file = $(this).prop('files')[0];//[0]はリストだから。filesはjQueryの定数？なのでpropを使う
 
       var fr = new FileReader();
       if(file.type.match(/image/)){
@@ -35,7 +35,7 @@ $(function(){
           $('#profile').attr('src', fr.result).css('display','inline');//srcはhtmlの属性なのでattrを使う
           image=0;
       }}else{
-        $('#profile').attr('src', "" );//srcはhtmlの属性なのでattrを使う
+        $('#profile').attr('src', "");//srcはhtmlの属性なのでattrを使う
         image=1;
       }
       fr.readAsDataURL(file);
