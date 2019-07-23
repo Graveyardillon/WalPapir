@@ -11,3 +11,6 @@ views.cpython-37.pyc
 0001_initial.cpython-37.pyc
 forms.cpython-36.pyc
 models.cpython-36.pyc
+
+/project1/walpapir/__pycache__/
+/project1/walpapir/migrations/__pycache__/
