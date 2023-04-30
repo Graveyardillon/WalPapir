@@ -29,7 +29,7 @@
   },
   "homepage": "http://www.alvarotrigo.com/multiScroll/",
   "devDependencies": {
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-clean-css": "^2.0.13",
     "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^2.1.1",
